@@ -2,7 +2,6 @@
 import Nav from '@/components/Nav.vue'
 import Hero from '@/components/Hero.vue'
 import Products from '@/components/Products.vue'
-import Footer from '@/components/Footer.vue'
 import SectionGrid from '@/components/SectionGrid.vue'
 </script>
 
@@ -23,22 +22,13 @@ import SectionGrid from '@/components/SectionGrid.vue'
       ></div>
     </div>
 
-    <div class="relative z-10 sm:px-8">
-      <div class="mx-auto max-w-7xl lg:px-8">
-        <div class="relative px-4 sm:px-8 lg:px-12">
-          <div class="mx-auto max-w-2xl lg:max-w-5xl">
-            <Nav />
+    <div class="relative z-10 p-8">
+      <Hero />
 
-            <Hero />
-
-            <main id="products-section" class="pt-8 pb-8">
-              <Products />
-            </main>
-
-            <Footer />
-          </div>
-        </div>
-      </div>
+      <main id="products-section" class="pt-8 pb-8">
+        <Nav />
+        <Products />
+      </main>
     </div>
   </div>
 </template>

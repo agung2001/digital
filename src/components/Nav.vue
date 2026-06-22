@@ -38,9 +38,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <header class="fixed top-6 left-0 right-0 z-50 flex justify-center pointer-events-none px-4">
+  <header class="mb-8">
     <div
-      class="relative pointer-events-auto flex items-center justify-between w-full max-w-5xl px-4 py-2.5 rounded-full bg-white/70 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur-md dark:bg-zinc-800/80 dark:ring-white/10 transition-all duration-300"
+      class="flex items-center justify-between w-full px-4 py-2.5 rounded-full bg-white/70 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur-md dark:bg-zinc-800/80 dark:ring-white/10 transition-all duration-300"
     >
       <div class="flex-1 flex justify-start">
         <a
@@ -51,7 +51,7 @@ onMounted(() => {
             class="h-9 w-9 overflow-hidden rounded-full bg-zinc-100 ring-2 ring-zinc-100 dark:bg-zinc-800 dark:ring-zinc-700/50 flex items-center justify-center"
           >
             <img
-              src="https://agungsundoro.com/img/avatar.jpg"
+              src="/img/avatar.jpg"
               alt="Agung Sundoro"
               class="h-full w-full object-cover group-hover:brightness-110 transition-all"
             />
