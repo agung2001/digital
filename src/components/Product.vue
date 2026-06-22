@@ -25,9 +25,11 @@ const affiliateUrl = () => {
 
 <template>
   <div
-    class="group relative flex flex-col bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-700 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 vault-card-glow h-full cursor-pointer"
+    class="group relative flex flex-col bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm rounded-2xl overflow-hidden border border-zinc-200/50 dark:border-zinc-700/50 hover:border-teal-500/50 hover:shadow-xl hover:shadow-teal-500/10 hover:-translate-y-2 transition-all duration-500 h-full cursor-pointer"
     @click="openProduct"
   >
+    <div class="absolute inset-0 bg-gradient-to-br from-teal-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl pointer-events-none z-10"></div>
+
     <div class="w-full aspect-square relative overflow-hidden bg-zinc-100 dark:bg-zinc-800 flex-none">
       <div
         v-if="product.coverImage"
@@ -47,15 +49,20 @@ const affiliateUrl = () => {
         class="relative w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 drop-shadow-md"
         loading="lazy"
       />
-      <div v-else class="w-full h-full flex items-center justify-center transition-transform duration-500 group-hover:scale-110">
+      <div
+        v-else
+        class="w-full h-full flex items-center justify-center transition-transform duration-500 group-hover:scale-110"
+      >
         <i class="fas fa-box text-6xl text-zinc-300 dark:text-zinc-600"></i>
       </div>
     </div>
 
-    <div class="bg-white/60 dark:bg-zinc-900/60 border-t border-zinc-200/50 dark:border-zinc-700/50 flex flex-col justify-between flex-1">
+    <div
+      class="bg-white/60 dark:bg-zinc-900/60 border-t border-zinc-200/50 dark:border-zinc-700/50 flex flex-col justify-between flex-1"
+    >
       <div class="p-4">
         <h3
-          class="text-zinc-900 dark:text-white text-sm leading-snug break-words tracking-tight"
+          class="text-zinc-900 dark:text-white text-sm leading-snug break-words tracking-tight line-clamp-2"
           :title="product.title"
         >
           {{ product.title }}
