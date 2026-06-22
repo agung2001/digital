@@ -95,8 +95,13 @@ onMounted(() => {
       </p>
     </div>
 
-    <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div v-for="product in products" :key="product.uuid">
+    <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 gap-6">
+      <div
+        v-for="(product, index) in products"
+        :key="product.uuid"
+        class="vault-card-animate"
+        :style="{ animationDelay: `${index * 0.08}s` }"
+      >
         <Product :product="product" />
       </div>
     </div>

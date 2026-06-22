@@ -38,3 +38,39 @@
 .animation-delay-4000 {
   animation-delay: 4s;
 }
+
+@keyframes vault-fade-slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.vault-card-animate {
+  animation: vault-fade-slide-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.vault-card-glow {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.vault-card-glow::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.vault-card-glow:hover::after {
+  opacity: 1;
+}
