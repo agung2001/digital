@@ -95,17 +95,5 @@ onMounted(() => {
         </div>
       </div>
     </div>
-
-    <div
-      class="mt-4 relative z-10"
-      :class="isMounted ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'"
-      style="transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1); transition-delay: 150ms"
-    >
-      <p class="text-base text-zinc-500 dark:text-zinc-400 leading-relaxed">
-        I craft premium digital products that empower creators and developers. From in-depth
-        courses to polished templates and tools, every product is designed to help you ship
-        faster, learn smarter, and turn ideas into reality.
-      </p>
-    </div>
   </section>
 </template>

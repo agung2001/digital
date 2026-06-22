@@ -43,9 +43,8 @@ onMounted(() => {
 <template>
   <section>
     <div class="mb-10">
-      <h1 class="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">Products</h1>
       <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-        Digital products crafted with care.
+        I craft premium digital products that empower creators and developers. From in-depth courses to polished templates and tools, every product is designed to help you ship faster, learn smarter, and turn ideas into reality.
       </p>
     </div>
 
