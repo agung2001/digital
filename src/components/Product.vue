@@ -47,26 +47,24 @@ const openProduct = () => {
       </div>
     </div>
 
-    <div class="p-4 bg-white/60 dark:bg-zinc-900/60 border-t border-zinc-200/50 dark:border-zinc-700/50 flex flex-col justify-between flex-1">
-      <div>
+    <div class="bg-white/60 dark:bg-zinc-900/60 border-t border-zinc-200/50 dark:border-zinc-700/50 flex flex-col justify-between flex-1">
+      <div class="p-4">
         <h3
-          class="font-bold text-zinc-900 dark:text-white text-sm leading-snug break-words tracking-tight"
+          class="text-zinc-900 dark:text-white text-sm leading-snug break-words tracking-tight"
           :title="product.title"
         >
           {{ product.title }}
         </h3>
       </div>
-      <div class="mt-4 flex flex-col gap-2">
-        <a
-          :href="product.url"
-          target="_blank"
-          @click.stop
-          class="w-full py-2 px-3 font-semibold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-xs bg-teal-500 hover:bg-teal-600 dark:bg-teal-600 dark:hover:bg-teal-500 text-white shadow-sm hover:shadow-md hover:scale-[1.02]"
-        >
-          <i class="fas fa-external-link-alt text-base"></i>
-          VIEW
-        </a>
-      </div>
+      <a
+        :href="product.url"
+        target="_blank"
+        @click.stop
+        class="w-full py-3 font-semibold transition-all duration-300 flex items-center justify-center gap-2 text-xs bg-zinc-100 hover:bg-teal-500 dark:bg-zinc-800 dark:hover:bg-teal-600 text-zinc-600 hover:text-white dark:text-zinc-400 dark:hover:text-white"
+      >
+        <i class="fas fa-bag-shopping text-base"></i>
+        Buy Now
+      </a>
     </div>
   </div>
 </template>

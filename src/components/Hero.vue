@@ -105,6 +105,10 @@ onMounted(() => {
         </div>
       </div>
 
+      <p class="hidden sm:block text-sm text-zinc-600 dark:text-zinc-400 max-w-md">
+        I craft premium digital products that empower creators and developers. From in-depth courses to polished templates and tools, every product is designed to help you ship faster, learn smarter, and turn ideas into reality.
+      </p>
+
       <div class="flex items-center gap-0 bg-zinc-100/50 dark:bg-zinc-800/50 border border-zinc-200/50 dark:border-zinc-700/50 rounded-2xl shadow-sm backdrop-blur-sm shrink-0">
         <div class="text-center px-5 py-3">
           <span class="block text-xl font-bold text-zinc-900 dark:text-white">
