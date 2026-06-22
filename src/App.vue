@@ -1,8 +1,15 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import Nav from '@/components/Nav.vue'
 import Hero from '@/components/Hero.vue'
 import Products from '@/components/Products.vue'
 import SectionGrid from '@/components/SectionGrid.vue'
+
+const searchQuery = ref('')
+
+const onSearch = (query: string) => {
+  searchQuery.value = query
+}
 </script>
 
 <template>
@@ -26,8 +33,8 @@ import SectionGrid from '@/components/SectionGrid.vue'
       <Hero />
 
       <main id="products-section" class="pt-8 pb-8">
-        <Nav />
-        <Products />
+        <Nav @search="onSearch" />
+        <Products :search-query="searchQuery" />
       </main>
     </div>
   </div>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import Product from './Product.vue'
 
 interface ProductType {
@@ -9,9 +9,19 @@ interface ProductType {
   coverImage: string
 }
 
+const props = defineProps<{
+  searchQuery?: string
+}>()
+
 const products = ref<ProductType[]>([])
 const isLoading = ref(true)
 const loadError = ref<string | null>(null)
+
+const filteredProducts = computed(() => {
+  if (!props.searchQuery) return products.value
+  const query = props.searchQuery.toLowerCase()
+  return products.value.filter((product) => product.title.toLowerCase().includes(query))
+})
 
 const loadProducts = async () => {
   try {
@@ -89,9 +99,24 @@ onMounted(() => {
       </p>
     </div>
 
+    <div
+      v-else-if="filteredProducts.length === 0"
+      class="flex flex-col items-center justify-center min-h-[400px] p-8"
+    >
+      <div
+        class="w-16 h-16 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center mb-4"
+      >
+        <i class="fas fa-search text-2xl text-zinc-400 dark:text-zinc-500"></i>
+      </div>
+      <h3 class="text-lg font-semibold text-zinc-900 dark:text-zinc-100 mb-2">No results found</h3>
+      <p class="text-sm text-zinc-500 dark:text-zinc-400 text-center">
+        Try a different search term.
+      </p>
+    </div>
+
     <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 gap-6">
       <div
-        v-for="(product, index) in products"
+        v-for="(product, index) in filteredProducts"
         :key="product.uuid"
         class="vault-card-animate"
         :style="{ animationDelay: `${index * 0.08}s` }"

@@ -60,7 +60,7 @@ const openProduct = () => {
         :href="product.url"
         target="_blank"
         @click.stop
-        class="w-full py-3 font-semibold transition-all duration-300 flex items-center justify-center gap-2 text-xs bg-zinc-100 hover:bg-teal-500 dark:bg-zinc-800 dark:hover:bg-teal-600 text-zinc-600 hover:text-white dark:text-zinc-400 dark:hover:text-white"
+        class="w-full py-3 font-semibold transition-all duration-300 flex items-center justify-center gap-2 text-xs bg-zinc-50 hover:bg-teal-500 dark:bg-zinc-800 dark:hover:bg-teal-600 text-zinc-600 hover:text-white dark:text-zinc-400 dark:hover:text-white"
       >
         <i class="fas fa-bag-shopping text-base"></i>
         Buy Now

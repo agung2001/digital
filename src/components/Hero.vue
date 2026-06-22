@@ -4,7 +4,7 @@ import { ref, onMounted } from 'vue'
 const isMounted = ref(false)
 const isDark = ref(false)
 
-const roles = ['Digital Product Maker.', 'Course Creator.', 'Design Engineer.']
+const roles = ['Software Engineer.', 'Digital Product Maker.', 'Digital Creator', 'AI Enthusiast.']
 const currentRoleIndex = ref(0)
 const currentText = ref('')
 const isDeleting = ref(false)
@@ -81,7 +81,7 @@ onMounted(() => {
       :class="isMounted ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'"
       style="transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1)"
     >
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-4 shrink-0">
         <div
           class="h-12 w-12 rounded-full overflow-hidden bg-zinc-100 dark:bg-zinc-800 ring-1 ring-zinc-200 dark:ring-zinc-700/50 flex items-center justify-center shrink-0 shadow-sm hover:scale-105 transition-transform"
         >
@@ -92,10 +92,10 @@ onMounted(() => {
           />
         </div>
         <div>
-          <h1 class="text-3xl font-extrabold tracking-tight text-zinc-800 dark:text-zinc-100 leading-tight">
-            I'm Agung Sundoro
+          <h1 class="text-xl sm:text-2xl font-extrabold tracking-tight text-zinc-800 dark:text-zinc-100 leading-tight whitespace-nowrap">
+            Hi, my name is Agung Sundoro 👋
           </h1>
-          <p class="mt-1 text-sm text-zinc-500 dark:text-zinc-400 flex items-center">
+          <p class="mt-1 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 flex items-center">
             I am a
             <span class="ml-1.5 text-teal-500 dark:text-teal-400 font-semibold">{{ currentText }}</span>
             <span
@@ -105,7 +105,7 @@ onMounted(() => {
         </div>
       </div>
 
-      <p class="hidden sm:block text-sm text-zinc-600 dark:text-zinc-400 max-w-md">
+      <p class="hidden sm:block flex-grow text-sm text-zinc-600 dark:text-zinc-400 text-justify">
         I craft premium digital products that empower creators and developers. From in-depth courses to polished templates and tools, every product is designed to help you ship faster, learn smarter, and turn ideas into reality.
       </p>
 
