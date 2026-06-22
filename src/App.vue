@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Nav from '@/components/Nav.vue'
+import Hero from '@/components/Hero.vue'
 import Products from '@/components/Products.vue'
 import Footer from '@/components/Footer.vue'
 import SectionGrid from '@/components/SectionGrid.vue'
@@ -28,7 +29,9 @@ import SectionGrid from '@/components/SectionGrid.vue'
           <div class="mx-auto max-w-2xl lg:max-w-5xl">
             <Nav />
 
-            <main class="pt-24 pb-8">
+            <Hero />
+
+            <main id="products-section" class="pt-8 pb-8">
               <Products />
             </main>
 
