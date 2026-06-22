@@ -41,26 +41,40 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-[#f0f0f1] p-6 flex flex-col gap-y-4">
+  <section>
+    <div class="mb-10">
+      <h1 class="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">Products</h1>
+      <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+        Digital products crafted with care.
+      </p>
+    </div>
+
     <div
       v-if="isLoading"
-      class="flex flex-col items-center justify-center min-h-[400px] mx-auto p-8"
+      class="flex flex-col items-center justify-center min-h-[400px] p-8"
     >
-      <i class="fas fa-spinner fa-spin text-6xl text-gray-700 mb-4"></i>
-      <h3 class="text-xl font-medium text-gray-700 mb-2">Loading products...</h3>
-      <p class="text-gray-500 text-center">Please wait while we fetch the latest products.</p>
+      <div
+        class="w-12 h-12 rounded-full border-2 border-zinc-200 dark:border-zinc-700 border-t-teal-500 animate-spin mb-4"
+      ></div>
+      <p class="text-sm text-zinc-500 dark:text-zinc-400">Loading products...</p>
     </div>
 
     <div
       v-else-if="loadError"
-      class="flex flex-col items-center justify-center min-h-[400px] mx-auto p-8"
+      class="flex flex-col items-center justify-center min-h-[400px] p-8"
     >
-      <i class="fas fa-exclamation-triangle text-6xl text-red-500 mb-4"></i>
-      <h3 class="text-xl font-medium text-gray-700 mb-2">Failed to load products</h3>
-      <p class="text-gray-500 text-center mb-6">{{ loadError }}</p>
+      <div
+        class="w-16 h-16 rounded-full bg-red-50 dark:bg-red-500/10 flex items-center justify-center mb-4"
+      >
+        <i class="fas fa-exclamation-triangle text-2xl text-red-500"></i>
+      </div>
+      <h3 class="text-lg font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
+        Failed to load products
+      </h3>
+      <p class="text-sm text-zinc-500 dark:text-zinc-400 text-center mb-6">{{ loadError }}</p>
       <button
         @click="loadProducts"
-        class="inline-flex items-center px-4 py-2 text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
+        class="inline-flex items-center px-4 py-2 text-sm font-medium rounded-full text-white bg-teal-500 hover:bg-teal-600 transition-colors cursor-pointer"
       >
         <i class="fas fa-redo mr-2"></i>
         Try Again
@@ -69,11 +83,17 @@ onMounted(() => {
 
     <div
       v-else-if="products.length === 0"
-      class="flex flex-col items-center justify-center min-h-[400px] mx-auto p-8"
+      class="flex flex-col items-center justify-center min-h-[400px] p-8"
     >
-      <i class="fas fa-box-open text-6xl text-gray-700 mb-4"></i>
-      <h3 class="text-xl font-medium text-gray-700 mb-2">No products available</h3>
-      <p class="text-gray-500 text-center">Check back later for new products.</p>
+      <div
+        class="w-16 h-16 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center mb-4"
+      >
+        <i class="fas fa-box-open text-2xl text-zinc-400 dark:text-zinc-500"></i>
+      </div>
+      <h3 class="text-lg font-semibold text-zinc-900 dark:text-zinc-100 mb-2">No products yet</h3>
+      <p class="text-sm text-zinc-500 dark:text-zinc-400 text-center">
+        Check back later for new products.
+      </p>
     </div>
 
     <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -81,5 +101,5 @@ onMounted(() => {
         <Product :product="product" />
       </div>
     </div>
-  </div>
+  </section>
 </template>
