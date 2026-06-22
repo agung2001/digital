@@ -29,7 +29,7 @@ const onSearch = (query: string) => {
       ></div>
     </div>
 
-    <div class="relative z-10 p-8">
+    <div class="relative z-10 px-12 py-8">
       <Hero />
 
       <main id="products-section" class="pt-8 pb-8">

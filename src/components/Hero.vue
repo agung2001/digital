@@ -77,7 +77,7 @@ onMounted(() => {
 <template>
   <section id="hero" class="relative">
     <div
-      class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 relative z-10"
+      class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-12 relative z-10"
       :class="isMounted ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'"
       style="transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1)"
     >
@@ -105,11 +105,13 @@ onMounted(() => {
         </div>
       </div>
 
-      <p class="hidden sm:block flex-grow text-sm text-zinc-600 dark:text-zinc-400 text-justify">
-        I craft premium digital products that empower creators and developers. From in-depth courses to polished templates and tools, every product is designed to help you ship faster, learn smarter, and turn ideas into reality.
-      </p>
+      <div class="hidden sm:block flex-grow text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+        <p class="animate-fade-in">
+          Halo! Saya kreator digital asal Jakarta 🇮🇩 yang siap membantu pebisnis pemula melejitkan usahanya lewat teknologi AI 🚀. Di sini, saya menyediakan produk digital premium mulai dari prompt siap pakai, template bisnis praktis, perangkat lunak (software), hingga hasil riset dan AI tools terbaik 🛠️. Misi saya membantu Anda mengeksekusi ide bisnis dengan lebih cepat 🧠, dan mengubah strategi menjadi keuntungan ✨. Baik Anda seorang pengusaha baru maupun pemilik bisnis yang ingin berkembang, mari berkolaborasi dan ciptakan kesuksesan digital bersama! 🤝🎁
+        </p>
+      </div>
 
-      <div class="flex items-center gap-0 bg-zinc-100/50 dark:bg-zinc-800/50 border border-zinc-200/50 dark:border-zinc-700/50 rounded-2xl shadow-sm backdrop-blur-sm shrink-0">
+      <div class="flex items-center gap-0 bg-white dark:bg-zinc-800/50 border border-zinc-200/50 dark:border-zinc-700/50 rounded-2xl shadow-sm backdrop-blur-sm shrink-0">
         <div class="text-center px-5 py-3">
           <span class="block text-xl font-bold text-zinc-900 dark:text-white">
             {{ productCount }}
@@ -160,3 +162,35 @@ onMounted(() => {
     </div>
   </section>
 </template>
+
+<style scoped>
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+  opacity: 0;
+}
+</style>
