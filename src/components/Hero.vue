@@ -105,7 +105,7 @@ onMounted(() => {
         </div>
       </div>
 
-      <div class="hidden sm:block flex-grow text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+      <div class="block flex-grow text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
         <p class="animate-fade-in">
           Halo! Saya kreator digital asal Jakarta 🇮🇩 yang siap membantu pebisnis pemula melejitkan usahanya lewat teknologi AI 🚀. Di sini, saya menyediakan produk digital premium mulai dari prompt siap pakai, template bisnis praktis, perangkat lunak (software), hingga hasil riset dan AI tools terbaik 🛠️. Misi saya membantu Anda mengeksekusi ide bisnis dengan lebih cepat 🧠, dan mengubah strategi menjadi keuntungan ✨. Baik Anda seorang pengusaha baru maupun pemilik bisnis yang ingin berkembang, mari berkolaborasi dan ciptakan kesuksesan digital bersama! 🤝🎁
         </p>
