@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue'
 
 const isMounted = ref(false)
+const isDark = ref(false)
 
 const roles = ['Digital Product Maker.', 'Course Creator.', 'Design Engineer.']
 const currentRoleIndex = ref(0)
@@ -34,6 +35,17 @@ const typeText = () => {
   setTimeout(typeText, typingSpeed.value)
 }
 
+const toggleTheme = () => {
+  isDark.value = !isDark.value
+  if (isDark.value) {
+    document.documentElement.classList.add('dark')
+    localStorage.setItem('theme', 'dark')
+  } else {
+    document.documentElement.classList.remove('dark')
+    localStorage.setItem('theme', 'light')
+  }
+}
+
 const loadProductCount = async () => {
   try {
     const response = await fetch('/marketplace.json')
@@ -47,6 +59,15 @@ const loadProductCount = async () => {
 }
 
 onMounted(() => {
+  const savedTheme = localStorage.getItem('theme')
+  if (
+    savedTheme === 'dark' ||
+    (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+  ) {
+    isDark.value = true
+    document.documentElement.classList.add('dark')
+  }
+
   isMounted.value = true
   loadProductCount()
   setTimeout(typeText, 1000)
@@ -84,8 +105,8 @@ onMounted(() => {
         </div>
       </div>
 
-      <div class="flex items-center gap-4 bg-zinc-100/50 dark:bg-zinc-800/50 border border-zinc-200/50 dark:border-zinc-700/50 px-5 py-3 rounded-2xl shadow-sm backdrop-blur-sm shrink-0">
-        <div class="text-center px-3">
+      <div class="flex items-center gap-0 bg-zinc-100/50 dark:bg-zinc-800/50 border border-zinc-200/50 dark:border-zinc-700/50 rounded-2xl shadow-sm backdrop-blur-sm shrink-0">
+        <div class="text-center px-5 py-3">
           <span class="block text-xl font-bold text-zinc-900 dark:text-white">
             {{ productCount }}
           </span>
@@ -93,6 +114,44 @@ onMounted(() => {
             Products
           </span>
         </div>
+        <div class="w-px h-8 bg-zinc-200 dark:bg-zinc-700"></div>
+        <button
+          @click="toggleTheme"
+          class="group flex flex-col items-center justify-center px-5 py-3 transition hover:scale-105 active:scale-95 cursor-pointer"
+          aria-label="Toggle dark mode"
+        >
+          <div class="relative h-6 w-6">
+            <svg
+              viewBox="0 0 24 24"
+              class="absolute inset-0 h-6 w-6 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-700 dark:hidden"
+            >
+              <path
+                d="M8 12.25A4.25 4.25 0 0 1 12.25 8v0a4.25 4.25 0 0 1 4.25 4.25v0a4.25 4.25 0 0 1-4.25 4.25v0A4.25 4.25 0 0 1 8 12.25v0Z"
+              ></path>
+              <path
+                d="M12.25 3v1.5M21.5 12.25H20M18.791 18.791l-1.06-1.06M12.25 21.5V20M5.209 18.791l1.06-1.06M3 12.25h1.5M5.209 5.209l1.06 1.06M18.791 5.209l-1.06 1.06"
+                fill="none"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </svg>
+            <svg
+              viewBox="0 0 24 24"
+              class="hidden h-6 w-6 fill-teal-400/10 stroke-teal-500 transition dark:block group-hover:dark:stroke-teal-400"
+            >
+              <path
+                d="M17.25 16.22a6.937 6.937 0 0 1-9.47-9.47 7.451 7.451 0 1 0 9.47 9.47ZM12.75 7C17 7 17 2.75 17 2.75S17 7 21.25 7C17 7 17 11.25 17 11.25S17 7 12.75 7Z"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </svg>
+          </div>
+          <span class="text-[10px] uppercase font-bold text-zinc-400 tracking-wider mt-1">
+            {{ isDark ? 'Dark' : 'Light' }}
+          </span>
+        </button>
       </div>
     </div>
   </section>

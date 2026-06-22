@@ -69,41 +69,6 @@ onMounted(() => {
 
       <div class="flex-1 flex justify-end gap-2">
         <button
-          @click="toggleTheme"
-          class="hidden md:flex group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20 cursor-pointer"
-          aria-label="Toggle dark mode"
-        >
-          <div class="relative h-6 w-6">
-            <svg
-              viewBox="0 0 24 24"
-              class="absolute inset-0 h-6 w-6 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-700 dark:hidden"
-            >
-              <path
-                d="M8 12.25A4.25 4.25 0 0 1 12.25 8v0a4.25 4.25 0 0 1 4.25 4.25v0a4.25 4.25 0 0 1-4.25 4.25v0A4.25 4.25 0 0 1 8 12.25v0Z"
-              ></path>
-              <path
-                d="M12.25 3v1.5M21.5 12.25H20M18.791 18.791l-1.06-1.06M12.25 21.5V20M5.209 18.791l1.06-1.06M3 12.25h1.5M5.209 5.209l1.06 1.06M18.791 5.209l-1.06 1.06"
-                fill="none"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              ></path>
-            </svg>
-            <svg
-              viewBox="0 0 24 24"
-              class="hidden h-6 w-6 fill-teal-400/10 stroke-teal-500 transition dark:block group-hover:dark:stroke-teal-400"
-            >
-              <path
-                d="M17.25 16.22a6.937 6.937 0 0 1-9.47-9.47 7.451 7.451 0 1 0 9.47 9.47ZM12.75 7C17 7 17 2.75 17 2.75S17 7 21.25 7C17 7 17 11.25 17 11.25S17 7 12.75 7Z"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              ></path>
-            </svg>
-          </div>
-        </button>
-
-        <button
           @click="toggleMenu"
           class="md:hidden group flex items-center justify-center rounded-full bg-white/90 p-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20 active:scale-95 cursor-pointer"
           aria-label="Open menu"
