@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, computed } from 'vue'
+import { useMarketplace } from '@/composables/useMarketplace'
 
 const isMounted = ref(false)
 const canvasRef = ref<HTMLCanvasElement | null>(null)
@@ -12,7 +13,9 @@ const currentRoleIndex = ref(0)
 const currentText = ref('')
 const isDeleting = ref(false)
 const typingSpeed = ref(150)
-const productCount = ref(0)
+
+const { products } = useMarketplace()
+const productCount = computed(() => products.value.length)
 
 const parallaxX = computed(() => (mouseX.value - (typeof window !== 'undefined' ? window.innerWidth / 2 : 0)) * -0.02)
 const parallaxY = computed(() => (mouseY.value - (typeof window !== 'undefined' ? window.innerHeight / 2 : 0)) * -0.02)
@@ -191,15 +194,8 @@ const typeText = () => {
 }
 
 const loadProductCount = async () => {
-  try {
-    const response = await fetch('/marketplace.json')
-    if (response.ok) {
-      const data = await response.json()
-      productCount.value = data.products?.length || 0
-    }
-  } catch {
-    productCount.value = 0
-  }
+  const { loadProducts } = useMarketplace()
+  await loadProducts()
 }
 
 const handleResize = () => {

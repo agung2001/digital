@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import { defineAsyncComponent } from 'vue'
 import FloatingNav from '@/components/FloatingNav.vue'
 import Hero from '@/components/Hero.vue'
-import Products from '@/components/Products.vue'
 import Footer from '@/components/Footer.vue'
 import SectionGrid from '@/components/SectionGrid.vue'
+
+const Products = defineAsyncComponent(() => import('@/components/Products.vue'))
 
 const scrollToProducts = () => {
   const el = document.querySelector('#products')

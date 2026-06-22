@@ -18,4 +18,13 @@ export default defineConfig({
     port: 1012,
     host: '0.0.0.0',
   },
+  build: {
+    cssMinify: true,
+    minify: 'esbuild',
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
+    },
+  },
 })

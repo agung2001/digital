@@ -5,8 +5,8 @@ const isScrolled = ref(false)
 const isDark = ref(false)
 
 const navLinks = [
-  { label: 'Home', href: '#hero', icon: 'fas fa-home' },
-  { label: 'Products', href: '#products', icon: 'fas fa-cube' },
+  { label: 'Home', href: '#hero' },
+  { label: 'Products', href: '#products' },
 ]
 
 const handleScroll = () => {
@@ -67,7 +67,7 @@ onUnmounted(() => {
             class="h-9 w-9 overflow-hidden rounded-full bg-zinc-100 ring-2 ring-zinc-100 dark:bg-zinc-800 dark:ring-zinc-700/50 flex items-center justify-center"
           >
             <img
-              src="/img/avatar.jpg"
+              src="/img/avatar.webp"
               alt="Avatar"
               class="h-full w-full object-cover group-hover:brightness-110 transition-all"
             />

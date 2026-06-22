@@ -1,17 +1,9 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from 'vue'
 import Product from './Product.vue'
+import { useMarketplace } from '@/composables/useMarketplace'
 
-interface ProductType {
-  uuid: string
-  title: string
-  url: string
-  coverImage: string
-}
-
-const products = ref<ProductType[]>([])
-const isLoading = ref(true)
-const loadError = ref<string | null>(null)
+const { products, isLoading, loadError, loadProducts } = useMarketplace()
 const searchQuery = ref('')
 const currentPage = ref(1)
 const itemsPerPage = 15
@@ -36,23 +28,6 @@ const paginatedProducts = computed(() => {
 watch(searchQuery, () => {
   currentPage.value = 1
 })
-
-const loadProducts = async () => {
-  try {
-    isLoading.value = true
-    loadError.value = null
-    const response = await fetch('/marketplace.json')
-    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`)
-    const data = await response.json()
-    products.value = data.products
-  } catch (err) {
-    console.error('Failed to load products:', err)
-    loadError.value = err instanceof Error ? err.message : String(err)
-    products.value = []
-  } finally {
-    isLoading.value = false
-  }
-}
 
 onMounted(() => {
   loadProducts()
