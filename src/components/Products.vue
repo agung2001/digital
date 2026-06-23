@@ -74,32 +74,48 @@ onMounted(() => {
   <section id="products" class="relative min-h-screen pt-28 pb-12">
     <div class="mx-auto max-w-6xl px-4">
       <div
-        class="text-center mb-16"
+        class="text-center mt-6 mb-12"
         :class="isMounted ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'"
         style="transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1)"
       >
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal-50 dark:bg-teal-500/10 text-teal-600 dark:text-teal-400 text-sm font-medium mb-6 ring-1 ring-inset ring-teal-500/20">
+        <div
+          class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal-50 dark:bg-teal-500/10 text-teal-600 dark:text-teal-400 text-sm font-medium mb-6 ring-1 ring-inset ring-teal-500/20"
+        >
           <span class="relative flex h-2 w-2">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
+            <span
+              class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"
+            ></span>
             <span class="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
           </span>
           Digital Products & AI Tools
         </div>
 
-        <h1 class="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl lg:text-6xl mb-4 leading-tight">
+        <h1
+          class="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl lg:text-6xl mb-4 leading-tight"
+        >
           Agung Sundoro
           <br />
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 via-cyan-500 to-blue-500 animate-gradient-shift">{{ currentText }}</span>
-          <span class="inline-block w-[3px] h-10 sm:h-12 lg:h-14 bg-teal-500 ml-1 animate-pulse align-middle"></span>
+          <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 via-cyan-500 to-blue-500 animate-gradient-shift"
+            >{{ currentText }}</span
+          >
+          <span
+            class="inline-block w-[3px] h-10 sm:h-12 lg:h-14 bg-teal-500 ml-1 animate-pulse align-middle"
+          ></span>
         </h1>
 
         <p class="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-2xl mx-auto mb-8">
-          Koleksi produk digital premium untuk membantu bisnis Anda berkembang dengan teknologi AI. Prompt, template, software, hingga AI tools terbaik.
+          Koleksi produk digital premium untuk membantu bisnis Anda berkembang dengan teknologi AI.
+          Prompt, template, software, hingga AI tools terbaik.
         </p>
 
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 dark:bg-zinc-800/60 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50">
+        <div
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 dark:bg-zinc-800/60 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50"
+        >
           <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
-          <span class="text-sm font-semibold text-zinc-700 dark:text-zinc-300">{{ productCount }}</span>
+          <span class="text-sm font-semibold text-zinc-700 dark:text-zinc-300">{{
+            productCount
+          }}</span>
           <span class="text-xs text-zinc-500 dark:text-zinc-400">Products Available</span>
         </div>
       </div>
@@ -110,7 +126,7 @@ onMounted(() => {
         style="transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s"
       >
         <div class="relative w-full max-w-2xl mx-auto">
-          <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+          <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none z-10">
             <svg
               class="h-5 w-5 text-zinc-400"
               xmlns="http://www.w3.org/2000/svg"
@@ -128,16 +144,13 @@ onMounted(() => {
             v-model="searchQuery"
             type="text"
             placeholder="Cari produk digital..."
-            class="block w-full pl-12 pr-4 py-3.5 border border-zinc-200 dark:border-zinc-700/50 rounded-xl bg-white/80 dark:bg-zinc-800/50 text-base placeholder-zinc-400 focus:outline-none focus:ring-4 focus:ring-teal-500/10 focus:border-teal-500 transition-all shadow-sm shadow-zinc-800/5 backdrop-blur-sm"
+            class="block w-full pl-12 pr-4 py-3.5 border border-zinc-200 dark:border-zinc-700/50 rounded-xl bg-white/80 dark:bg-zinc-800/50 text-base placeholder-zinc-400 focus:outline-none focus:ring-4 focus:ring-teal-500/10 focus:border-teal-500 transition-all shadow-sm shadow-zinc-800/5"
           />
         </div>
       </div>
 
       <div class="relative min-h-[400px]">
-        <div
-          v-if="isLoading"
-          class="flex flex-col items-center justify-center min-h-[400px] p-8"
-        >
+        <div v-if="isLoading" class="flex flex-col items-center justify-center min-h-[400px] p-8">
           <div
             class="w-12 h-12 rounded-full border-2 border-zinc-200 dark:border-zinc-700 border-t-teal-500 animate-spin mb-4"
           ></div>
