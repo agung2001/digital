@@ -1,18 +1,11 @@
 <script setup lang="ts">
 import { defineAsyncComponent } from 'vue'
 import FloatingNav from '@/components/FloatingNav.vue'
-import Hero from '@/components/Hero.vue'
 import Footer from '@/components/Footer.vue'
 import SectionGrid from '@/components/SectionGrid.vue'
+import ParticleBackground from '@/components/ParticleBackground.vue'
 
 const Products = defineAsyncComponent(() => import('@/components/Products.vue'))
-
-const scrollToProducts = () => {
-  const el = document.querySelector('#products')
-  if (el) {
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-  }
-}
 </script>
 
 <template>
@@ -20,6 +13,7 @@ const scrollToProducts = () => {
     class="relative min-h-screen bg-zinc-50 transition-colors duration-500 selection:bg-teal-100 selection:text-teal-900 dark:bg-black dark:selection:bg-teal-500/30 dark:selection:text-teal-200"
   >
     <SectionGrid />
+    <ParticleBackground />
 
     <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
       <div
@@ -36,7 +30,6 @@ const scrollToProducts = () => {
     <FloatingNav />
 
     <div class="relative z-10">
-      <Hero @scroll-to-products="scrollToProducts" />
       <Products />
       <div class="px-12">
         <Footer />

@@ -5,7 +5,6 @@ const isScrolled = ref(false)
 const isDark = ref(false)
 
 const navLinks = [
-  { label: 'Home', href: '#hero' },
   { label: 'Products', href: '#products' },
 ]
 
@@ -59,8 +58,8 @@ onUnmounted(() => {
       <!-- Left: Profile Icon / Logo -->
       <div class="flex-1 flex justify-start">
         <a
-          href="#hero"
-          @click.prevent="scrollTo('#hero')"
+          href="#products"
+          @click.prevent="scrollTo('#products')"
           class="group relative flex items-center gap-3 transition-transform hover:scale-[1.02] active:scale-95 cursor-pointer"
         >
           <div
