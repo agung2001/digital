@@ -67,8 +67,6 @@ onUnmounted(() => {
       <div class="flex-1 flex justify-start">
         <a
           href="https://agungsundoro.com"
-          target="_blank"
-          rel="noopener noreferrer"
           class="group relative flex items-center gap-3 transition-transform hover:scale-[1.02] active:scale-95 cursor-pointer"
         >
           <div
