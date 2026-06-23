@@ -69,7 +69,7 @@ const handleImageError = () => {
     >
       <div class="p-4">
         <h3
-          class="text-zinc-900 dark:text-white text-sm leading-snug break-words tracking-tight line-clamp-2"
+          class="text-zinc-900 dark:text-white text-sm leading-snug break-words tracking-tight"
           :title="product.title"
         >
           {{ product.title }}
@@ -82,7 +82,7 @@ const handleImageError = () => {
           rel="noopener noreferrer"
           @click.stop
           aria-label="View affiliate link"
-          class="w-full py-3 font-semibold transition-all duration-300 flex items-center justify-center gap-2 text-xs bg-zinc-50 hover:bg-blue-500 dark:bg-zinc-800 dark:hover:bg-blue-600 text-zinc-600 hover:text-white dark:text-zinc-400 dark:hover:text-white border-t border-zinc-200/50 dark:border-zinc-700/50 xl:border-t-0 xl:border-r border-r-zinc-200/50 dark:border-r-zinc-700/50"
+          class="w-full py-3 font-semibold transition-all duration-300 flex items-center justify-center gap-2 text-xs bg-zinc-50 hover:bg-blue-500 dark:bg-zinc-800 dark:hover:bg-blue-600 text-zinc-600 hover:text-white dark:text-zinc-400 dark:hover:text-white border-t border-zinc-200/50 dark:border-zinc-700/50 xl:border-r border-r-zinc-200/50 dark:border-r-zinc-700/50"
         >
           <i class="fas fa-link text-base"></i>
           Affiliate
