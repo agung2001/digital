@@ -6,7 +6,7 @@ import { useMarketplace } from '@/composables/useMarketplace'
 const { products, isLoading, loadError, loadProducts } = useMarketplace()
 const searchQuery = ref('')
 const currentPage = ref(1)
-const itemsPerPage = 15
+const itemsPerPage = 16
 const isMounted = ref(false)
 
 const roles = ['Software Engineer.', 'Digital Product Maker.', 'Digital Creator.', 'AI Enthusiast.']
