@@ -109,14 +109,26 @@ onMounted(() => {
           Prompt, template, software, hingga AI tools terbaik.
         </p>
 
-        <div
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 dark:bg-zinc-800/60 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50"
-        >
-          <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
-          <span class="text-sm font-semibold text-zinc-700 dark:text-zinc-300">{{
-            productCount
-          }}</span>
-          <span class="text-xs text-zinc-500 dark:text-zinc-400">Products Available</span>
+        <div class="inline-flex items-center gap-3 flex-wrap justify-center">
+          <div
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 dark:bg-zinc-800/60 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50"
+          >
+            <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+            <span class="text-sm font-semibold text-zinc-700 dark:text-zinc-300">{{
+              productCount
+            }}</span>
+            <span class="text-xs text-zinc-500 dark:text-zinc-400">Products Available</span>
+          </div>
+
+          <a
+            href="https://discord.gg/AdKBx4KXr"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#5865F2]/10 dark:bg-[#5865F2]/15 backdrop-blur-sm border border-[#5865F2]/30 dark:border-[#5865F2]/40 hover:bg-[#5865F2]/25 dark:hover:bg-[#5865F2]/30 hover:border-[#5865F2]/50 transition-all duration-300 hover:scale-105 cursor-pointer"
+          >
+            <i class="fab fa-discord text-sm text-[#5865F2]"></i>
+            <span class="text-sm font-semibold text-[#5865F2]">Join Community</span>
+          </a>
         </div>
       </div>
 
