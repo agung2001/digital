@@ -19,6 +19,9 @@ const openProduct = () => {
 }
 
 const affiliateUrl = computed(() => {
+  if (props.product.uuid === 'd3020f09-4f4c-402e-9f96-3517be6fa517') {
+    return props.product.url
+  }
   const firstChunk = props.product.uuid.split('-')[0]
   return `https://lynk.id/admin/affiliate-add?search=AS-${firstChunk}`
 })
