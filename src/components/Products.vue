@@ -121,7 +121,7 @@ onMounted(() => {
           </div>
 
           <a
-            href="https://discord.gg/AdKBx4KXr"
+            href="https://lynk.id/agungsundoro/px748k3j0nvp"
             target="_blank"
             rel="noopener noreferrer"
             class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#5865F2]/10 dark:bg-[#5865F2]/15 backdrop-blur-sm border border-[#5865F2]/30 dark:border-[#5865F2]/40 hover:bg-[#5865F2]/25 dark:hover:bg-[#5865F2]/30 hover:border-[#5865F2]/50 transition-all duration-300 hover:scale-105 cursor-pointer"

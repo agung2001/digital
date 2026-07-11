@@ -14,7 +14,7 @@ const menuItems = [
     ],
   },
   { name: 'Products', path: 'https://digital.agungsundoro.com', external: true },
-  { name: 'Community', path: 'https://discord.gg/qrNDAjEE', external: true },
+  { name: 'Community', path: 'https://lynk.id/agungsundoro/px748k3j0nvp', external: true },
   { name: 'Journey', path: 'https://agungsundoro.com/journey' },
 ]
 
