@@ -113,7 +113,8 @@
       "uuid": "e39e525f-e09a-4d4b-80f9-21982f02bfaa",
       "title": "Akademi AI Agent 101",
       "url": "http://lynk.id/agungsundoro/wq9d9dyd3npz",
-      "coverImage": "https://cdn.lynkid.my.id/products/15-07-2026/1784115368814_9904202.webp"
+      "coverImage": "https://cdn.lynkid.my.id/products/15-07-2026/1784115368814_9904202.webp",
+      "featured": true
     },
     {
       "uuid": "6df244a5-e9b9-4d2a-8321-8c67a8eb3469",
@@ -125,7 +126,8 @@
       "uuid": "283a3d58-0cf7-4d39-82b4-6c39bd273ad4",
       "title": "ClipMotive: AI-Powered Viral Video Clipper (1 Bulan)",
       "url": "https://lynk.id/agungsundoro/de6lqjqe6elw",
-      "coverImage": "https://cdn.lynkid.my.id/products/24-06-2026/1782303474078_2489472.webp"
+      "coverImage": "https://cdn.lynkid.my.id/products/24-06-2026/1782303474078_2489472.webp",
+      "featured": true
     },
     {
       "uuid": "b4ceed93-f4ff-4abd-9093-5df80e8a1bd2",
@@ -155,13 +157,15 @@
       "uuid": "32cf5c3b-8464-4b80-a98d-9377ea63dde0",
       "title": "Kreasi AI : Cuan Gila-Gilaan dari Konten, Iklan, dan Avatar AI!",
       "url": "https://lynk.id/agungsundoro/yq3dooyw9816",
-      "coverImage": "https://cdn.lynkid.my.id/products/30-11-2025/1764518417936_8986266.webp"
+      "coverImage": "https://cdn.lynkid.my.id/products/30-11-2025/1764518417936_8986266.webp",
+      "featured": true
     },
     {
       "uuid": "d0fb7bf4-52fc-4099-be3c-da74f5104827",
       "title": "Kreator Viral : Blueprint 10 Juta Pertama dalam 30 Hari dari Produk Digital di Bantu AI 🚀💰",
       "url": "https://lynk.id/agungsundoro/481y8x5m02jv",
-      "coverImage": "https://cdn.lynkid.my.id/products/10-05-2026/1778419398211_5362452.webp"
+      "coverImage": "https://cdn.lynkid.my.id/products/10-05-2026/1778419398211_5362452.webp",
+      "featured": true
     },
     {
       "uuid": "9cdf3581-dbdf-4992-b779-c151eeb03ea4",
@@ -197,7 +201,8 @@
       "uuid": "114cab8c-9494-482a-8c38-c2fc56c999c0",
       "title": "Sinema AI : Kursus Pembuatan Animasi, Iklan, dan Konten Video!",
       "url": "https://lynk.id/agungsundoro/35mxg058em83",
-      "coverImage": "https://cdn.lynkid.my.id/products/26-10-2025/1761413522169_8187436.webp"
+      "coverImage": "https://cdn.lynkid.my.id/products/26-10-2025/1761413522169_8187436.webp",
+      "featured": true
     },
     {
       "uuid": "604f1435-ac1b-462c-87b2-2633b549702a",

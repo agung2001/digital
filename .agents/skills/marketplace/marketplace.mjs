@@ -58,11 +58,15 @@ switch (action) {
       console.error(`Product not found: ${identifier}`);
       process.exit(1);
     }
-    if (!["title", "url", "coverImage"].includes(field)) {
-      console.error(`Invalid field: ${field}. Must be one of: title, url, coverImage`);
+    if (!["title", "url", "coverImage", "featured"].includes(field)) {
+      console.error(`Invalid field: ${field}. Must be one of: title, url, coverImage, featured`);
       process.exit(1);
     }
-    data.products[idx][field] = value;
+    if (field === "featured") {
+      data.products[idx][field] = value === "true";
+    } else {
+      data.products[idx][field] = value;
+    }
     writeMarketplace(data);
     console.log(`Updated ${field} for: ${data.products[idx].title}`);
     break;

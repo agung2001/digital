@@ -25,7 +25,7 @@ node .agents/skills/marketplace/marketplace.mjs add "<title>" "<url>" "<coverIma
 
 # Edit a product (by uuid or title)
 node .agents/skills/marketplace/marketplace.mjs edit "<uuid|title>" "<field>" "<value>"
-# Fields: title, url, coverImage
+# Fields: title, url, coverImage, featured (true/false)
 
 # Remove a product (by uuid or title)
 node .agents/skills/marketplace/marketplace.mjs remove "<uuid|title>"

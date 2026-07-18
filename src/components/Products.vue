@@ -16,11 +16,17 @@ const isDeleting = ref(false)
 const typingSpeed = ref(150)
 
 const filteredProducts = computed(() => {
-  let result = products.value
+  let result = [...products.value]
   if (searchQuery.value) {
     const query = searchQuery.value.toLowerCase()
     result = result.filter((p) => p.title.toLowerCase().includes(query))
   }
+  // Sort featured products to the top
+  result.sort((a, b) => {
+    const aFeat = a.featured ? 1 : 0
+    const bFeat = b.featured ? 1 : 0
+    return bFeat - aFeat
+  })
   return result
 })
 
@@ -31,6 +37,8 @@ const paginatedProducts = computed(() => {
   const end = start + itemsPerPage
   return filteredProducts.value.slice(start, end)
 })
+
+// Removed hardcoded featured titles list; now dynamic via marketplace.json.
 
 const productCount = computed(() => products.value.length)
 
@@ -233,7 +241,7 @@ onMounted(() => {
               class="vault-card-animate"
               :style="{ animationDelay: `${index * 0.08}s` }"
             >
-              <Product :product="product" />
+              <Product :product="product" :is-featured="product.featured" />
             </div>
           </div>
 

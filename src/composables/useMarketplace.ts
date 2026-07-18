@@ -5,6 +5,7 @@ interface ProductType {
   title: string
   url: string
   coverImage: string
+  featured?: boolean
 }
 
 const products = ref<ProductType[]>([])

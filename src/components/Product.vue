@@ -6,10 +6,12 @@ interface Product {
   title: string
   url: string
   coverImage: string
+  featured?: boolean
 }
 
 const props = defineProps<{
   product: Product
+  isFeatured?: boolean
 }>()
 
 const imageError = ref(false)
@@ -36,6 +38,14 @@ const handleImageError = () => {
     class="group relative flex flex-col bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm rounded-2xl overflow-hidden border-2 border-zinc-300/60 dark:border-zinc-600/60 hover:border-teal-500 hover:shadow-xl hover:shadow-teal-500/10 hover:-translate-y-2 transition-all duration-500 h-full cursor-pointer"
     @click="openProduct"
   >
+    <div
+      v-if="isFeatured"
+      class="absolute top-3 left-3 z-20 flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-500 text-white text-[10px] font-bold uppercase tracking-wider shadow-md shadow-amber-500/20"
+    >
+      <i class="fas fa-star text-[9px]"></i>
+      Featured
+    </div>
+
     <div class="absolute inset-0 bg-gradient-to-br from-teal-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl pointer-events-none z-10"></div>
 
     <div class="w-full aspect-square relative overflow-hidden bg-zinc-100 dark:bg-zinc-800 flex-none">
