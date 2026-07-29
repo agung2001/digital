@@ -16,7 +16,9 @@ const props = defineProps<{
 
 const imageError = ref(false)
 
-const openProduct = () => {
+const openProduct = (event: Event) => {
+  // Prevent redirection when clicking action buttons (Affiliate, Buy Now)
+  if ((event.target as HTMLElement).closest('a')) return
   window.open(props.product.url, '_blank')
 }
 
@@ -36,7 +38,7 @@ const handleImageError = () => {
 <template>
   <div
     class="group relative flex flex-col bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm rounded-2xl overflow-hidden border-2 border-zinc-300/60 dark:border-zinc-600/60 hover:border-teal-500 hover:shadow-xl hover:shadow-teal-500/10 hover:-translate-y-2 transition-all duration-500 h-full cursor-pointer"
-    @click="openProduct"
+    @click="openProduct($event)"
   >
     <div
       v-if="isFeatured"
