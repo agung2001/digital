@@ -164,8 +164,5 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <canvas
-    ref="canvasRef"
-    class="fixed inset-0 w-screen h-screen z-0 pointer-events-none"
-  ></canvas>
+  <canvas ref="canvasRef" class="fixed inset-0 w-screen h-screen z-0 pointer-events-none"></canvas>
 </template>

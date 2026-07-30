@@ -48,9 +48,13 @@ const handleImageError = () => {
       Featured
     </div>
 
-    <div class="absolute inset-0 bg-gradient-to-br from-teal-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl pointer-events-none z-10"></div>
+    <div
+      class="absolute inset-0 bg-gradient-to-br from-teal-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl pointer-events-none z-10"
+    ></div>
 
-    <div class="w-full aspect-square relative overflow-hidden bg-zinc-100 dark:bg-zinc-800 flex-none">
+    <div
+      class="w-full aspect-square relative overflow-hidden bg-zinc-100 dark:bg-zinc-800 flex-none"
+    >
       <div
         v-if="product.coverImage && !imageError"
         class="absolute inset-0 bg-center bg-no-repeat bg-cover blur-sm scale-125 transition-transform duration-500 group-hover:scale-150"

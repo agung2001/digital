@@ -9,6 +9,53 @@ const currentPage = ref(1)
 const itemsPerPage = 16
 const isMounted = ref(false)
 
+let isSyncing = false
+
+// Sync URL search params
+const syncUrlParams = () => {
+  isSyncing = true
+  const params = new URLSearchParams(window.location.search)
+  const s = params.get('s') || ''
+  const page = parseInt(params.get('page') || '1', 10)
+
+  if (searchQuery.value !== s) {
+    searchQuery.value = s
+  }
+  if (!isNaN(page) && currentPage.value !== page) {
+    currentPage.value = page
+  }
+  isSyncing = false
+}
+
+const updateUrlParams = () => {
+  const url = new URL(window.location.href)
+  if (searchQuery.value) {
+    url.searchParams.set('s', searchQuery.value)
+  } else {
+    url.searchParams.delete('s')
+  }
+
+  if (currentPage.value > 1) {
+    url.searchParams.set('page', String(currentPage.value))
+  } else {
+    url.searchParams.delete('page')
+  }
+
+  const newUrl = url.pathname + url.search + url.hash
+  if (window.location.search !== url.search) {
+    window.history.replaceState(null, '', newUrl)
+  }
+}
+
+watch([searchQuery, currentPage], () => {
+  updateUrlParams()
+})
+
+// Listen to popstate event (back/forward browser buttons)
+onMounted(() => {
+  window.addEventListener('popstate', syncUrlParams)
+})
+
 const roles = ['Software Engineer.', 'Digital Product Maker.', 'Digital Creator.', 'AI Enthusiast.']
 const currentRoleIndex = ref(0)
 const currentText = ref('')
@@ -43,7 +90,9 @@ const paginatedProducts = computed(() => {
 const productCount = computed(() => products.value.length)
 
 watch(searchQuery, () => {
-  currentPage.value = 1
+  if (!isSyncing) {
+    currentPage.value = 1
+  }
 })
 
 const typeText = () => {
@@ -70,6 +119,7 @@ const typeText = () => {
 }
 
 onMounted(() => {
+  syncUrlParams()
   loadProducts()
   setTimeout(() => {
     isMounted.value = true
