@@ -13,6 +13,17 @@ const props = defineProps({
 })
 
 const displayValue = ref(0)
+const formattedValue = ref('0')
+
+const formatNumber = (num: number) => {
+  if (num >= 1_000_000) {
+    return (num / 1_000_000).toFixed(1).replace(/\.0$/, '') + 'M'
+  }
+  if (num >= 1_000) {
+    return (num / 1_000).toFixed(1).replace(/\.0$/, '') + 'K'
+  }
+  return num.toString()
+}
 
 const animate = () => {
   const start = performance.now()
@@ -21,7 +32,9 @@ const animate = () => {
 
   const step = (timestamp: number) => {
     const progress = Math.min((timestamp - start) / props.duration, 1)
-    displayValue.value = Math.floor(progress * (targetVal - startVal) + startVal)
+    const current = Math.floor(progress * (targetVal - startVal) + startVal)
+    displayValue.value = current
+    formattedValue.value = formatNumber(current)
     if (progress < 1) {
       requestAnimationFrame(step)
     }
@@ -34,5 +47,5 @@ watch(() => props.value, animate)
 </script>
 
 <template>
-  <span>{{ displayValue }}</span>
+  <span>{{ formattedValue }}</span>
 </template>
