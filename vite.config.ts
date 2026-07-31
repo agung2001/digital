@@ -13,6 +13,7 @@ export default defineConfig({
   server: {
     port: 2012,
     host: '0.0.0.0',
+    allowedHosts: ['digital.agungsundoro.com'],
   },
   preview: {
     port: 1012,
