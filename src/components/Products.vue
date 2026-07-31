@@ -165,20 +165,15 @@ onMounted(() => {
 
         <p class="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-2xl mx-auto mb-8">
           Koleksi produk digital premium untuk membantu bisnis Anda berkembang dengan teknologi AI.
-          Prompt, template, software, hingga AI tools terbaik.
-        </p>
-
-        <div class="flex items-center justify-center mb-8">
+          Dapatkan prompt, template, software, hingga AI tools terbaik, dan gabung
           <a
             href="https://lynk.id/agungsundoro/px748k3j0nvp"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#5865F2]/10 dark:bg-[#5865F2]/15 backdrop-blur-sm border border-[#5865F2]/30 dark:border-[#5865F2]/40 hover:bg-[#5865F2]/25 dark:hover:bg-[#5865F2]/30 hover:border-[#5865F2]/50 transition-all duration-300 hover:scale-105 cursor-pointer"
+            class="text-teal-600 dark:text-teal-400 hover:text-teal-500 dark:hover:text-teal-300 font-semibold underline decoration-2 decoration-teal-500/30 hover:decoration-teal-500 transition-all inline-flex items-center gap-1"
           >
-            <i class="fab fa-discord text-sm text-[#5865F2]"></i>
-            <span class="text-sm font-semibold text-[#5865F2]">Join Community</span>
-          </a>
-        </div>
+            komunitas belajar kami untuk diajarin sampai bisa <i class="fas fa-external-link-alt text-xs"></i></a>.
+        </p>
 
         <div class="grid grid-cols-3 gap-4 max-w-lg mx-auto bg-white/40 dark:bg-zinc-800/40 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 rounded-2xl p-4 shadow-sm">
           <div class="flex flex-col items-center justify-center p-2 border-r border-zinc-200/50 dark:border-zinc-700/50">
