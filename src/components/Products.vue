@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from 'vue'
 import Product from './Product.vue'
+import AnimatedNumber from './AnimatedNumber.vue'
 import { useMarketplace } from '@/composables/useMarketplace'
 
-const { products, isLoading, loadError, loadProducts } = useMarketplace()
+const { products, stats, isLoading, loadError, loadProducts } = useMarketplace()
 const searchQuery = ref('')
 const currentPage = ref(1)
 const itemsPerPage = 16
@@ -167,17 +168,7 @@ onMounted(() => {
           Prompt, template, software, hingga AI tools terbaik.
         </p>
 
-        <div class="inline-flex items-center gap-3 flex-wrap justify-center">
-          <div
-            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 dark:bg-zinc-800/60 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50"
-          >
-            <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
-            <span class="text-sm font-semibold text-zinc-700 dark:text-zinc-300">{{
-              productCount
-            }}</span>
-            <span class="text-xs text-zinc-500 dark:text-zinc-400">Products Available</span>
-          </div>
-
+        <div class="flex items-center justify-center mb-8">
           <a
             href="https://lynk.id/agungsundoro/px748k3j0nvp"
             target="_blank"
@@ -187,6 +178,27 @@ onMounted(() => {
             <i class="fab fa-discord text-sm text-[#5865F2]"></i>
             <span class="text-sm font-semibold text-[#5865F2]">Join Community</span>
           </a>
+        </div>
+
+        <div class="grid grid-cols-3 gap-4 max-w-lg mx-auto bg-white/40 dark:bg-zinc-800/40 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 rounded-2xl p-4 shadow-sm">
+          <div class="flex flex-col items-center justify-center p-2 border-r border-zinc-200/50 dark:border-zinc-700/50">
+            <span class="text-2xl sm:text-3xl font-extrabold text-teal-600 dark:text-teal-400">
+              <AnimatedNumber :value="productCount" />
+            </span>
+            <span class="text-[10px] sm:text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mt-1">Produk</span>
+          </div>
+          <div class="flex flex-col items-center justify-center p-2 border-r border-zinc-200/50 dark:border-zinc-700/50">
+            <span class="text-2xl sm:text-3xl font-extrabold text-cyan-600 dark:text-cyan-400">
+              <AnimatedNumber :value="stats.materi" />
+            </span>
+            <span class="text-[10px] sm:text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mt-1">Materi</span>
+          </div>
+          <div class="flex flex-col items-center justify-center p-2">
+            <span class="text-2xl sm:text-3xl font-extrabold text-blue-600 dark:text-blue-400">
+              <AnimatedNumber :value="stats.media" />
+            </span>
+            <span class="text-[10px] sm:text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mt-1">Media</span>
+          </div>
         </div>
       </div>
 
