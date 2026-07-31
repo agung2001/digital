@@ -16,13 +16,17 @@ const displayValue = ref(0)
 const formattedValue = ref('0')
 
 const formatNumber = (num: number) => {
-  if (num >= 1_000_000) {
-    return (num / 1_000_000).toFixed(1).replace(/\.0$/, '') + 'M'
+  // Mobile check (e.g. max-width: 640px for tailwind sm breakpoint or matchMedia)
+  if (window.innerWidth < 640) {
+    if (num >= 1_000_000) {
+      return (num / 1_000_000).toFixed(1).replace(/\.0$/, '') + 'M'
+    }
+    if (num >= 1_000) {
+      return (num / 1_000).toFixed(1).replace(/\.0$/, '') + 'K'
+    }
+    return num.toString()
   }
-  if (num >= 1_000) {
-    return (num / 1_000).toFixed(1).replace(/\.0$/, '') + 'K'
-  }
-  return num.toString()
+  return num.toLocaleString()
 }
 
 const animate = () => {
