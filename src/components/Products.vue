@@ -220,7 +220,7 @@ onMounted(() => {
           <input
             v-model="searchQuery"
             type="text"
-            placeholder="Cari produk digital..."
+            placeholder="Temukan tools, prompt, atau template AI impianmu..."
             class="block w-full pl-12 pr-4 py-3.5 border border-zinc-200 dark:border-zinc-700/50 rounded-xl bg-white/80 dark:bg-zinc-800/50 text-base placeholder-zinc-400 focus:outline-none focus:ring-4 focus:ring-teal-500/10 focus:border-teal-500 transition-all shadow-sm shadow-zinc-800/5"
           />
         </div>
