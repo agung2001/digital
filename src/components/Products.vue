@@ -6,7 +6,7 @@ import { useMarketplace } from '@/composables/useMarketplace'
 
 const { products, stats, isLoading, loadError, loadProducts } = useMarketplace()
 const searchQuery = ref('')
-const sortBy = ref<'alphabet' | 'score'>('alphabet')
+const sortBy = ref<'alphabet' | 'score' | 'ranking'>('alphabet')
 const currentPage = ref(1)
 const itemsPerPage = 16
 const isMounted = ref(false)
@@ -26,10 +26,14 @@ const syncUrlParams = () => {
   isSyncing = true
   const params = new URLSearchParams(window.location.search)
   const s = params.get('s') || ''
+  const sort = params.get('sort') || 'alphabet'
   const page = parseInt(params.get('page') || '1', 10)
 
   if (searchQuery.value !== s) {
     searchQuery.value = s
+  }
+  if (['alphabet', 'score', 'ranking'].includes(sort) && sortBy.value !== sort) {
+    sortBy.value = sort as 'alphabet' | 'score' | 'ranking'
   }
   if (!isNaN(page) && currentPage.value !== page) {
     currentPage.value = page
@@ -45,6 +49,12 @@ const updateUrlParams = () => {
     url.searchParams.delete('s')
   }
 
+  if (sortBy.value && sortBy.value !== 'alphabet') {
+    url.searchParams.set('sort', sortBy.value)
+  } else {
+    url.searchParams.delete('sort')
+  }
+
   if (currentPage.value > 1) {
     url.searchParams.set('page', String(currentPage.value))
   } else {
@@ -57,7 +67,7 @@ const updateUrlParams = () => {
   }
 }
 
-watch([searchQuery, currentPage], () => {
+watch([searchQuery, sortBy, currentPage], () => {
   updateUrlParams()
 })
 
@@ -90,6 +100,10 @@ const filteredProducts = computed(() => {
       const aScore = a.score !== null && a.score !== undefined ? a.score : -1
       const bScore = b.score !== null && b.score !== undefined ? b.score : -1
       return bScore - aScore
+    } else if (sortBy.value === 'ranking') {
+      const aRank = a.ranking !== null && a.ranking !== undefined ? a.ranking : 999999
+      const bRank = b.ranking !== null && b.ranking !== undefined ? b.ranking : 999999
+      return aRank - bRank
     } else {
       // Default: Alphabetical (A-Z)
       return a.title.localeCompare(b.title)
@@ -249,8 +263,9 @@ onMounted(() => {
             v-model="sortBy"
             class="block w-full sm:w-48 px-4 py-3.5 border border-zinc-200 dark:border-zinc-700/50 rounded-xl bg-white/80 dark:bg-zinc-800/50 text-base focus:outline-none focus:ring-4 focus:ring-teal-500/10 focus:border-teal-500 transition-all shadow-sm shadow-zinc-800/5 cursor-pointer text-zinc-700 dark:text-zinc-300"
           >
-            <option value="alphabet">Alphabet (A-Z)</option>
-            <option value="score">Score</option>
+            <option value="alphabet">Alfabet (A-Z)</option>
+            <option value="score">Skor</option>
+            <option value="ranking">Popularitas</option>
           </select>
         </div>
       </div>
