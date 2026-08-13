@@ -6,9 +6,18 @@ import { useMarketplace } from '@/composables/useMarketplace'
 
 const { products, stats, isLoading, loadError, loadProducts } = useMarketplace()
 const searchQuery = ref('')
+const sortBy = ref<'alphabet' | 'score'>('alphabet')
 const currentPage = ref(1)
 const itemsPerPage = 16
 const isMounted = ref(false)
+
+const isRatingModalOpen = ref(false)
+const selectedProductScore = ref<number | null>(null)
+
+const openRatingModal = (score: number) => {
+  selectedProductScore.value = score
+  isRatingModalOpen.value = true
+}
 
 let isSyncing = false
 
@@ -69,11 +78,22 @@ const filteredProducts = computed(() => {
     const query = searchQuery.value.toLowerCase()
     result = result.filter((p) => p.title.toLowerCase().includes(query))
   }
-  // Sort featured products to the top
+  // Sort featured products to the top, then by chosen sort mode
   result.sort((a, b) => {
+    // 1. Featured priority
     const aFeat = a.featured ? 1 : 0
     const bFeat = b.featured ? 1 : 0
-    return bFeat - aFeat
+    if (bFeat !== aFeat) return bFeat - aFeat
+
+    // 2. Sort mode
+    if (sortBy.value === 'score') {
+      const aScore = a.score !== null && a.score !== undefined ? a.score : -1
+      const bScore = b.score !== null && b.score !== undefined ? b.score : -1
+      return bScore - aScore
+    } else {
+      // Default: Alphabetical (A-Z)
+      return a.title.localeCompare(b.title)
+    }
   })
   return result
 })
@@ -202,27 +222,36 @@ onMounted(() => {
         :class="isMounted ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'"
         style="transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s"
       >
-        <div class="relative w-full max-w-2xl mx-auto">
-          <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none z-10">
-            <svg
-              class="h-5 w-5 text-zinc-400"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                clip-rule="evenodd"
-              />
-            </svg>
+        <div class="relative w-full max-w-3xl mx-auto flex flex-col sm:flex-row gap-4">
+          <div class="relative flex-1">
+            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none z-10">
+              <svg
+                class="h-5 w-5 text-zinc-400"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </div>
+            <input
+              v-model="searchQuery"
+              type="text"
+              placeholder="Temukan tools, prompt, atau template AI impianmu..."
+              class="block w-full pl-12 pr-4 py-3.5 border border-zinc-200 dark:border-zinc-700/50 rounded-xl bg-white/80 dark:bg-zinc-800/50 text-base placeholder-zinc-400 focus:outline-none focus:ring-4 focus:ring-teal-500/10 focus:border-teal-500 transition-all shadow-sm shadow-zinc-800/5"
+            />
           </div>
-          <input
-            v-model="searchQuery"
-            type="text"
-            placeholder="Temukan tools, prompt, atau template AI impianmu..."
-            class="block w-full pl-12 pr-4 py-3.5 border border-zinc-200 dark:border-zinc-700/50 rounded-xl bg-white/80 dark:bg-zinc-800/50 text-base placeholder-zinc-400 focus:outline-none focus:ring-4 focus:ring-teal-500/10 focus:border-teal-500 transition-all shadow-sm shadow-zinc-800/5"
-          />
+          <select
+            v-model="sortBy"
+            class="block w-full sm:w-48 px-4 py-3.5 border border-zinc-200 dark:border-zinc-700/50 rounded-xl bg-white/80 dark:bg-zinc-800/50 text-base focus:outline-none focus:ring-4 focus:ring-teal-500/10 focus:border-teal-500 transition-all shadow-sm shadow-zinc-800/5 cursor-pointer text-zinc-700 dark:text-zinc-300"
+          >
+            <option value="alphabet">Alphabet (A-Z)</option>
+            <option value="score">Score</option>
+          </select>
         </div>
       </div>
 
@@ -298,7 +327,11 @@ onMounted(() => {
               class="vault-card-animate"
               :style="{ animationDelay: `${index * 0.08}s` }"
             >
-              <Product :product="product" :is-featured="product.featured" />
+              <Product 
+                :product="product" 
+                :is-featured="product.featured" 
+                @show-rating="openRatingModal"
+              />
             </div>
           </div>
 
@@ -353,4 +386,67 @@ onMounted(() => {
       </div>
     </div>
   </section>
+  <!-- Rating System Explanation Modal -->
+  <Teleport to="body">
+    <Transition name="fade">
+      <div 
+        v-if="isRatingModalOpen" 
+        class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-zinc-950/60 backdrop-blur-sm"
+        @click="isRatingModalOpen = false"
+      >
+        <div 
+          class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl max-w-md w-full p-6 shadow-2xl relative overflow-hidden"
+          @click.stop
+        >
+          <!-- Decorative Top Grid -->
+          <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-500"></div>
+
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl select-none">⭐</span>
+              <div>
+                <h4 class="text-lg font-bold text-zinc-900 dark:text-white">Rating Score: {{ selectedProductScore }}/100</h4>
+                <p class="text-xs text-zinc-500 dark:text-zinc-400">Sistem Penilaian Otomatis</p>
+              </div>
+            </div>
+            <button 
+              @click="isRatingModalOpen = false" 
+              class="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 transition-colors p-1"
+            >
+              <i class="fas fa-times text-lg"></i>
+            </button>
+          </div>
+
+          <div class="space-y-3 text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
+            <p>
+              <strong>Rating Score</strong> merupakan bagian dari upaya kami untuk terus menyajikan produk digital terbaik untuk Anda.
+            </p>
+            <p>
+              Skor ini dihasilkan secara otomatis oleh <strong>sistem AI</strong> yang menganalisis, menilai, dan memverifikasi kelengkapan serta kualitas isi konten produk tersebut secara objektif.
+            </p>
+          </div>
+
+          <div class="mt-6 flex justify-end">
+            <button 
+              @click="isRatingModalOpen = false" 
+              class="px-5 py-2 rounded-xl text-xs font-bold bg-yellow-500 hover:bg-yellow-600 text-zinc-950 transition-colors shadow-lg shadow-yellow-500/20 cursor-pointer"
+            >
+              Mengerti
+            </button>
+          </div>
+        </div>
+      </div>
+    </Transition>
+  </Teleport>
 </template>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>

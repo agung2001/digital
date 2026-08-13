@@ -7,11 +7,17 @@ interface Product {
   url: string
   coverImage: string
   featured?: boolean
+  score?: number | null
+  ranking?: number | null
 }
 
 const props = defineProps<{
   product: Product
   isFeatured?: boolean
+}>()
+
+const emit = defineEmits<{
+  (e: 'show-rating', score: number): void
 }>()
 
 const imageError = ref(false)
@@ -86,13 +92,39 @@ const handleImageError = () => {
     <div
       class="bg-white/60 dark:bg-zinc-900/60 border-t border-zinc-200/50 dark:border-zinc-700/50 flex flex-col justify-between flex-1"
     >
-      <div class="p-4">
+      <div class="p-4 flex-1 flex flex-col justify-between">
         <h3
-          class="text-zinc-900 dark:text-white text-sm leading-snug break-words tracking-tight"
+          class="text-zinc-900 dark:text-white text-sm leading-snug break-words tracking-tight mb-3"
           :title="product.title"
         >
           {{ product.title }}
         </h3>
+
+        <!-- Score Progress Bar -->
+        <div 
+          v-if="product.score !== undefined && product.score !== null" 
+          class="mt-auto pt-2 group/score cursor-help select-none"
+          @click.stop="emit('show-rating', product.score)"
+        >
+          <div class="flex items-center justify-between text-[11px] text-zinc-500 dark:text-zinc-400 mb-1 font-medium transition-colors group-hover/score:text-yellow-600 dark:group-hover/score:text-yellow-400">
+            <span>Rating Score</span>
+            <span>{{ product.score }}/100</span>
+          </div>
+          <div class="relative h-2 w-full bg-zinc-200 dark:bg-zinc-700/60 rounded-full overflow-visible transition-all duration-300 group-hover/score:shadow-[0_0_12px_rgba(234,179,8,0.2)]">
+            <!-- Progress Line -->
+            <div 
+              class="absolute top-0 left-0 h-full bg-yellow-500 rounded-full transition-all duration-300"
+              :style="{ width: `${product.score}%` }"
+            ></div>
+            <!-- Star Emoji Indicator -->
+            <div 
+              class="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 text-xs transition-transform duration-300 group-hover/score:scale-130 group-hover/score:-translate-y-[65%] animate-wiggle"
+              :style="{ left: `${product.score}%` }"
+            >
+              ⭐
+            </div>
+          </div>
+        </div>
       </div>
       <div class="flex flex-col xl:flex-row">
         <a
@@ -121,3 +153,15 @@ const handleImageError = () => {
     </div>
   </div>
 </template>
+
+<style scoped>
+@keyframes wiggle {
+  0%, 100% { transform: translateY(-50%) translateX(-50%) rotate(0deg); }
+  25% { transform: translateY(-65%) translateX(-50%) rotate(-8deg) scale(1.3); }
+  75% { transform: translateY(-65%) translateX(-50%) rotate(8deg) scale(1.3); }
+}
+
+.group\/score:hover .animate-wiggle {
+  animation: wiggle 0.6s ease-in-out infinite alternate;
+}
+</style>

@@ -6,6 +6,8 @@ interface ProductType {
   url: string
   coverImage: string
   featured?: boolean
+  score?: number | null
+  ranking?: number | null
 }
 
 interface StatsType {
