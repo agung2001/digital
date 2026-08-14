@@ -12,11 +12,18 @@ const itemsPerPage = 16
 const isMounted = ref(false)
 
 const isRatingModalOpen = ref(false)
+const isRankingModalOpen = ref(false)
 const selectedProductScore = ref<number | null>(null)
+const selectedProductRanking = ref<number | null>(null)
 
 const openRatingModal = (score: number) => {
   selectedProductScore.value = score
   isRatingModalOpen.value = true
+}
+
+const openRankingModal = (ranking: number) => {
+  selectedProductRanking.value = ranking
+  isRankingModalOpen.value = true
 }
 
 let isSyncing = false
@@ -346,6 +353,7 @@ onMounted(() => {
                 :product="product" 
                 :is-featured="product.featured" 
                 @show-rating="openRatingModal"
+                @show-ranking="openRankingModal"
               />
             </div>
           </div>
@@ -445,6 +453,59 @@ onMounted(() => {
             <button 
               @click="isRatingModalOpen = false" 
               class="px-5 py-2 rounded-xl text-xs font-bold bg-yellow-500 hover:bg-yellow-600 text-zinc-950 transition-colors shadow-lg shadow-yellow-500/20 cursor-pointer"
+            >
+              Mengerti
+            </button>
+          </div>
+        </div>
+      </div>
+    </Transition>
+  </Teleport>
+
+  <!-- Ranking System Explanation Modal -->
+  <Teleport to="body">
+    <Transition name="fade">
+      <div 
+        v-if="isRankingModalOpen" 
+        class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-zinc-950/60 backdrop-blur-sm"
+        @click="isRankingModalOpen = false"
+      >
+        <div 
+          class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl max-w-md w-full p-6 shadow-2xl relative overflow-hidden"
+          @click.stop
+        >
+          <!-- Decorative Top Grid -->
+          <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-teal-400 via-emerald-500 to-teal-500"></div>
+
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl select-none">🏆</span>
+              <div>
+                <h4 class="text-lg font-bold text-zinc-900 dark:text-white">Top {{ selectedProductRanking }} Terbaik</h4>
+                <p class="text-xs text-zinc-500 dark:text-zinc-400">Sistem Pemeringkatan Produk</p>
+              </div>
+            </div>
+            <button 
+              @click="isRankingModalOpen = false" 
+              class="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 transition-colors p-1"
+            >
+              <i class="fas fa-times text-lg"></i>
+            </button>
+          </div>
+
+          <div class="space-y-3 text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
+            <p>
+              Label <strong>Top {{ selectedProductRanking }}</strong> menunjukkan bahwa produk digital ini merupakan salah satu produk yang <strong>paling laku</strong> dan <strong>paling diminati</strong> oleh customer kami.
+            </p>
+            <p>
+              Peringkat ini diperbarui secara berkala berdasarkan tingkat popularitas, jumlah penjualan, serta tingkat kepuasan pelanggan terhadap produk tersebut.
+            </p>
+          </div>
+
+          <div class="mt-6 flex justify-end">
+            <button 
+              @click="isRankingModalOpen = false" 
+              class="px-5 py-2 rounded-xl text-xs font-bold bg-teal-500 hover:bg-teal-600 text-white transition-colors shadow-lg shadow-teal-500/20 cursor-pointer"
             >
               Mengerti
             </button>

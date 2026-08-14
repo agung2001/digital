@@ -18,6 +18,7 @@ const props = defineProps<{
 
 const emit = defineEmits<{
   (e: 'show-rating', score: number): void
+  (e: 'show-ranking', ranking: number): void
 }>()
 
 const imageError = ref(false)
@@ -57,16 +58,17 @@ const handleImageError = () => {
     <!-- Ranking Badge -->
     <div
       v-if="product.ranking !== undefined && product.ranking !== null"
-      class="absolute top-3 right-3 z-20 flex items-center gap-1 px-2.5 py-1 rounded-full text-white text-[10px] font-bold uppercase tracking-wider shadow-md"
+      class="absolute top-3 right-3 z-20 flex items-center gap-1 px-2.5 py-1 rounded-full text-white text-[10px] font-bold uppercase tracking-wider shadow-md cursor-help transition-all duration-300 hover:scale-110 active:scale-95"
       :class="{
         'bg-gradient-to-r from-amber-400 to-yellow-500 shadow-yellow-500/20': product.ranking === 1,
         'bg-gradient-to-r from-zinc-300 to-zinc-400 shadow-zinc-400/20': product.ranking === 2,
         'bg-gradient-to-r from-orange-400 to-amber-600 shadow-amber-600/20': product.ranking === 3,
         'bg-zinc-700/80 backdrop-blur-sm shadow-zinc-800/20': product.ranking > 3
       }"
+      @click.stop="emit('show-ranking', product.ranking)"
     >
       <i class="fas text-[9px]" :class="product.ranking <= 3 ? 'fa-trophy' : 'fa-medal'"></i>
-      Rank {{ product.ranking }}
+      Top {{ product.ranking }}
     </div>
 
     <div
