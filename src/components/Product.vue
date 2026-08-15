@@ -30,7 +30,7 @@ const openProduct = (event: Event) => {
 }
 
 const affiliateUrl = computed(() => {
-  if (props.product.uuid === 'd3020f09-4f4c-402e-9f96-3517be6fa517' || props.product.uuid === '3c2d93da-9f58-4635-8648-e1826ed85d1a') {
+  if (props.product.uuid === 'd3020f09-4f4c-402e-9f96-3517be6fa517') {
     return props.product.url
   }
   const firstChunk = props.product.uuid.split('-')[0]
