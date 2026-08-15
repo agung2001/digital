@@ -2,17 +2,76 @@
   "notification": "",
   "products": [
     {
+      "uuid": "32cf5c3b-8464-4b80-a98d-9377ea63dde0",
+      "title": "Kreasi AI : Cuan Gila-Gilaan dari Konten, Iklan, dan Avatar AI!",
+      "url": "https://lynk.id/agungsundoro/yq3dooyw9816",
+      "coverImage": "https://cfcdn.my.id/products/13-08-2026/1786579041330_6886309.webp",
+      "featured": true,
+      "score": 83,
+      "ranking": 1,
+      "composition": {
+        "image": 3898,
+        "video": 288,
+        "text": 380,
+        "application": 174
+      }
+    },
+    {
+      "uuid": "d0fb7bf4-52fc-4099-be3c-da74f5104827",
+      "title": "Kreator Viral : Blueprint 10 Juta Pertama dalam 30 Hari dari Produk Digital di Bantu AI 🚀💰",
+      "url": "https://lynk.id/agungsundoro/481y8x5m02jv",
+      "coverImage": "https://cdn.lynkid.my.id/products/10-05-2026/1778419398211_5362452.webp",
+      "featured": true,
+      "score": null,
+      "ranking": 2,
+      "composition": {
+        "image": 621,
+        "video": 18873,
+        "text": 840,
+        "application": 271
+      }
+    },
+    {
+      "uuid": "114cab8c-9494-482a-8c38-c2fc56c999c0",
+      "title": "Sinema AI : Kursus Pembuatan Animasi, Iklan, dan Konten Video!",
+      "url": "https://lynk.id/agungsundoro/35mxg058em83",
+      "coverImage": "https://cdn.lynkid.my.id/products/26-10-2025/1761413522169_8187436.webp",
+      "featured": true,
+      "score": null,
+      "ranking": 3,
+      "composition": {
+        "image": 565,
+        "video": 629,
+        "text": 155,
+        "application": 108
+      }
+    },
+    {
+      "uuid": "604f1435-ac1b-462c-87b2-2633b549702a",
+      "title": "Sistem Otak Kedua dengan Obsidian Note 🧠",
+      "url": "http://lynk.id/agungsundoro/v9z1vnkonozn",
+      "coverImage": "https://cdn.lynkid.my.id/products/07-07-2026/1783399231815_7424274.webp",
+      "score": 95,
+      "ranking": 4,
+      "composition": {
+        "image": 0,
+        "video": 6,
+        "text": 127,
+        "application": 6
+      }
+    },
+    {
       "uuid": "55855976-6cab-4539-8ea3-dc087f60ef71",
       "title": "101 AI Abstract Logo (Gambar + Prompt)",
       "url": "https://lynk.id/agungsundoro/xrygwjre685k",
       "coverImage": "https://cdn.lynkid.my.id/products/25-06-2026/1782383371130_4203796.webp",
-      "score": 92,
+      "score": 93,
       "ranking": null,
       "composition": {
-        "image": 201,
-        "video": 0,
-        "text": 3,
-        "application": 1
+        "image": 105,
+        "video": 5,
+        "text": 5,
+        "application": 3
       }
     },
     {
@@ -20,36 +79,56 @@
       "title": "101 AI Emblem Logo (Gambar + Prompt)",
       "url": "https://lynk.id/agungsundoro/rv9jp3go9g7k",
       "coverImage": "https://cdn.lynkid.my.id/products/25-06-2026/1782366328843_9190352.webp",
-      "score": null,
+      "score": 95,
       "ranking": null,
-      "composition": {}
+      "composition": {
+        "image": 105,
+        "video": 5,
+        "text": 5,
+        "application": 3
+      }
     },
     {
       "uuid": "15b11ef6-1cdc-4481-8356-74052323e095",
       "title": "101 AI Letterform Logo (Gambar + Prompt)",
       "url": "https://lynk.id/agungsundoro/59n1vj58296g",
       "coverImage": "https://cdn.lynkid.my.id/products/25-06-2026/1782346844311_3471296.webp",
-      "score": null,
+      "score": 95,
       "ranking": null,
-      "composition": {}
+      "composition": {
+        "image": 105,
+        "video": 5,
+        "text": 5,
+        "application": 3
+      }
     },
     {
       "uuid": "68c7d1fa-0877-47ac-ae8d-2b1ec49f4a56",
       "title": "101 AI Mascot Logo (Gambar + Prompt)",
       "url": "https://lynk.id/agungsundoro/9kol0o3v4jg6",
       "coverImage": "https://cdn.lynkid.my.id/products/25-06-2026/1782385961230_6289454.webp",
-      "score": null,
+      "score": 96,
       "ranking": null,
-      "composition": {}
+      "composition": {
+        "image": 105,
+        "video": 5,
+        "text": 5,
+        "application": 3
+      }
     },
     {
       "uuid": "d27bf806-6984-430e-9c46-96332441675e",
       "title": "101 AI Pictorial Logo (Gambar + Prompt)",
       "url": "https://lynk.id/agungsundoro/5z4r8mymm3yr",
       "coverImage": "https://cdn.lynkid.my.id/products/25-06-2026/1782352325161_4378130.webp",
-      "score": null,
+      "score": 92,
       "ranking": null,
-      "composition": {}
+      "composition": {
+        "image": 105,
+        "video": 5,
+        "text": 5,
+        "application": 3
+      }
     },
     {
       "uuid": "2e894352-2da8-4aea-a545-934661032d7f",
@@ -58,18 +137,23 @@
       "coverImage": "https://cdn.lynkid.my.id/products/25-06-2026/1782373202581_3412119.webp",
       "score": null,
       "ranking": null,
-      "composition": {}
+      "composition": {
+        "image": 105,
+        "video": 5,
+        "text": 5,
+        "application": 3
+      }
     },
     {
       "uuid": "b88822b4-aa14-4560-acde-3df38e3745cd",
       "title": "196 AI Avatar Pria (Gambar + Prompt)",
       "url": "https://lynk.id/agungsundoro/wpyqezl5m26w",
       "coverImage": "https://cdn.lynkid.my.id/products/26-06-2026/1782440268231_4090763.webp",
-      "score": 100,
+      "score": 75,
       "ranking": null,
       "composition": {
-        "image": 97,
-        "video": 6,
+        "image": 198,
+        "video": 5,
         "text": 5,
         "application": 3
       }
@@ -79,11 +163,11 @@
       "title": "196 AI Avatar Wanita (Gambar + Prompt)",
       "url": "https://lynk.id/agungsundoro/5647x2g7gxnm",
       "coverImage": "https://cdn.lynkid.my.id/products/26-06-2026/1782442947323_2949027.webp",
-      "score": 93,
+      "score": 82,
       "ranking": null,
       "composition": {
-        "image": 181,
-        "video": 10,
+        "image": 195,
+        "video": 5,
         "text": 5,
         "application": 3
       }
@@ -121,10 +205,10 @@
       "title": "300+ AI Poster Makanan (Gambar + Prompt)",
       "url": "https://lynk.id/agungsundoro/0zrqzg212r6g",
       "coverImage": "https://cdn.lynkid.my.id/products/23-06-2026/1782214934601_8167591.webp",
-      "score": 72,
+      "score": 71,
       "ranking": null,
       "composition": {
-        "image": 307,
+        "image": 314,
         "video": 5,
         "text": 5,
         "application": 3
@@ -135,9 +219,14 @@
       "title": "300+ AI Poster Minuman (Gambar + Prompt)",
       "url": "https://lynk.id/agungsundoro/yn84y041rgok",
       "coverImage": "https://cdn.lynkid.my.id/products/24-06-2026/1782318041440_6703469.webp",
-      "score": null,
+      "score": 72,
       "ranking": null,
-      "composition": {}
+      "composition": {
+        "image": 307,
+        "video": 5,
+        "text": 5,
+        "application": 3
+      }
     },
     {
       "uuid": "7301a31b-4d6c-4eeb-b399-6c2930f72ed4",
@@ -200,18 +289,28 @@
       "title": "AI Pakaian Pria (Gambar + Prompt)",
       "url": "https://lynk.id/agungsundoro/ox2yvwzx2v0g",
       "coverImage": "https://cdn.lynkid.my.id/products/29-06-2026/1782700927393_3303438.webp",
-      "score": null,
+      "score": 100,
       "ranking": null,
-      "composition": {}
+      "composition": {
+        "image": 97,
+        "video": 6,
+        "text": 5,
+        "application": 3
+      }
     },
     {
       "uuid": "2c4372dc-95f1-4964-bc29-1d8a84e6b080",
       "title": "AI Pakaian Wanita (Gambar + Prompt)",
       "url": "https://lynk.id/agungsundoro/v1zer6en4xz4",
       "coverImage": "https://cdn.lynkid.my.id/products/29-06-2026/1782703176355_7588319.webp",
-      "score": null,
+      "score": 93,
       "ranking": null,
-      "composition": {}
+      "composition": {
+        "image": 181,
+        "video": 10,
+        "text": 5,
+        "application": 3
+      }
     },
     {
       "uuid": "e39e525f-e09a-4d4b-80f9-21982f02bfaa",
@@ -343,36 +442,6 @@
       }
     },
     {
-      "uuid": "32cf5c3b-8464-4b80-a98d-9377ea63dde0",
-      "title": "Kreasi AI : Cuan Gila-Gilaan dari Konten, Iklan, dan Avatar AI!",
-      "url": "https://lynk.id/agungsundoro/yq3dooyw9816",
-      "coverImage": "https://cfcdn.my.id/products/13-08-2026/1786579041330_6886309.webp",
-      "featured": true,
-      "score": 83,
-      "ranking": 1,
-      "composition": {
-        "image": 3898,
-        "video": 288,
-        "text": 380,
-        "application": 174
-      }
-    },
-    {
-      "uuid": "d0fb7bf4-52fc-4099-be3c-da74f5104827",
-      "title": "Kreator Viral : Blueprint 10 Juta Pertama dalam 30 Hari dari Produk Digital di Bantu AI 🚀💰",
-      "url": "https://lynk.id/agungsundoro/481y8x5m02jv",
-      "coverImage": "https://cdn.lynkid.my.id/products/10-05-2026/1778419398211_5362452.webp",
-      "featured": true,
-      "score": null,
-      "ranking": 2,
-      "composition": {
-        "image": 621,
-        "video": 18873,
-        "text": 840,
-        "application": 271
-      }
-    },
-    {
       "uuid": "9cdf3581-dbdf-4992-b779-c151eeb03ea4",
       "title": "Landing Page Designer : Landing Page Designer: Mesin Cuan Bikin Landing Page Otomatis 💻🚀",
       "url": "http://lynk.id/agungsundoro/rojymd2q355z",
@@ -423,7 +492,7 @@
       "composition": {
         "image": 2,
         "video": 3,
-        "text": 35,
+        "text": 37,
         "application": 5
       },
       "ranking": null
@@ -483,35 +552,6 @@
         "video": 3,
         "text": 12,
         "application": 5
-      }
-    },
-    {
-      "uuid": "114cab8c-9494-482a-8c38-c2fc56c999c0",
-      "title": "Sinema AI : Kursus Pembuatan Animasi, Iklan, dan Konten Video!",
-      "url": "https://lynk.id/agungsundoro/35mxg058em83",
-      "coverImage": "https://cdn.lynkid.my.id/products/26-10-2025/1761413522169_8187436.webp",
-      "featured": true,
-      "score": null,
-      "ranking": 3,
-      "composition": {
-        "image": 565,
-        "video": 629,
-        "text": 155,
-        "application": 108
-      }
-    },
-    {
-      "uuid": "604f1435-ac1b-462c-87b2-2633b549702a",
-      "title": "Sistem Otak Kedua dengan Obsidian Note 🧠",
-      "url": "http://lynk.id/agungsundoro/v9z1vnkonozn",
-      "coverImage": "https://cdn.lynkid.my.id/products/07-07-2026/1783399231815_7424274.webp",
-      "score": 95,
-      "ranking": 4,
-      "composition": {
-        "image": 0,
-        "video": 6,
-        "text": 127,
-        "application": 6
       }
     },
     {
@@ -602,7 +642,7 @@
   "composition": {
     "image": 5126,
     "video": 19839,
-    "text": 2110,
-    "application": 649
+    "text": 2114,
+    "application": 653
   }
 }
