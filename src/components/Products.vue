@@ -4,6 +4,13 @@ import Product from './Product.vue'
 import AnimatedNumber from './AnimatedNumber.vue'
 import { useMarketplace } from '@/composables/useMarketplace'
 
+interface Composition {
+  image: number
+  video: number
+  text: number
+  application: number
+}
+
 const { products, stats, isLoading, loadError, loadProducts } = useMarketplace()
 const searchQuery = ref('')
 const sortBy = ref<'alphabet' | 'score' | 'ranking'>('alphabet')
@@ -13,8 +20,10 @@ const isMounted = ref(false)
 
 const isRatingModalOpen = ref(false)
 const isRankingModalOpen = ref(false)
+const isCompositionModalOpen = ref(false)
 const selectedProductScore = ref<number | null>(null)
 const selectedProductRanking = ref<number | null>(null)
+const selectedProductComposition = ref<Composition | null>(null)
 
 const openRatingModal = (score: number) => {
   selectedProductScore.value = score
@@ -24,6 +33,11 @@ const openRatingModal = (score: number) => {
 const openRankingModal = (ranking: number) => {
   selectedProductRanking.value = ranking
   isRankingModalOpen.value = true
+}
+
+const openCompositionModal = (composition: Composition) => {
+  selectedProductComposition.value = composition
+  isCompositionModalOpen.value = true
 }
 
 let isSyncing = false
@@ -366,6 +380,7 @@ onMounted(() => {
                 :is-featured="product.featured" 
                 @show-rating="openRatingModal"
                 @show-ranking="openRankingModal"
+                @show-composition="openCompositionModal"
               />
             </div>
           </div>
@@ -517,6 +532,94 @@ onMounted(() => {
           <div class="mt-6 flex justify-end">
             <button 
               @click="isRankingModalOpen = false" 
+              class="px-5 py-2 rounded-xl text-xs font-bold bg-teal-500 hover:bg-teal-600 text-white transition-colors shadow-lg shadow-teal-500/20 cursor-pointer"
+            >
+              Mengerti
+            </button>
+          </div>
+        </div>
+      </div>
+    </Transition>
+  </Teleport>
+
+  <!-- Composition Explanation Modal -->
+  <Teleport to="body">
+    <Transition name="fade">
+      <div 
+        v-if="isCompositionModalOpen && selectedProductComposition" 
+        class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-zinc-950/60 backdrop-blur-sm"
+        @click="isCompositionModalOpen = false"
+      >
+        <div 
+          class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl max-w-md w-full p-6 shadow-2xl relative overflow-hidden"
+          @click.stop
+        >
+          <!-- Decorative Top Grid -->
+          <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-teal-400 via-emerald-500 to-teal-500"></div>
+
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl select-none">📁</span>
+              <div>
+                <h4 class="text-lg font-bold text-zinc-900 dark:text-white">Komposisi Produk</h4>
+                <p class="text-xs text-zinc-500 dark:text-zinc-400">Rincian jenis & jumlah berkas produk</p>
+              </div>
+            </div>
+            <button 
+              @click="isCompositionModalOpen = false" 
+              class="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 transition-colors p-1"
+            >
+              <i class="fas fa-times text-lg"></i>
+            </button>
+          </div>
+
+          <div class="space-y-4">
+            <p class="text-sm text-zinc-600 dark:text-zinc-300">
+              Berikut adalah rincian jumlah dan klasifikasi file yang terdapat di dalam produk digital ini:
+            </p>
+
+            <div class="space-y-3">
+              <!-- Image Item -->
+              <div class="flex items-center justify-between p-3 rounded-xl bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/30">
+                <div class="flex items-center gap-3">
+                  <span class="text-xl">🖼️</span>
+                  <span class="text-sm font-semibold text-zinc-800 dark:text-zinc-200">Gambar / Grafis</span>
+                </div>
+                <span class="text-sm font-bold text-emerald-600 dark:text-emerald-400">{{ selectedProductComposition.image }} file</span>
+              </div>
+
+              <!-- Video Item -->
+              <div class="flex items-center justify-between p-3 rounded-xl bg-blue-50/50 dark:bg-blue-950/20 border border-blue-100 dark:border-blue-900/30">
+                <div class="flex items-center gap-3">
+                  <span class="text-xl">🎥</span>
+                  <span class="text-sm font-semibold text-zinc-800 dark:text-zinc-200">Video / Animasi</span>
+                </div>
+                <span class="text-sm font-bold text-blue-600 dark:text-blue-400">{{ selectedProductComposition.video }} file</span>
+              </div>
+
+              <!-- Text Item -->
+              <div class="flex items-center justify-between p-3 rounded-xl bg-amber-50/50 dark:bg-amber-950/20 border border-amber-100 dark:border-amber-900/30">
+                <div class="flex items-center gap-3">
+                  <span class="text-xl">📝</span>
+                  <span class="text-sm font-semibold text-zinc-800 dark:text-zinc-200">Teks / Dokumen</span>
+                </div>
+                <span class="text-sm font-bold text-amber-600 dark:text-amber-400">{{ selectedProductComposition.text }} file</span>
+              </div>
+
+              <!-- Application Item -->
+              <div class="flex items-center justify-between p-3 rounded-xl bg-purple-50/50 dark:bg-purple-950/20 border border-purple-100 dark:border-purple-900/30">
+                <div class="flex items-center gap-3">
+                  <span class="text-xl">⚙️</span>
+                  <span class="text-sm font-semibold text-zinc-800 dark:text-zinc-200">Aplikasi / Lainnya</span>
+                </div>
+                <span class="text-sm font-bold text-purple-600 dark:text-purple-400">{{ selectedProductComposition.application }} file</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 flex justify-end">
+            <button 
+              @click="isCompositionModalOpen = false" 
               class="px-5 py-2 rounded-xl text-xs font-bold bg-teal-500 hover:bg-teal-600 text-white transition-colors shadow-lg shadow-teal-500/20 cursor-pointer"
             >
               Mengerti

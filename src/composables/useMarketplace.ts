@@ -1,5 +1,12 @@
 import { ref } from 'vue'
 
+interface Composition {
+  image: number
+  video: number
+  text: number
+  application: number
+}
+
 interface ProductType {
   uuid: string
   title: string
@@ -8,6 +15,7 @@ interface ProductType {
   featured?: boolean
   score?: number | null
   ranking?: number | null
+  composition?: Composition
 }
 
 interface StatsType {

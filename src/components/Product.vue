@@ -1,6 +1,13 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 
+interface Composition {
+  image: number
+  video: number
+  text: number
+  application: number
+}
+
 interface Product {
   uuid: string
   title: string
@@ -9,6 +16,7 @@ interface Product {
   featured?: boolean
   score?: number | null
   ranking?: number | null
+  composition?: Composition
 }
 
 const props = defineProps<{
@@ -19,9 +27,34 @@ const props = defineProps<{
 const emit = defineEmits<{
   (e: 'show-rating', score: number): void
   (e: 'show-ranking', ranking: number): void
+  (e: 'show-composition', composition: Composition): void
 }>()
 
 const imageError = ref(false)
+
+const hasComposition = computed(() => {
+  const comp = props.product.composition
+  if (!comp) return false
+  return (comp.image || 0) + (comp.video || 0) + (comp.text || 0) + (comp.application || 0) > 0
+})
+
+const compositionStats = computed(() => {
+  const comp = props.product.composition
+  if (!comp) return { imagePct: 0, videoPct: 0, textPct: 0, appPct: 0, total: 0 }
+  const img = comp.image || 0
+  const vid = comp.video || 0
+  const txt = comp.text || 0
+  const app = comp.application || 0
+  const total = img + vid + txt + app
+  if (total === 0) return { imagePct: 0, videoPct: 0, textPct: 0, appPct: 0, total: 0 }
+  return {
+    imagePct: (img / total) * 100,
+    videoPct: (vid / total) * 100,
+    textPct: (txt / total) * 100,
+    appPct: (app / total) * 100,
+    total
+  }
+})
 
 const openProduct = (event: Event) => {
   // Prevent redirection when clicking action buttons (Affiliate, Buy Now)
@@ -142,6 +175,51 @@ const handleImageError = () => {
             </div>
           </div>
         </div>
+
+        <!-- Composition Progress Bar -->
+        <div 
+          v-if="hasComposition" 
+          class="mt-2 pt-2 group/comp cursor-help select-none"
+          @click.stop="emit('show-composition', product.composition!)"
+        >
+          <div class="flex items-center justify-between text-[11px] text-zinc-500 dark:text-zinc-400 mb-1 font-medium transition-colors group-hover/comp:text-teal-600 dark:group-hover/comp:text-teal-400">
+            <span>Composition</span>
+            <span>{{ compositionStats.total }} Files</span>
+          </div>
+          <div class="relative h-2 w-full bg-zinc-200 dark:bg-zinc-700/60 rounded-full overflow-visible transition-all duration-300 flex group-hover/comp:shadow-[0_0_12px_rgba(20,184,166,0.2)]">
+            <!-- Stacked Segments -->
+            <div 
+              v-if="compositionStats.imagePct > 0"
+              class="h-full bg-emerald-500 first:rounded-l-full last:rounded-r-full transition-all duration-300"
+              :style="{ width: `${compositionStats.imagePct}%` }"
+              title="Image"
+            ></div>
+            <div 
+              v-if="compositionStats.videoPct > 0"
+              class="h-full bg-blue-500 first:rounded-l-full last:rounded-r-full transition-all duration-300"
+              :style="{ width: `${compositionStats.videoPct}%` }"
+              title="Video"
+            ></div>
+            <div 
+              v-if="compositionStats.textPct > 0"
+              class="h-full bg-amber-500 first:rounded-l-full last:rounded-r-full transition-all duration-300"
+              :style="{ width: `${compositionStats.textPct}%` }"
+              title="Text"
+            ></div>
+            <div 
+              v-if="compositionStats.appPct > 0"
+              class="h-full bg-purple-500 first:rounded-l-full last:rounded-r-full transition-all duration-300"
+              :style="{ width: `${compositionStats.appPct}%` }"
+              title="Application"
+            ></div>
+            <!-- Folder Emoji Indicator (centered on the bar) -->
+            <div 
+              class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 text-xs transition-all duration-300 group-hover/comp:scale-130 group-hover/comp:-translate-y-[65%] animate-wiggle-comp"
+            >
+              📁
+            </div>
+          </div>
+        </div>
       </div>
       <div class="flex flex-col xl:flex-row">
         <a
@@ -178,7 +256,17 @@ const handleImageError = () => {
   75% { transform: translateY(-65%) translateX(-50%) rotate(8deg) scale(1.3); }
 }
 
+@keyframes wiggle-comp {
+  0%, 100% { transform: translateY(-50%) translateX(-50%) rotate(0deg); }
+  25% { transform: translateY(-65%) translateX(-50%) rotate(-8deg) scale(1.3); }
+  75% { transform: translateY(-65%) translateX(-50%) rotate(8deg) scale(1.3); }
+}
+
 .group\/score:hover .animate-wiggle {
   animation: wiggle 0.6s ease-in-out infinite alternate;
+}
+
+.group\/comp:hover .animate-wiggle-comp {
+  animation: wiggle-comp 0.6s ease-in-out infinite alternate;
 }
 </style>
