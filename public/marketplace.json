@@ -598,5 +598,11 @@
         "application": 5
       }
     }
-  ]
+  ],
+  "composition": {
+    "image": 5126,
+    "video": 22,
+    "text": 2114,
+    "application": 647
+  }
 }
