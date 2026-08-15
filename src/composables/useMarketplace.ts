@@ -11,12 +11,14 @@ interface ProductType {
 }
 
 interface StatsType {
-  materi: number
-  media: number
+  image: number
+  video: number
+  text: number
+  application: number
 }
 
 const products = ref<ProductType[]>([])
-const stats = ref<StatsType>({ materi: 12, media: 34 })
+const stats = ref<StatsType>({ image: 0, video: 0, text: 0, application: 0 })
 const isLoading = ref(true)
 const loadError = ref<string | null>(null)
 let fetchPromise: Promise<void> | null = null
@@ -29,28 +31,21 @@ const loadProducts = async () => {
       isLoading.value = true
       loadError.value = null
       
-      const [productsRes, statsRes] = await Promise.allSettled([
-        fetch('/marketplace.json'),
-        fetch('/stats.json')
-      ])
+      const res = await fetch('/marketplace.json')
 
-      if (productsRes.status === 'fulfilled' && productsRes.value.ok) {
-        const data = await productsRes.value.json()
+      if (res.ok) {
+        const data = await res.json()
         products.value = data.products
+        if (data.composition) {
+          stats.value = {
+            image: typeof data.composition.image === 'number' ? data.composition.image : 0,
+            video: typeof data.composition.video === 'number' ? data.composition.video : 0,
+            text: typeof data.composition.text === 'number' ? data.composition.text : 0,
+            application: typeof data.composition.application === 'number' ? data.composition.application : 0
+          }
+        }
       } else {
         throw new Error('Failed to load products')
-      }
-
-      if (statsRes.status === 'fulfilled' && statsRes.value.ok) {
-        try {
-          const statsData = await statsRes.value.json()
-          stats.value = {
-            materi: typeof statsData.materi === 'number' ? statsData.materi : 12,
-            media: typeof statsData.media === 'number' ? statsData.media : 34
-          }
-        } catch {
-          // Keep default stats
-        }
       }
     } catch (err) {
       loadError.value = err instanceof Error ? err.message : String(err)

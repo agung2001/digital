@@ -216,8 +216,8 @@ onMounted(() => {
             komunitas belajar kami untuk diajarin sampai bisa <i class="fas fa-external-link-alt text-xs"></i></a>.
         </p>
 
-        <div class="grid grid-cols-3 gap-4 max-w-lg mx-auto bg-white/40 dark:bg-zinc-800/40 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 rounded-2xl p-4 shadow-sm">
-          <div class="flex flex-col items-center justify-center p-2 border-r border-zinc-200/50 dark:border-zinc-700/50">
+        <div class="grid grid-cols-2 sm:grid-cols-5 gap-4 max-w-2xl mx-auto bg-white/40 dark:bg-zinc-800/40 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 rounded-2xl p-4 shadow-sm">
+          <div class="flex flex-col items-center justify-center p-2 border-r border-zinc-200/50 dark:border-zinc-700/50 col-span-2 sm:col-span-1 border-b sm:border-b-0 pb-4 sm:pb-2">
             <span class="text-2xl sm:text-3xl font-extrabold text-teal-600 dark:text-teal-400">
               <AnimatedNumber :value="productCount" />
             </span>
@@ -225,15 +225,27 @@ onMounted(() => {
           </div>
           <div class="flex flex-col items-center justify-center p-2 border-r border-zinc-200/50 dark:border-zinc-700/50">
             <span class="text-2xl sm:text-3xl font-extrabold text-cyan-600 dark:text-cyan-400">
-              <AnimatedNumber :value="stats.materi" />
+              <AnimatedNumber :value="stats.text" />
             </span>
             <span class="text-[10px] sm:text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mt-1">Materi</span>
           </div>
-          <div class="flex flex-col items-center justify-center p-2">
+          <div class="flex flex-col items-center justify-center p-2 border-r border-zinc-200/50 dark:border-zinc-700/50">
             <span class="text-2xl sm:text-3xl font-extrabold text-blue-600 dark:text-blue-400">
-              <AnimatedNumber :value="stats.media" />
+              <AnimatedNumber :value="stats.image" />
             </span>
-            <span class="text-[10px] sm:text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mt-1">Media</span>
+            <span class="text-[10px] sm:text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mt-1">Gambar</span>
+          </div>
+          <div class="flex flex-col items-center justify-center p-2 border-r border-zinc-200/50 dark:border-zinc-700/50">
+            <span class="text-2xl sm:text-3xl font-extrabold text-indigo-600 dark:text-indigo-400">
+              <AnimatedNumber :value="stats.video" />
+            </span>
+            <span class="text-[10px] sm:text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mt-1">Video</span>
+          </div>
+          <div class="flex flex-col items-center justify-center p-2">
+            <span class="text-2xl sm:text-3xl font-extrabold text-violet-600 dark:text-violet-400">
+              <AnimatedNumber :value="stats.application" />
+            </span>
+            <span class="text-[10px] sm:text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mt-1">Aplikasi</span>
           </div>
         </div>
       </div>
