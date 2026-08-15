@@ -11,9 +11,9 @@
       "ranking": 1,
       "composition": {
         "image": 3898,
-        "video": 2,
+        "video": 288,
         "text": 380,
-        "application": 174
+        "application": 176
       }
     },
     {
@@ -26,7 +26,7 @@
       "ranking": 2,
       "composition": {
         "image": 621,
-        "video": 14,
+        "video": 18873,
         "text": 840,
         "application": 271
       }
@@ -41,7 +41,7 @@
       "ranking": 3,
       "composition": {
         "image": 565,
-        "video": 6,
+        "video": 629,
         "text": 155,
         "application": 108
       }
@@ -55,7 +55,7 @@
       "ranking": 4,
       "composition": {
         "image": 0,
-        "video": 0,
+        "video": 6,
         "text": 127,
         "application": 6
       }
@@ -128,7 +128,7 @@
       "ranking": null,
       "composition": {
         "image": 97,
-        "video": 0,
+        "video": 6,
         "text": 5,
         "application": 3
       }
@@ -142,7 +142,7 @@
       "ranking": null,
       "composition": {
         "image": 181,
-        "video": 0,
+        "video": 10,
         "text": 5,
         "application": 3
       }
@@ -156,7 +156,7 @@
       "ranking": null,
       "composition": {
         "image": 220,
-        "video": 0,
+        "video": 6,
         "text": 5,
         "application": 3
       }
@@ -170,7 +170,7 @@
       "ranking": null,
       "composition": {
         "image": 2,
-        "video": 0,
+        "video": 1,
         "text": 3,
         "application": 4
       }
@@ -184,7 +184,7 @@
       "ranking": null,
       "composition": {
         "image": 307,
-        "video": 0,
+        "video": 5,
         "text": 5,
         "application": 3
       }
@@ -207,7 +207,7 @@
       "ranking": null,
       "composition": {
         "image": 102,
-        "video": 0,
+        "video": 5,
         "text": 5,
         "application": 3
       }
@@ -221,7 +221,7 @@
       "ranking": null,
       "composition": {
         "image": 0,
-        "video": 0,
+        "video": 4,
         "text": 18,
         "application": 5
       }
@@ -235,7 +235,7 @@
       "ranking": null,
       "composition": {
         "image": 4,
-        "video": 0,
+        "video": 1,
         "text": 7,
         "application": 5
       }
@@ -249,7 +249,7 @@
       "ranking": null,
       "composition": {
         "image": 3,
-        "video": 0,
+        "video": 4,
         "text": 6,
         "application": 4
       }
@@ -282,7 +282,7 @@
       "ranking": null,
       "composition": {
         "image": 3,
-        "video": 0,
+        "video": 15,
         "text": 39,
         "application": 6
       }
@@ -297,7 +297,7 @@
       "ranking": null,
       "composition": {
         "image": 25,
-        "video": 0,
+        "video": 37,
         "text": 110,
         "application": 5
       }
@@ -311,7 +311,7 @@
       "ranking": null,
       "composition": {
         "image": 0,
-        "video": 0,
+        "video": 4,
         "text": 14,
         "application": 5
       }
@@ -326,7 +326,7 @@
       "ranking": null,
       "composition": {
         "image": 27,
-        "video": 6,
+        "video": 10,
         "text": 16,
         "application": 4
       }
@@ -340,7 +340,7 @@
       "ranking": null,
       "composition": {
         "image": 0,
-        "video": 0,
+        "video": 3,
         "text": 12,
         "application": 5
       }
@@ -354,7 +354,7 @@
       "ranking": null,
       "composition": {
         "image": 0,
-        "video": 0,
+        "video": 4,
         "text": 12,
         "application": 5
       }
@@ -368,7 +368,7 @@
       "ranking": null,
       "composition": {
         "image": 0,
-        "video": 0,
+        "video": 9,
         "text": 32,
         "application": 5
       }
@@ -382,7 +382,7 @@
       "ranking": null,
       "composition": {
         "image": 0,
-        "video": 0,
+        "video": 4,
         "text": 14,
         "application": 5
       }
@@ -396,7 +396,7 @@
       "ranking": null,
       "composition": {
         "image": 0,
-        "video": 0,
+        "video": 3,
         "text": 12,
         "application": 5
       }
@@ -410,7 +410,7 @@
       "ranking": null,
       "composition": {
         "image": 0,
-        "video": 0,
+        "video": 3,
         "text": 11,
         "application": 5
       }
@@ -424,7 +424,7 @@
       "ranking": null,
       "composition": {
         "image": 0,
-        "video": 0,
+        "video": 3,
         "text": 18,
         "application": 6
       }
@@ -438,7 +438,7 @@
       "ranking": null,
       "composition": {
         "image": 0,
-        "video": 0,
+        "video": 3,
         "text": 10,
         "application": 5
       }
@@ -451,7 +451,7 @@
       "score": null,
       "composition": {
         "image": 2,
-        "video": 0,
+        "video": 3,
         "text": 35,
         "application": 5
       },
@@ -466,7 +466,7 @@
       "ranking": null,
       "composition": {
         "image": 0,
-        "video": 0,
+        "video": 4,
         "text": 13,
         "application": 5
       }
@@ -481,7 +481,7 @@
       "ranking": null,
       "composition": {
         "image": 16,
-        "video": 1,
+        "video": 5,
         "text": 14,
         "application": 6
       }
@@ -495,7 +495,7 @@
       "ranking": null,
       "composition": {
         "image": 10,
-        "video": 0,
+        "video": 5,
         "text": 14,
         "application": 4
       }
@@ -509,7 +509,7 @@
       "ranking": null,
       "composition": {
         "image": 0,
-        "video": 0,
+        "video": 3,
         "text": 12,
         "application": 5
       }
@@ -523,7 +523,7 @@
       "ranking": null,
       "composition": {
         "image": 1,
-        "video": 0,
+        "video": 4,
         "text": 12,
         "application": 5
       }
@@ -537,7 +537,7 @@
       "ranking": null,
       "composition": {
         "image": 4,
-        "video": 0,
+        "video": 4,
         "text": 14,
         "application": 5
       }
@@ -551,7 +551,7 @@
       "ranking": null,
       "composition": {
         "image": 0,
-        "video": 0,
+        "video": 3,
         "text": 12,
         "application": 5
       }
@@ -565,7 +565,7 @@
       "ranking": null,
       "composition": {
         "image": 3,
-        "video": 0,
+        "video": 4,
         "text": 13,
         "application": 5
       }
@@ -579,7 +579,7 @@
       "ranking": null,
       "composition": {
         "image": 0,
-        "video": 0,
+        "video": 4,
         "text": 12,
         "application": 5
       }
@@ -593,7 +593,7 @@
       "ranking": null,
       "composition": {
         "image": 0,
-        "video": 0,
+        "video": 4,
         "text": 13,
         "application": 5
       }
@@ -601,8 +601,8 @@
   ],
   "composition": {
     "image": 5126,
-    "video": 22,
+    "video": 19839,
     "text": 2114,
-    "application": 647
+    "application": 649
   }
 }
