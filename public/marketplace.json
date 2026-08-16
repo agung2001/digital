@@ -10,10 +10,10 @@
       "score": 83,
       "ranking": 1,
       "composition": {
-        "image": 3898,
-        "video": 288,
-        "text": 380,
-        "application": 174
+        "image": 3884,
+        "video": 286,
+        "text": 367,
+        "application": 95
       }
     },
     {
@@ -25,10 +25,10 @@
       "score": null,
       "ranking": 2,
       "composition": {
-        "image": 621,
-        "video": 18873,
-        "text": 840,
-        "application": 271
+        "image": 617,
+        "video": 334,
+        "text": 721,
+        "application": 106
       }
     },
     {
@@ -42,8 +42,8 @@
       "composition": {
         "image": 565,
         "video": 629,
-        "text": 155,
-        "application": 108
+        "text": 154,
+        "application": 85
       }
     },
     {
@@ -56,8 +56,8 @@
       "composition": {
         "image": 0,
         "video": 6,
-        "text": 127,
-        "application": 6
+        "text": 99,
+        "application": 1
       }
     },
     {
@@ -65,13 +65,13 @@
       "title": "101 AI Abstract Logo (Gambar + Prompt)",
       "url": "https://lynk.id/agungsundoro/xrygwjre685k",
       "coverImage": "https://cdn.lynkid.my.id/products/25-06-2026/1782383371130_4203796.webp",
-      "score": 93,
+      "score": 92,
       "ranking": null,
       "composition": {
-        "image": 105,
-        "video": 5,
-        "text": 5,
-        "application": 3
+        "image": 201,
+        "video": 0,
+        "text": 3,
+        "application": 1
       }
     },
     {
@@ -79,56 +79,36 @@
       "title": "101 AI Emblem Logo (Gambar + Prompt)",
       "url": "https://lynk.id/agungsundoro/rv9jp3go9g7k",
       "coverImage": "https://cdn.lynkid.my.id/products/25-06-2026/1782366328843_9190352.webp",
-      "score": 95,
+      "score": null,
       "ranking": null,
-      "composition": {
-        "image": 105,
-        "video": 5,
-        "text": 5,
-        "application": 3
-      }
+      "composition": {}
     },
     {
       "uuid": "15b11ef6-1cdc-4481-8356-74052323e095",
       "title": "101 AI Letterform Logo (Gambar + Prompt)",
       "url": "https://lynk.id/agungsundoro/59n1vj58296g",
       "coverImage": "https://cdn.lynkid.my.id/products/25-06-2026/1782346844311_3471296.webp",
-      "score": 95,
+      "score": null,
       "ranking": null,
-      "composition": {
-        "image": 105,
-        "video": 5,
-        "text": 5,
-        "application": 3
-      }
+      "composition": {}
     },
     {
       "uuid": "68c7d1fa-0877-47ac-ae8d-2b1ec49f4a56",
       "title": "101 AI Mascot Logo (Gambar + Prompt)",
       "url": "https://lynk.id/agungsundoro/9kol0o3v4jg6",
       "coverImage": "https://cdn.lynkid.my.id/products/25-06-2026/1782385961230_6289454.webp",
-      "score": 96,
+      "score": null,
       "ranking": null,
-      "composition": {
-        "image": 105,
-        "video": 5,
-        "text": 5,
-        "application": 3
-      }
+      "composition": {}
     },
     {
       "uuid": "d27bf806-6984-430e-9c46-96332441675e",
       "title": "101 AI Pictorial Logo (Gambar + Prompt)",
       "url": "https://lynk.id/agungsundoro/5z4r8mymm3yr",
       "coverImage": "https://cdn.lynkid.my.id/products/25-06-2026/1782352325161_4378130.webp",
-      "score": 92,
+      "score": null,
       "ranking": null,
-      "composition": {
-        "image": 105,
-        "video": 5,
-        "text": 5,
-        "application": 3
-      }
+      "composition": {}
     },
     {
       "uuid": "2e894352-2da8-4aea-a545-934661032d7f",
@@ -137,25 +117,20 @@
       "coverImage": "https://cdn.lynkid.my.id/products/25-06-2026/1782373202581_3412119.webp",
       "score": null,
       "ranking": null,
-      "composition": {
-        "image": 105,
-        "video": 5,
-        "text": 5,
-        "application": 3
-      }
+      "composition": {}
     },
     {
       "uuid": "b88822b4-aa14-4560-acde-3df38e3745cd",
       "title": "196 AI Avatar Pria (Gambar + Prompt)",
       "url": "https://lynk.id/agungsundoro/wpyqezl5m26w",
       "coverImage": "https://cdn.lynkid.my.id/products/26-06-2026/1782440268231_4090763.webp",
-      "score": 75,
+      "score": 100,
       "ranking": null,
       "composition": {
-        "image": 198,
-        "video": 5,
+        "image": 96,
+        "video": 6,
         "text": 5,
-        "application": 3
+        "application": 0
       }
     },
     {
@@ -163,13 +138,13 @@
       "title": "196 AI Avatar Wanita (Gambar + Prompt)",
       "url": "https://lynk.id/agungsundoro/5647x2g7gxnm",
       "coverImage": "https://cdn.lynkid.my.id/products/26-06-2026/1782442947323_2949027.webp",
-      "score": 82,
+      "score": 93,
       "ranking": null,
       "composition": {
-        "image": 195,
-        "video": 5,
+        "image": 180,
+        "video": 10,
         "text": 5,
-        "application": 3
+        "application": 0
       }
     },
     {
@@ -180,10 +155,10 @@
       "score": 83,
       "ranking": null,
       "composition": {
-        "image": 220,
+        "image": 219,
         "video": 6,
         "text": 5,
-        "application": 3
+        "application": 0
       }
     },
     {
@@ -194,10 +169,10 @@
       "score": null,
       "ranking": null,
       "composition": {
-        "image": 2,
+        "image": 1,
         "video": 1,
         "text": 3,
-        "application": 4
+        "application": 0
       }
     },
     {
@@ -205,13 +180,13 @@
       "title": "300+ AI Poster Makanan (Gambar + Prompt)",
       "url": "https://lynk.id/agungsundoro/0zrqzg212r6g",
       "coverImage": "https://cdn.lynkid.my.id/products/23-06-2026/1782214934601_8167591.webp",
-      "score": 71,
+      "score": 72,
       "ranking": null,
       "composition": {
-        "image": 314,
+        "image": 306,
         "video": 5,
         "text": 5,
-        "application": 3
+        "application": 0
       }
     },
     {
@@ -219,14 +194,9 @@
       "title": "300+ AI Poster Minuman (Gambar + Prompt)",
       "url": "https://lynk.id/agungsundoro/yn84y041rgok",
       "coverImage": "https://cdn.lynkid.my.id/products/24-06-2026/1782318041440_6703469.webp",
-      "score": 72,
+      "score": null,
       "ranking": null,
-      "composition": {
-        "image": 307,
-        "video": 5,
-        "text": 5,
-        "application": 3
-      }
+      "composition": {}
     },
     {
       "uuid": "7301a31b-4d6c-4eeb-b399-6c2930f72ed4",
@@ -236,10 +206,10 @@
       "score": 65,
       "ranking": null,
       "composition": {
-        "image": 102,
+        "image": 101,
         "video": 5,
         "text": 5,
-        "application": 3
+        "application": 0
       }
     },
     {
@@ -252,8 +222,8 @@
       "composition": {
         "image": 0,
         "video": 4,
-        "text": 18,
-        "application": 5
+        "text": 12,
+        "application": 1
       }
     },
     {
@@ -266,8 +236,8 @@
       "composition": {
         "image": 4,
         "video": 1,
-        "text": 7,
-        "application": 5
+        "text": 4,
+        "application": 1
       }
     },
     {
@@ -281,7 +251,7 @@
         "image": 3,
         "video": 4,
         "text": 6,
-        "application": 4
+        "application": 1
       }
     },
     {
@@ -289,28 +259,18 @@
       "title": "AI Pakaian Pria (Gambar + Prompt)",
       "url": "https://lynk.id/agungsundoro/ox2yvwzx2v0g",
       "coverImage": "https://cdn.lynkid.my.id/products/29-06-2026/1782700927393_3303438.webp",
-      "score": 100,
+      "score": null,
       "ranking": null,
-      "composition": {
-        "image": 97,
-        "video": 6,
-        "text": 5,
-        "application": 3
-      }
+      "composition": {}
     },
     {
       "uuid": "2c4372dc-95f1-4964-bc29-1d8a84e6b080",
       "title": "AI Pakaian Wanita (Gambar + Prompt)",
       "url": "https://lynk.id/agungsundoro/v1zer6en4xz4",
       "coverImage": "https://cdn.lynkid.my.id/products/29-06-2026/1782703176355_7588319.webp",
-      "score": 93,
+      "score": null,
       "ranking": null,
-      "composition": {
-        "image": 181,
-        "video": 10,
-        "text": 5,
-        "application": 3
-      }
+      "composition": {}
     },
     {
       "uuid": "e39e525f-e09a-4d4b-80f9-21982f02bfaa",
@@ -324,7 +284,7 @@
         "image": 3,
         "video": 15,
         "text": 39,
-        "application": 6
+        "application": 1
       }
     },
     {
@@ -338,8 +298,8 @@
       "composition": {
         "image": 25,
         "video": 37,
-        "text": 110,
-        "application": 5
+        "text": 109,
+        "application": 1
       }
     },
     {
@@ -353,7 +313,7 @@
         "image": 0,
         "video": 4,
         "text": 14,
-        "application": 5
+        "application": 1
       }
     },
     {
@@ -365,10 +325,10 @@
       "score": null,
       "ranking": null,
       "composition": {
-        "image": 27,
+        "image": 26,
         "video": 10,
-        "text": 16,
-        "application": 4
+        "text": 15,
+        "application": 0
       }
     },
     {
@@ -382,7 +342,7 @@
         "image": 0,
         "video": 3,
         "text": 12,
-        "application": 5
+        "application": 1
       }
     },
     {
@@ -396,7 +356,7 @@
         "image": 0,
         "video": 4,
         "text": 12,
-        "application": 5
+        "application": 1
       }
     },
     {
@@ -409,8 +369,8 @@
       "composition": {
         "image": 0,
         "video": 9,
-        "text": 32,
-        "application": 5
+        "text": 26,
+        "application": 1
       }
     },
     {
@@ -423,8 +383,8 @@
       "composition": {
         "image": 0,
         "video": 4,
-        "text": 14,
-        "application": 5
+        "text": 12,
+        "application": 1
       }
     },
     {
@@ -437,8 +397,8 @@
       "composition": {
         "image": 0,
         "video": 3,
-        "text": 12,
-        "application": 5
+        "text": 11,
+        "application": 1
       }
     },
     {
@@ -451,8 +411,8 @@
       "composition": {
         "image": 0,
         "video": 3,
-        "text": 11,
-        "application": 5
+        "text": 10,
+        "application": 1
       }
     },
     {
@@ -465,8 +425,8 @@
       "composition": {
         "image": 0,
         "video": 3,
-        "text": 18,
-        "application": 6
+        "text": 14,
+        "application": 1
       }
     },
     {
@@ -479,8 +439,8 @@
       "composition": {
         "image": 0,
         "video": 3,
-        "text": 10,
-        "application": 5
+        "text": 9,
+        "application": 1
       }
     },
     {
@@ -492,8 +452,8 @@
       "composition": {
         "image": 2,
         "video": 3,
-        "text": 37,
-        "application": 5
+        "text": 34,
+        "application": 1
       },
       "ranking": null
     },
@@ -507,8 +467,8 @@
       "composition": {
         "image": 0,
         "video": 4,
-        "text": 13,
-        "application": 5
+        "text": 12,
+        "application": 1
       }
     },
     {
@@ -523,7 +483,7 @@
         "image": 16,
         "video": 5,
         "text": 14,
-        "application": 6
+        "application": 1
       }
     },
     {
@@ -534,10 +494,10 @@
       "score": null,
       "ranking": null,
       "composition": {
-        "image": 10,
+        "image": 9,
         "video": 5,
         "text": 14,
-        "application": 4
+        "application": 0
       }
     },
     {
@@ -550,8 +510,8 @@
       "composition": {
         "image": 0,
         "video": 3,
-        "text": 12,
-        "application": 5
+        "text": 10,
+        "application": 1
       }
     },
     {
@@ -564,8 +524,8 @@
       "composition": {
         "image": 1,
         "video": 4,
-        "text": 12,
-        "application": 5
+        "text": 11,
+        "application": 1
       }
     },
     {
@@ -579,7 +539,7 @@
         "image": 4,
         "video": 4,
         "text": 14,
-        "application": 5
+        "application": 1
       }
     },
     {
@@ -593,7 +553,7 @@
         "image": 0,
         "video": 3,
         "text": 12,
-        "application": 5
+        "application": 1
       }
     },
     {
@@ -606,8 +566,8 @@
       "composition": {
         "image": 3,
         "video": 4,
-        "text": 13,
-        "application": 5
+        "text": 12,
+        "application": 1
       }
     },
     {
@@ -620,8 +580,8 @@
       "composition": {
         "image": 0,
         "video": 4,
-        "text": 12,
-        "application": 5
+        "text": 11,
+        "application": 1
       }
     },
     {
@@ -634,15 +594,15 @@
       "composition": {
         "image": 0,
         "video": 4,
-        "text": 13,
-        "application": 5
+        "text": 11,
+        "application": 1
       }
     }
   ],
   "composition": {
-    "image": 5126,
-    "video": 19839,
-    "text": 2114,
-    "application": 653
+    "image": 5108,
+    "video": 1299,
+    "text": 1835,
+    "application": 295
   }
 }
