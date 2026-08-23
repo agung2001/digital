@@ -14,7 +14,8 @@
         "video": 287,
         "text": 388,
         "application": 95
-      }
+      },
+      "stage": "Core Offer"
     },
     {
       "uuid": "d0fb7bf4-52fc-4099-be3c-da74f5104827",
@@ -29,7 +30,8 @@
         "video": 338,
         "text": 752,
         "application": 107
-      }
+      },
+      "stage": "Core Offer"
     },
     {
       "uuid": "114cab8c-9494-482a-8c38-c2fc56c999c0",
@@ -44,7 +46,8 @@
         "video": 630,
         "text": 155,
         "application": 85
-      }
+      },
+      "stage": "Core Offer"
     },
     {
       "uuid": "604f1435-ac1b-462c-87b2-2633b549702a",
@@ -58,7 +61,8 @@
         "video": 10,
         "text": 102,
         "application": 1
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "fa70d738-d0e1-4816-bd22-54b51fac0a59",
@@ -72,7 +76,8 @@
         "text": 3,
         "application": 1
       },
-      "ranking": null
+      "ranking": null,
+      "stage": "Tripwire"
     },
     {
       "uuid": "55855976-6cab-4539-8ea3-dc087f60ef71",
@@ -86,7 +91,8 @@
         "video": 1,
         "text": 5,
         "application": 1
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "05439eaa-0c57-41ca-99f8-aaaa3a90f633",
@@ -100,7 +106,8 @@
         "video": 6,
         "text": 6,
         "application": 0
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "15b11ef6-1cdc-4481-8356-74052323e095",
@@ -114,7 +121,8 @@
         "video": 6,
         "text": 6,
         "application": 0
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "68c7d1fa-0877-47ac-ae8d-2b1ec49f4a56",
@@ -128,7 +136,8 @@
         "video": 6,
         "text": 6,
         "application": 0
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "d27bf806-6984-430e-9c46-96332441675e",
@@ -142,7 +151,8 @@
         "video": 6,
         "text": 6,
         "application": 0
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "2e894352-2da8-4aea-a545-934661032d7f",
@@ -156,7 +166,8 @@
         "video": 6,
         "text": 6,
         "application": 0
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "b88822b4-aa14-4560-acde-3df38e3745cd",
@@ -170,7 +181,8 @@
         "video": 6,
         "text": 6,
         "application": 0
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "a0ad593a-3d6c-4097-b115-aa4e9f119558",
@@ -184,7 +196,8 @@
         "video": 6,
         "text": 6,
         "application": 0
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "49289a97-516c-4f4d-bb44-50a299682154",
@@ -198,7 +211,8 @@
         "video": 7,
         "text": 6,
         "application": 0
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "778ab169-7341-48d4-bc8c-09943dd28a7f",
@@ -212,7 +226,8 @@
         "video": 2,
         "text": 4,
         "application": 0
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "6589e2bb-d39e-4e16-a80f-f65a8297d2bb",
@@ -226,7 +241,8 @@
         "video": 1,
         "text": 4,
         "application": 0
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "74e9cdf5-7e75-41cd-9dd7-f5a20fa5f7f0",
@@ -240,7 +256,8 @@
         "video": 6,
         "text": 6,
         "application": 0
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "7301a31b-4d6c-4eeb-b399-6c2930f72ed4",
@@ -254,7 +271,8 @@
         "video": 6,
         "text": 6,
         "application": 0
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "1b572ce1-6993-46c2-a1a5-728b5505eb26",
@@ -268,7 +286,8 @@
         "video": 5,
         "text": 13,
         "application": 1
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "5be8b4a3-580b-4b7e-9f71-6fc6b7ae181c",
@@ -282,7 +301,8 @@
         "video": 5,
         "text": 6,
         "application": 1
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "75e6a500-5df0-408b-856d-99c68f81c24c",
@@ -296,7 +316,8 @@
         "video": 7,
         "text": 6,
         "application": 0
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "2c4372dc-95f1-4964-bc29-1d8a84e6b080",
@@ -310,7 +331,8 @@
         "video": 11,
         "text": 6,
         "application": 0
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "e39e525f-e09a-4d4b-80f9-21982f02bfaa",
@@ -325,7 +347,8 @@
         "video": 20,
         "text": 40,
         "application": 1
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "355d4c65-8584-4de8-9d83-34384840b133",
@@ -340,7 +363,8 @@
         "video": 42,
         "text": 110,
         "application": 1
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "f44205c6-bc3e-44e1-b469-ca225bf60a58",
@@ -354,7 +378,8 @@
         "text": 22,
         "application": 1
       },
-      "ranking": null
+      "ranking": null,
+      "stage": "Tripwire"
     },
     {
       "uuid": "6df244a5-e9b9-4d2a-8321-8c67a8eb3469",
@@ -368,7 +393,8 @@
         "video": 5,
         "text": 15,
         "application": 1
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "283a3d58-0cf7-4d39-82b4-6c39bd273ad4",
@@ -383,7 +409,8 @@
         "video": 11,
         "text": 16,
         "application": 0
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "b4ceed93-f4ff-4abd-9093-5df80e8a1bd2",
@@ -397,7 +424,8 @@
         "video": 4,
         "text": 13,
         "application": 1
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "e69e0fa2-a18c-4570-aede-2c2c6f85f09d",
@@ -411,7 +439,8 @@
         "video": 5,
         "text": 13,
         "application": 1
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "49444bc8-8a74-49c1-8e44-c4b6cbb21faf",
@@ -425,7 +454,8 @@
         "video": 12,
         "text": 28,
         "application": 1
-      }
+      },
+      "stage": "Lead Magnet"
     },
     {
       "uuid": "34477387-a831-4a41-b2fc-7cc8f8190f3f",
@@ -439,7 +469,8 @@
         "video": 5,
         "text": 13,
         "application": 1
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "142ceafa-fb21-4f58-b62f-cc65fc4409b9",
@@ -453,7 +484,8 @@
         "video": 4,
         "text": 12,
         "application": 1
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "9cdf3581-dbdf-4992-b779-c151eeb03ea4",
@@ -467,7 +499,8 @@
         "video": 4,
         "text": 11,
         "application": 1
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "9b6db873-2313-4f5e-9593-6deb638b1bda",
@@ -481,7 +514,8 @@
         "video": 4,
         "text": 15,
         "application": 1
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "4ff9ad18-ff2a-4bbd-a738-25e9b7e6c2f0",
@@ -495,7 +529,8 @@
         "video": 4,
         "text": 10,
         "application": 1
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "f546acb0-8f17-4155-8ec5-c7742f2efa2e",
@@ -509,7 +544,8 @@
         "text": 37,
         "application": 2
       },
-      "ranking": null
+      "ranking": null,
+      "stage": "Tripwire"
     },
     {
       "uuid": "3c2d93da-9f58-4635-8648-e1826ed85d1a",
@@ -523,7 +559,8 @@
         "text": 35,
         "application": 1
       },
-      "ranking": null
+      "ranking": null,
+      "stage": "Tripwire"
     },
     {
       "uuid": "a134364c-df93-4562-8e96-98fcea833c39",
@@ -537,7 +574,8 @@
         "video": 5,
         "text": 13,
         "application": 1
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "d3020f09-4f4c-402e-9f96-3517be6fa517",
@@ -551,7 +589,8 @@
         "video": 3,
         "text": 9,
         "application": 1
-      }
+      },
+      "stage": "Lead Magnet"
     },
     {
       "uuid": "9ec71bb1-3d12-491f-b185-693924b3eea5",
@@ -566,7 +605,8 @@
         "video": 6,
         "text": 15,
         "application": 1
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "9ad88c21-a969-4aff-93f0-33513788743f",
@@ -580,7 +620,8 @@
         "video": 6,
         "text": 15,
         "application": 0
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "4f4a4667-f9b1-4d73-a278-97edcd6406ef",
@@ -594,7 +635,8 @@
         "video": 4,
         "text": 11,
         "application": 1
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "dc5df182-1962-4b6c-b9f0-48317517d172",
@@ -608,7 +650,8 @@
         "video": 5,
         "text": 12,
         "application": 1
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "58986363-6f2d-4ca9-9d1f-08aa8a1e9df7",
@@ -622,7 +665,8 @@
         "text": 3,
         "application": 1
       },
-      "ranking": null
+      "ranking": null,
+      "stage": "Tripwire"
     },
     {
       "uuid": "2a2bc6a1-ee0f-471f-ba6e-7f39cd3af76b",
@@ -636,7 +680,8 @@
         "video": 5,
         "text": 15,
         "application": 1
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "b8714101-51c6-4830-9a3b-a626526301fe",
@@ -650,7 +695,8 @@
         "video": 6,
         "text": 14,
         "application": 1
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "a7f912a7-db0f-4484-8cbb-9194b85488a5",
@@ -664,7 +710,8 @@
         "video": 5,
         "text": 13,
         "application": 1
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "548ab2fa-2abd-467d-b35f-af188dfa160f",
@@ -678,7 +725,8 @@
         "video": 5,
         "text": 12,
         "application": 1
-      }
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "e094c0b5-e723-4440-90c6-abe54709b19b",
@@ -692,7 +740,8 @@
         "video": 5,
         "text": 12,
         "application": 1
-      }
+      },
+      "stage": "Tripwire"
     }
   ],
   "composition": {
