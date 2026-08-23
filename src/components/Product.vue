@@ -17,6 +17,7 @@ interface Product {
   score?: number | null
   ranking?: number | null
   composition?: Composition
+  stage?: string
 }
 
 const props = defineProps<{
@@ -68,6 +69,18 @@ const affiliateUrl = computed(() => {
   }
   const firstChunk = props.product.uuid.split('-')[0]
   return `https://lynk.id/admin/affiliate-add?search=AS-${firstChunk}`
+})
+
+const isLeadMagnet = computed(() => {
+  return props.product.stage?.toLowerCase() === 'lead magnet' || props.product.stage?.toLowerCase() === 'lead magnets'
+})
+
+const actionButtonLabel = computed(() => {
+  return isLeadMagnet.value ? 'Free' : 'Buy Now'
+})
+
+const actionButtonIcon = computed(() => {
+  return isLeadMagnet.value ? 'fas fa-download text-base' : 'fas fa-bag-shopping text-base'
 })
 
 const handleImageError = () => {
@@ -238,11 +251,11 @@ const handleImageError = () => {
           target="_blank"
           rel="noopener noreferrer"
           @click.stop
-          aria-label="Buy this product"
+          aria-label="Buy or download this product"
           class="w-full py-3 font-semibold transition-all duration-300 flex items-center justify-center gap-2 text-xs bg-zinc-50 hover:bg-teal-500 dark:bg-zinc-800 dark:hover:bg-teal-600 text-zinc-600 hover:text-white dark:text-zinc-400 dark:hover:text-white border-t border-zinc-200/50 dark:border-zinc-700/50"
         >
-          <i class="fas fa-bag-shopping text-base"></i>
-          Buy Now
+          <i :class="actionButtonIcon"></i>
+          {{ actionButtonLabel }}
         </a>
       </div>
     </div>
