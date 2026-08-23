@@ -14,6 +14,7 @@ interface Composition {
 const { products, stats, isLoading, loadError, loadProducts } = useMarketplace()
 const searchQuery = ref('')
 const sortBy = ref<'alphabet' | 'score' | 'ranking'>('alphabet')
+const selectedStage = ref<string>('all')
 const currentPage = ref(1)
 const itemsPerPage = 16
 const isMounted = ref(false)
@@ -48,6 +49,7 @@ const syncUrlParams = () => {
   const params = new URLSearchParams(window.location.search)
   const s = params.get('s') || ''
   const sort = params.get('sort') || 'alphabet'
+  const stage = params.get('stage') || 'all'
   const page = parseInt(params.get('page') || '1', 10)
 
   if (searchQuery.value !== s) {
@@ -55,6 +57,9 @@ const syncUrlParams = () => {
   }
   if (['alphabet', 'score', 'ranking'].includes(sort) && sortBy.value !== sort) {
     sortBy.value = sort as 'alphabet' | 'score' | 'ranking'
+  }
+  if (selectedStage.value !== stage) {
+    selectedStage.value = stage
   }
   if (!isNaN(page) && currentPage.value !== page) {
     currentPage.value = page
@@ -76,6 +81,12 @@ const updateUrlParams = () => {
     url.searchParams.delete('sort')
   }
 
+  if (selectedStage.value && selectedStage.value !== 'all') {
+    url.searchParams.set('stage', selectedStage.value)
+  } else {
+    url.searchParams.delete('stage')
+  }
+
   if (currentPage.value > 1) {
     url.searchParams.set('page', String(currentPage.value))
   } else {
@@ -88,7 +99,7 @@ const updateUrlParams = () => {
   }
 }
 
-watch([searchQuery, sortBy, currentPage], () => {
+watch([searchQuery, sortBy, selectedStage, currentPage], () => {
   updateUrlParams()
 })
 
@@ -105,6 +116,23 @@ const typingSpeed = ref(150)
 
 const filteredProducts = computed(() => {
   let result = [...products.value]
+
+  // Filter by stage
+  if (selectedStage.value && selectedStage.value !== 'all') {
+    result = result.filter((p) => {
+      if (!p.stage) return false
+      const pStage = p.stage.toLowerCase()
+      if (selectedStage.value === 'core') {
+        return pStage === 'core offer'
+      } else if (selectedStage.value === 'tripwire') {
+        return pStage === 'tripwire'
+      } else if (selectedStage.value === 'lead') {
+        return pStage === 'lead magnet' || pStage === 'lead magnets'
+      }
+      return true
+    })
+  }
+
   if (searchQuery.value) {
     const query = searchQuery.value.toLowerCase()
     result = result.filter((p) => p.title.toLowerCase().includes(query))
@@ -146,6 +174,12 @@ const paginatedProducts = computed(() => {
 const productCount = computed(() => products.value.length)
 
 watch(searchQuery, () => {
+  if (!isSyncing) {
+    currentPage.value = 1
+  }
+})
+
+watch(selectedStage, () => {
   if (!isSyncing) {
     currentPage.value = 1
   }
@@ -269,7 +303,7 @@ onMounted(() => {
         :class="isMounted ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'"
         style="transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s"
       >
-        <div class="relative w-full max-w-3xl mx-auto flex flex-col sm:flex-row gap-4">
+        <div class="relative w-full flex flex-col sm:flex-row gap-4">
           <div class="relative flex-1">
             <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none z-10">
               <svg
@@ -292,6 +326,15 @@ onMounted(() => {
               class="block w-full pl-12 pr-4 py-3.5 border border-zinc-200 dark:border-zinc-700/50 rounded-xl bg-white/80 dark:bg-zinc-800/50 text-base placeholder-zinc-400 focus:outline-none focus:ring-4 focus:ring-teal-500/10 focus:border-teal-500 transition-all shadow-sm shadow-zinc-800/5"
             />
           </div>
+          <select
+            v-model="selectedStage"
+            class="block w-full sm:w-48 px-4 py-3.5 border border-zinc-200 dark:border-zinc-700/50 rounded-xl bg-white/80 dark:bg-zinc-800/50 text-base focus:outline-none focus:ring-4 focus:ring-teal-500/10 focus:border-teal-500 transition-all shadow-sm shadow-zinc-800/5 cursor-pointer text-zinc-700 dark:text-zinc-300"
+          >
+            <option value="all">Semua Jenis</option>
+            <option value="core">Paket</option>
+            <option value="tripwire">Modul</option>
+            <option value="lead">Gratis</option>
+          </select>
           <select
             v-model="sortBy"
             class="block w-full sm:w-48 px-4 py-3.5 border border-zinc-200 dark:border-zinc-700/50 rounded-xl bg-white/80 dark:bg-zinc-800/50 text-base focus:outline-none focus:ring-4 focus:ring-teal-500/10 focus:border-teal-500 transition-all shadow-sm shadow-zinc-800/5 cursor-pointer text-zinc-700 dark:text-zinc-300"

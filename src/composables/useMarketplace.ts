@@ -16,6 +16,7 @@ interface ProductType {
   score?: number | null
   ranking?: number | null
   composition?: Composition
+  stage?: string
 }
 
 interface StatsType {
