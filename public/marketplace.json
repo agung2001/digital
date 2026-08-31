@@ -27,7 +27,7 @@
       "ranking": 2,
       "composition": {
         "image": 821,
-        "video": 338,
+        "video": 341,
         "text": 785,
         "application": 109
       },
@@ -404,7 +404,7 @@
       "ranking": null,
       "composition": {
         "image": 3,
-        "video": 20,
+        "video": 22,
         "text": 40,
         "application": 1
       },
@@ -420,7 +420,7 @@
       "ranking": null,
       "composition": {
         "image": 25,
-        "video": 42,
+        "video": 44,
         "text": 110,
         "application": 1
       },
@@ -496,8 +496,8 @@
       "ranking": null,
       "composition": {
         "image": 2,
-        "video": 12,
-        "text": 28,
+        "video": 13,
+        "text": 29,
         "application": 1
       },
       "stage": "Lead Magnet"
@@ -646,8 +646,8 @@
       "ranking": null,
       "composition": {
         "image": 8,
-        "video": 4,
-        "text": 15,
+        "video": 6,
+        "text": 14,
         "application": 1
       },
       "stage": "Lead Magnet"
@@ -806,7 +806,7 @@
   ],
   "composition": {
     "image": 5349,
-    "video": 1314,
+    "video": 1321,
     "text": 1962,
     "application": 304
   }
