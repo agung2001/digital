@@ -4,20 +4,6 @@ import { ref, onMounted, onUnmounted } from 'vue'
 const isScrolled = ref(false)
 const isDark = ref(false)
 
-const menuItems = [
-  {
-    name: 'About',
-    path: 'https://agungsundoro.com/about',
-    children: [
-      { name: 'Engineering', path: 'https://agungsundoro.com/engineering' },
-      { name: 'Broadcasting', path: 'https://agungsundoro.com/broadcasting' },
-    ],
-  },
-  { name: 'Products', path: 'https://digital.agungsundoro.com', external: true },
-  { name: 'Community', path: 'https://lynk.id/agungsundoro/px748k3j0nvp', external: true },
-  { name: 'Journey', path: 'https://agungsundoro.com/journey' },
-]
-
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 50
 }
@@ -30,13 +16,6 @@ const toggleTheme = () => {
   } else {
     document.documentElement.classList.remove('dark')
     localStorage.setItem('theme', 'light')
-  }
-}
-
-const scrollTo = (href: string) => {
-  const el = document.querySelector(href)
-  if (el) {
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 }
 
@@ -86,54 +65,11 @@ onUnmounted(() => {
         </a>
       </div>
 
-      <!-- Center: Navigation Links -->
-      <div class="flex-2 flex justify-center">
-        <nav class="hidden md:flex">
-          <ul class="flex items-center gap-2 text-sm font-medium text-zinc-600 dark:text-zinc-200">
-            <li v-for="item in menuItems" :key="item.name" class="relative group">
-              <a
-                v-if="item.external"
-                :href="item.path"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="relative block px-3 py-1.5 transition-all rounded-full hover:bg-zinc-50 dark:hover:bg-zinc-700/50 cursor-pointer text-zinc-600 dark:text-zinc-200 hover:text-teal-500 dark:hover:text-teal-400"
-              >
-                {{ item.name }}
-              </a>
-              <a
-                v-else
-                :href="item.path"
-                class="relative block px-3 py-1.5 transition-all rounded-full hover:bg-zinc-50 dark:hover:bg-zinc-700/50 cursor-pointer text-zinc-600 dark:text-zinc-200 hover:text-teal-500 dark:hover:text-teal-400"
-              >
-                {{ item.name }}
-              </a>
-
-              <!-- Dropdown menu (Desktop) -->
-              <div
-                v-if="item.children"
-                class="absolute left-1/2 -translate-x-1/2 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
-              >
-                <div
-                  class="bg-white dark:bg-zinc-800 rounded-xl shadow-lg ring-1 ring-zinc-900/5 dark:ring-white/10 p-1 w-32 flex flex-col gap-1 pointer-events-auto"
-                >
-                  <a
-                    v-for="child in item.children"
-                    :key="child.name"
-                    :href="child.path"
-                    class="block px-3 py-2 text-sm rounded-lg hover:text-teal-500 dark:hover:text-teal-400 hover:bg-zinc-50 dark:hover:bg-zinc-700/50 transition-colors text-center cursor-pointer"
-                  >
-                    {{ child.name }}
-                  </a>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </nav>
-
-        <!-- Mobile Name -->
-        <div class="md:hidden text-sm font-bold text-zinc-800 dark:text-zinc-100 tracking-tight">
-          Agung Sundoro
-        </div>
+      <!-- Center: Title Text -->
+      <div class="flex-2 flex justify-center text-center">
+        <span class="font-signature text-xl font-normal text-zinc-500 dark:text-zinc-400">
+          Digital Products &amp; AI Tools
+        </span>
       </div>
 
       <!-- Right: Theme Toggle -->

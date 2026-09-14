@@ -6,6 +6,9 @@ export default {
   darkMode: 'class',
   theme: {
     extend: {
+      fontFamily: {
+        signature: ['Caveat', 'cursive'],
+      },
       colors: {
         primary: colors.teal,
         danger: colors.pink,
