@@ -90,12 +90,12 @@ const handleImageError = () => {
 
 <template>
   <div
-    class="group relative flex flex-col bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm rounded-2xl overflow-hidden border-2 border-zinc-300/60 dark:border-zinc-600/60 hover:border-teal-500 hover:shadow-xl hover:shadow-teal-500/10 hover:-translate-y-2 transition-all duration-500 h-full cursor-pointer"
+    class="group relative flex flex-col bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md rounded-2xl overflow-hidden border border-white/60 dark:border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.08)] dark:shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] hover:border-teal-400/60 dark:hover:border-teal-500/50 hover:shadow-2xl hover:shadow-teal-500/15 hover:-translate-y-2 transition-all duration-500 h-full cursor-pointer"
     @click="openProduct($event)"
   >
     <div
       v-if="isFeatured"
-      class="absolute top-3 left-3 z-20 flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-500 text-white text-[10px] font-bold uppercase tracking-wider shadow-md shadow-amber-500/20"
+      class="absolute top-3 left-3 z-20 flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-500/90 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider shadow-lg shadow-amber-500/20 border border-white/20"
     >
       <i class="fas fa-star text-[9px]"></i>
       Featured
@@ -104,12 +104,12 @@ const handleImageError = () => {
     <!-- Ranking Badge -->
     <div
       v-if="product.ranking !== undefined && product.ranking !== null"
-      class="absolute top-3 right-3 z-20 flex items-center gap-1 px-2.5 py-1 rounded-full text-white text-[10px] font-bold uppercase tracking-wider shadow-md cursor-help transition-all duration-300 hover:scale-110 active:scale-95"
+      class="absolute top-3 right-3 z-20 flex items-center gap-1 px-2.5 py-1 rounded-full text-white text-[10px] font-bold uppercase tracking-wider shadow-lg cursor-help transition-all duration-300 hover:scale-110 active:scale-95 border border-white/20 backdrop-blur-md"
       :class="{
-        'bg-gradient-to-r from-amber-400 to-yellow-500 shadow-yellow-500/20': product.ranking === 1,
-        'bg-gradient-to-r from-zinc-300 to-zinc-400 shadow-zinc-400/20': product.ranking === 2,
-        'bg-gradient-to-r from-orange-400 to-amber-600 shadow-amber-600/20': product.ranking === 3,
-        'bg-zinc-700/80 backdrop-blur-sm shadow-zinc-800/20': product.ranking > 3
+        'bg-gradient-to-r from-amber-400/90 to-yellow-500/90 shadow-yellow-500/20': product.ranking === 1,
+        'bg-gradient-to-r from-zinc-300/90 to-zinc-400/90 text-zinc-900 shadow-zinc-400/20': product.ranking === 2,
+        'bg-gradient-to-r from-orange-400/90 to-amber-600/90 shadow-amber-600/20': product.ranking === 3,
+        'bg-zinc-800/80 shadow-zinc-900/30': product.ranking > 3
       }"
       @click.stop="emit('show-ranking', product.ranking)"
     >
@@ -118,21 +118,21 @@ const handleImageError = () => {
     </div>
 
     <div
-      class="absolute inset-0 bg-gradient-to-br from-teal-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl pointer-events-none z-10"
+      class="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-teal-500/10 dark:from-white/5 dark:to-teal-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none z-10"
     ></div>
 
     <div
-      class="w-full aspect-square relative overflow-hidden bg-zinc-100 dark:bg-zinc-800 flex-none"
+      class="w-full aspect-square relative overflow-hidden bg-zinc-200/40 dark:bg-zinc-800/40 flex-none"
     >
       <div
         v-if="product.coverImage && !imageError"
-        class="absolute inset-0 bg-center bg-no-repeat bg-cover blur-sm scale-125 transition-transform duration-500 group-hover:scale-150"
+        class="absolute inset-0 bg-center bg-no-repeat bg-cover blur-md scale-125 transition-transform duration-500 group-hover:scale-150 opacity-60"
         :style="{ backgroundImage: `url('${product.coverImage}')` }"
         aria-hidden="true"
       />
       <div
         v-if="product.coverImage && !imageError"
-        class="absolute inset-0 bg-black/15 transition-opacity duration-500 group-hover:bg-black/25"
+        class="absolute inset-0 bg-white/10 dark:bg-black/20 transition-opacity duration-500 group-hover:bg-transparent"
         aria-hidden="true"
       />
       <img
@@ -153,11 +153,11 @@ const handleImageError = () => {
     </div>
 
     <div
-      class="bg-white/60 dark:bg-zinc-900/60 border-t border-zinc-200/50 dark:border-zinc-700/50 flex flex-col justify-between flex-1"
+      class="bg-white/30 dark:bg-zinc-900/30 backdrop-blur-md border-t border-white/40 dark:border-white/10 flex flex-col justify-between flex-1"
     >
       <div class="p-4 flex-1 flex flex-col justify-between">
         <h3
-          class="text-zinc-900 dark:text-white text-sm leading-snug break-words tracking-tight mb-3"
+          class="text-zinc-900 dark:text-white text-sm font-medium leading-snug break-words tracking-tight mb-3"
           :title="product.title"
         >
           {{ product.title }}
@@ -169,11 +169,11 @@ const handleImageError = () => {
           class="mt-auto pt-2 group/score cursor-help select-none"
           @click.stop="emit('show-rating', product.score)"
         >
-          <div class="flex items-center justify-between text-[11px] text-zinc-500 dark:text-zinc-400 mb-1 font-medium transition-colors group-hover/score:text-yellow-600 dark:group-hover/score:text-yellow-400">
+          <div class="flex items-center justify-between text-[11px] text-zinc-600 dark:text-zinc-400 mb-1 font-medium transition-colors group-hover/score:text-yellow-600 dark:group-hover/score:text-yellow-400">
             <span>Rating Score</span>
             <span>{{ product.score }}/100</span>
           </div>
-          <div class="relative h-2 w-full bg-zinc-200 dark:bg-zinc-700/60 rounded-full overflow-visible transition-all duration-300 group-hover/score:shadow-[0_0_12px_rgba(234,179,8,0.2)]">
+          <div class="relative h-2 w-full bg-zinc-200/60 dark:bg-zinc-700/40 rounded-full overflow-visible transition-all duration-300 group-hover/score:shadow-[0_0_12px_rgba(234,179,8,0.2)]">
             <!-- Progress Line -->
             <div 
               class="absolute top-0 left-0 h-full bg-yellow-500 rounded-full transition-all duration-300"
@@ -195,11 +195,11 @@ const handleImageError = () => {
           class="mt-2 pt-2 group/comp cursor-help select-none"
           @click.stop="emit('show-composition', product.composition!)"
         >
-          <div class="flex items-center justify-between text-[11px] text-zinc-500 dark:text-zinc-400 mb-1 font-medium transition-colors group-hover/comp:text-teal-600 dark:group-hover/comp:text-teal-400">
+          <div class="flex items-center justify-between text-[11px] text-zinc-600 dark:text-zinc-400 mb-1 font-medium transition-colors group-hover/comp:text-teal-600 dark:group-hover/comp:text-teal-400">
             <span>Composition</span>
             <span>{{ compositionStats.total }} Files</span>
           </div>
-          <div class="relative h-2 w-full bg-zinc-200 dark:bg-zinc-700/60 rounded-full overflow-visible transition-all duration-300 flex group-hover/comp:shadow-[0_0_12px_rgba(20,184,166,0.2)]">
+          <div class="relative h-2 w-full bg-zinc-200/60 dark:bg-zinc-700/40 rounded-full overflow-visible transition-all duration-300 flex group-hover/comp:shadow-[0_0_12px_rgba(20,184,166,0.2)]">
             <!-- Stacked Segments -->
             <div 
               v-if="compositionStats.imagePct > 0"
@@ -234,14 +234,14 @@ const handleImageError = () => {
           </div>
         </div>
       </div>
-      <div class="flex flex-col xl:flex-row">
+      <div class="p-3 pt-0 flex flex-col xl:flex-row gap-2">
         <a
           :href="affiliateUrl"
           target="_blank"
           rel="noopener noreferrer"
           @click.stop
           aria-label="View affiliate link"
-          class="w-full py-3 font-semibold transition-all duration-300 flex items-center justify-center gap-2 text-xs bg-zinc-50 hover:bg-blue-500 dark:bg-zinc-800 dark:hover:bg-blue-600 text-zinc-600 hover:text-white dark:text-zinc-400 dark:hover:text-white border-t border-zinc-200/50 dark:border-zinc-700/50 xl:border-r border-r-zinc-200/50 dark:border-r-zinc-700/50"
+          class="w-full py-2.5 px-3 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 text-xs bg-white/40 dark:bg-white/5 hover:bg-blue-500/80 hover:text-white dark:hover:bg-blue-600/80 text-zinc-700 dark:text-zinc-200 backdrop-blur-md border border-white/60 dark:border-white/10 shadow-sm hover:shadow-md hover:shadow-blue-500/20 active:scale-98"
         >
           <i class="fas fa-link text-base"></i>
           Affiliate
@@ -252,7 +252,7 @@ const handleImageError = () => {
           rel="noopener noreferrer"
           @click.stop
           aria-label="Buy or download this product"
-          class="w-full py-3 font-semibold transition-all duration-300 flex items-center justify-center gap-2 text-xs bg-zinc-50 hover:bg-teal-500 dark:bg-zinc-800 dark:hover:bg-teal-600 text-zinc-600 hover:text-white dark:text-zinc-400 dark:hover:text-white border-t border-zinc-200/50 dark:border-zinc-700/50"
+          class="w-full py-2.5 px-3 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 text-xs bg-white/40 dark:bg-white/5 hover:bg-teal-500/80 hover:text-white dark:hover:bg-teal-600/80 text-zinc-700 dark:text-zinc-200 backdrop-blur-md border border-white/60 dark:border-white/10 shadow-sm hover:shadow-md hover:shadow-teal-500/20 active:scale-98"
         >
           <i :class="actionButtonIcon"></i>
           {{ actionButtonLabel }}
