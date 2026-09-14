@@ -203,11 +203,12 @@ onMounted(() => {
         :class="isMounted ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'"
         style="transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s"
       >
-        <div class="relative w-full flex flex-col sm:flex-row gap-4">
-          <div class="relative flex-1">
-            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none z-10">
+        <div class="relative w-full flex flex-col sm:flex-row gap-3">
+          <!-- Search Field Glass -->
+          <div class="relative flex-1 group">
+            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none z-10 text-zinc-400 group-focus-within:text-teal-500 transition-colors">
               <svg
-                class="h-5 w-5 text-zinc-400"
+                class="h-5 w-5"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
                 fill="currentColor"
@@ -223,26 +224,44 @@ onMounted(() => {
               v-model="searchQuery"
               type="text"
               placeholder="Temukan tools, prompt, atau template AI impianmu..."
-              class="block w-full pl-12 pr-4 py-3.5 border border-zinc-200 dark:border-zinc-700/50 rounded-xl bg-white/80 dark:bg-zinc-800/50 text-base placeholder-zinc-400 focus:outline-none focus:ring-4 focus:ring-teal-500/10 focus:border-teal-500 transition-all shadow-sm shadow-zinc-800/5"
+              class="block w-full pl-11 pr-4 py-3.5 rounded-2xl bg-white/70 dark:bg-zinc-800/80 backdrop-blur-md ring-1 ring-zinc-900/5 dark:ring-white/10 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-500 text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500/50 hover:bg-white/80 dark:hover:bg-zinc-800/90 transition-all duration-300"
             />
           </div>
-          <select
-            v-model="selectedStage"
-            class="block w-full sm:w-48 px-4 py-3.5 border border-zinc-200 dark:border-zinc-700/50 rounded-xl bg-white/80 dark:bg-zinc-800/50 text-base focus:outline-none focus:ring-4 focus:ring-teal-500/10 focus:border-teal-500 transition-all shadow-sm shadow-zinc-800/5 cursor-pointer text-zinc-700 dark:text-zinc-300"
-          >
-            <option value="all">Semua Jenis</option>
-            <option value="core">Paket</option>
-            <option value="tripwire">Modul</option>
-            <option value="lead">Gratis</option>
-          </select>
-          <select
-            v-model="sortBy"
-            class="block w-full sm:w-48 px-4 py-3.5 border border-zinc-200 dark:border-zinc-700/50 rounded-xl bg-white/80 dark:bg-zinc-800/50 text-base focus:outline-none focus:ring-4 focus:ring-teal-500/10 focus:border-teal-500 transition-all shadow-sm shadow-zinc-800/5 cursor-pointer text-zinc-700 dark:text-zinc-300"
-          >
-            <option value="alphabet">Alfabet (A-Z)</option>
-            <option value="score">Skor</option>
-            <option value="ranking">Popularitas</option>
-          </select>
+
+          <!-- Semua Jenis Dropdown Glass -->
+          <div class="relative sm:w-48 group">
+            <select
+              v-model="selectedStage"
+              class="appearance-none block w-full pl-4 pr-10 py-3.5 rounded-2xl bg-white/70 dark:bg-zinc-800/80 backdrop-blur-md ring-1 ring-zinc-900/5 dark:ring-white/10 text-zinc-800 dark:text-zinc-200 text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500/50 hover:bg-white/80 dark:hover:bg-zinc-800/90 transition-all duration-300 cursor-pointer"
+            >
+              <option value="all" class="bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100">Semua Jenis</option>
+              <option value="core" class="bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100">Paket</option>
+              <option value="tripwire" class="bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100">Modul</option>
+              <option value="lead" class="bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100">Gratis</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3.5 text-zinc-400 group-focus-within:text-teal-500 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-colors">
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Alphabet Dropdown Glass -->
+          <div class="relative sm:w-48 group">
+            <select
+              v-model="sortBy"
+              class="appearance-none block w-full pl-4 pr-10 py-3.5 rounded-2xl bg-white/70 dark:bg-zinc-800/80 backdrop-blur-md ring-1 ring-zinc-900/5 dark:ring-white/10 text-zinc-800 dark:text-zinc-200 text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500/50 hover:bg-white/80 dark:hover:bg-zinc-800/90 transition-all duration-300 cursor-pointer"
+            >
+              <option value="alphabet" class="bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100">Alfabet (A-Z)</option>
+              <option value="score" class="bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100">Skor</option>
+              <option value="ranking" class="bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100">Popularitas</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3.5 text-zinc-400 group-focus-within:text-teal-500 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-colors">
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          </div>
         </div>
       </div>
 

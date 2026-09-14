@@ -80,18 +80,6 @@ onMounted(() => {
         :is-mounted="isMounted"
       />
 
-      <!-- Section Divider -->
-      <div class="mx-auto max-w-6xl px-4 pt-2 pb-6 sm:pt-4 sm:pb-8">
-        <div class="relative flex items-center justify-center">
-          <div class="w-full border-t border-zinc-200/80 dark:border-zinc-800/80"></div>
-          <div
-            class="absolute inline-flex items-center px-4 py-1.5 rounded-full backdrop-blur-sm border border-zinc-200/80 dark:border-zinc-800 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400"
-          >
-            Katalog Produk
-          </div>
-        </div>
-      </div>
-
       <ProductsSection
         :is-mounted="isMounted"
         @update:product-count="productCount = $event"
