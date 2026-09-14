@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from 'vue'
 import Product from './Product.vue'
-import AnimatedNumber from './AnimatedNumber.vue'
 import { useMarketplace } from '@/composables/useMarketplace'
 
 interface Composition {
@@ -11,13 +10,21 @@ interface Composition {
   application: number
 }
 
+const props = defineProps<{
+  isMounted: boolean
+}>()
+
+const emit = defineEmits<{
+  (e: 'update:productCount', count: number): void
+  (e: 'update:stats', stats: { image: number; video: number; text: number; application: number }): void
+}>()
+
 const { products, stats, isLoading, loadError, loadProducts } = useMarketplace()
 const searchQuery = ref('')
 const sortBy = ref<'alphabet' | 'score' | 'ranking'>('alphabet')
 const selectedStage = ref<string>('all')
 const currentPage = ref(1)
 const itemsPerPage = 16
-const isMounted = ref(false)
 
 const isRatingModalOpen = ref(false)
 const isRankingModalOpen = ref(false)
@@ -43,7 +50,6 @@ const openCompositionModal = (composition: Composition) => {
 
 let isSyncing = false
 
-// Sync URL search params
 const syncUrlParams = () => {
   isSyncing = true
   const params = new URLSearchParams(window.location.search)
@@ -103,21 +109,9 @@ watch([searchQuery, sortBy, selectedStage, currentPage], () => {
   updateUrlParams()
 })
 
-// Listen to popstate event (back/forward browser buttons)
-onMounted(() => {
-  window.addEventListener('popstate', syncUrlParams)
-})
-
-const roles = ['Software Engineer.', 'Digital Product Maker.', 'Digital Creator.', 'AI Enthusiast.']
-const currentRoleIndex = ref(0)
-const currentText = ref('')
-const isDeleting = ref(false)
-const typingSpeed = ref(150)
-
 const filteredProducts = computed(() => {
   let result = [...products.value]
 
-  // Filter by stage
   if (selectedStage.value && selectedStage.value !== 'all') {
     result = result.filter((p) => {
       if (!p.stage) return false
@@ -137,14 +131,12 @@ const filteredProducts = computed(() => {
     const query = searchQuery.value.toLowerCase()
     result = result.filter((p) => p.title.toLowerCase().includes(query))
   }
-  // Sort featured products to the top, then by chosen sort mode
+
   result.sort((a, b) => {
-    // 1. Featured priority
     const aFeat = a.featured ? 1 : 0
     const bFeat = b.featured ? 1 : 0
     if (bFeat !== aFeat) return bFeat - aFeat
 
-    // 2. Sort mode
     if (sortBy.value === 'score') {
       const aScore = a.score !== null && a.score !== undefined ? a.score : -1
       const bScore = b.score !== null && b.score !== undefined ? b.score : -1
@@ -154,7 +146,6 @@ const filteredProducts = computed(() => {
       const bRank = b.ranking !== null && b.ranking !== undefined ? b.ranking : 999999
       return aRank - bRank
     } else {
-      // Default: Alphabetical (A-Z)
       return a.title.localeCompare(b.title)
     }
   })
@@ -169,9 +160,21 @@ const paginatedProducts = computed(() => {
   return filteredProducts.value.slice(start, end)
 })
 
-// Removed hardcoded featured titles list; now dynamic via marketplace.json.
+watch(
+  products,
+  (newVal) => {
+    emit('update:productCount', newVal.length)
+  },
+  { immediate: true },
+)
 
-const productCount = computed(() => products.value.length)
+watch(
+  stats,
+  (newVal) => {
+    emit('update:stats', newVal)
+  },
+  { immediate: true, deep: true },
+)
 
 watch(searchQuery, () => {
   if (!isSyncing) {
@@ -185,119 +188,16 @@ watch(selectedStage, () => {
   }
 })
 
-const typeText = () => {
-  const fullText = roles[currentRoleIndex.value]
-
-  if (isDeleting.value) {
-    currentText.value = fullText.substring(0, currentText.value.length - 1)
-    typingSpeed.value = 50
-  } else {
-    currentText.value = fullText.substring(0, currentText.value.length + 1)
-    typingSpeed.value = 100
-  }
-
-  if (!isDeleting.value && currentText.value === fullText) {
-    typingSpeed.value = 2000
-    isDeleting.value = true
-  } else if (isDeleting.value && currentText.value === '') {
-    isDeleting.value = false
-    currentRoleIndex.value = (currentRoleIndex.value + 1) % roles.length
-    typingSpeed.value = 500
-  }
-
-  setTimeout(typeText, typingSpeed.value)
-}
-
 onMounted(() => {
   syncUrlParams()
+  window.addEventListener('popstate', syncUrlParams)
   loadProducts()
-  setTimeout(() => {
-    isMounted.value = true
-  }, 100)
-  setTimeout(typeText, 800)
 })
 </script>
 
 <template>
-  <section id="products" class="relative min-h-screen pt-28 pb-12">
+  <section id="products" class="relative pb-16">
     <div class="mx-auto max-w-6xl px-4">
-      <div
-        class="text-center mt-6 mb-12"
-        :class="isMounted ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'"
-        style="transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1)"
-      >
-        <div
-          class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal-50 dark:bg-teal-500/10 text-teal-600 dark:text-teal-400 text-sm font-medium mb-6 ring-1 ring-inset ring-teal-500/20"
-        >
-          <span class="relative flex h-2 w-2">
-            <span
-              class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"
-            ></span>
-            <span class="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
-          </span>
-          Digital Products & AI Tools
-        </div>
-
-        <h1
-          class="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl lg:text-6xl mb-4 leading-tight"
-        >
-          Agung Sundoro
-          <br />
-          <span
-            class="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 via-cyan-500 to-blue-500 animate-gradient-shift"
-            >{{ currentText }}</span
-          >
-          <span
-            class="inline-block w-[3px] h-10 sm:h-12 lg:h-14 bg-teal-500 ml-1 animate-pulse align-middle"
-          ></span>
-        </h1>
-
-        <p class="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-2xl mx-auto mb-8">
-          Koleksi produk digital premium untuk membantu bisnis Anda berkembang dengan teknologi AI.
-          Dapatkan prompt, template, software, hingga AI tools terbaik, dan gabung
-          <a
-            href="https://lynk.id/agungsundoro/px748k3j0nvp"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-teal-600 dark:text-teal-400 hover:text-teal-500 dark:hover:text-teal-300 font-semibold underline decoration-2 decoration-teal-500/30 hover:decoration-teal-500 transition-all inline-flex items-center gap-1"
-          >
-            komunitas belajar kami untuk diajarin sampai bisa <i class="fas fa-external-link-alt text-xs"></i></a>.
-        </p>
-
-        <div class="grid grid-cols-2 sm:grid-cols-5 gap-4 max-w-2xl mx-auto bg-white/40 dark:bg-zinc-800/40 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 rounded-2xl p-4 shadow-sm">
-          <div class="flex flex-col items-center justify-center p-2 border-r border-zinc-200/50 dark:border-zinc-700/50 col-span-2 sm:col-span-1 border-b sm:border-b-0 pb-4 sm:pb-2">
-            <span class="text-2xl sm:text-3xl font-extrabold text-teal-600 dark:text-teal-400">
-              <AnimatedNumber :value="productCount" />
-            </span>
-            <span class="text-[10px] sm:text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mt-1">Produk</span>
-          </div>
-          <div class="flex flex-col items-center justify-center p-2 border-r border-zinc-200/50 dark:border-zinc-700/50">
-            <span class="text-2xl sm:text-3xl font-extrabold text-cyan-600 dark:text-cyan-400">
-              <AnimatedNumber :value="stats.text" />
-            </span>
-            <span class="text-[10px] sm:text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mt-1">Materi</span>
-          </div>
-          <div class="flex flex-col items-center justify-center p-2 border-r border-zinc-200/50 dark:border-zinc-700/50">
-            <span class="text-2xl sm:text-3xl font-extrabold text-blue-600 dark:text-blue-400">
-              <AnimatedNumber :value="stats.image" />
-            </span>
-            <span class="text-[10px] sm:text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mt-1">Gambar</span>
-          </div>
-          <div class="flex flex-col items-center justify-center p-2 border-r border-zinc-200/50 dark:border-zinc-700/50">
-            <span class="text-2xl sm:text-3xl font-extrabold text-indigo-600 dark:text-indigo-400">
-              <AnimatedNumber :value="stats.video" />
-            </span>
-            <span class="text-[10px] sm:text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mt-1">Video</span>
-          </div>
-          <div class="flex flex-col items-center justify-center p-2">
-            <span class="text-2xl sm:text-3xl font-extrabold text-violet-600 dark:text-violet-400">
-              <AnimatedNumber :value="stats.application" />
-            </span>
-            <span class="text-[10px] sm:text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mt-1">Aplikasi</span>
-          </div>
-        </div>
-      </div>
-
       <div
         class="mb-12"
         :class="isMounted ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'"
@@ -479,6 +379,7 @@ onMounted(() => {
       </div>
     </div>
   </section>
+
   <!-- Rating System Explanation Modal -->
   <Teleport to="body">
     <Transition name="fade">
@@ -491,7 +392,6 @@ onMounted(() => {
           class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl max-w-md w-full p-6 shadow-2xl relative overflow-hidden"
           @click.stop
         >
-          <!-- Decorative Top Grid -->
           <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-500"></div>
 
           <div class="flex items-start justify-between mb-4">
@@ -544,7 +444,6 @@ onMounted(() => {
           class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl max-w-md w-full p-6 shadow-2xl relative overflow-hidden"
           @click.stop
         >
-          <!-- Decorative Top Grid -->
           <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-teal-400 via-emerald-500 to-teal-500"></div>
 
           <div class="flex items-start justify-between mb-4">
@@ -597,7 +496,6 @@ onMounted(() => {
           class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl max-w-md w-full p-6 shadow-2xl relative overflow-hidden"
           @click.stop
         >
-          <!-- Decorative Top Grid -->
           <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-teal-400 via-emerald-500 to-teal-500"></div>
 
           <div class="flex items-start justify-between mb-4">
@@ -622,7 +520,6 @@ onMounted(() => {
             </p>
 
             <div class="space-y-3">
-              <!-- Image Item -->
               <div class="flex items-center justify-between p-3 rounded-xl bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/30">
                 <div class="flex items-center gap-3">
                   <span class="text-xl">🖼️</span>
@@ -631,7 +528,6 @@ onMounted(() => {
                 <span class="text-sm font-bold text-emerald-600 dark:text-emerald-400">{{ selectedProductComposition.image }} file</span>
               </div>
 
-              <!-- Video Item -->
               <div class="flex items-center justify-between p-3 rounded-xl bg-blue-50/50 dark:bg-blue-950/20 border border-blue-100 dark:border-blue-900/30">
                 <div class="flex items-center gap-3">
                   <span class="text-xl">🎥</span>
@@ -640,7 +536,6 @@ onMounted(() => {
                 <span class="text-sm font-bold text-blue-600 dark:text-blue-400">{{ selectedProductComposition.video }} file</span>
               </div>
 
-              <!-- Text Item -->
               <div class="flex items-center justify-between p-3 rounded-xl bg-amber-50/50 dark:bg-amber-950/20 border border-amber-100 dark:border-amber-900/30">
                 <div class="flex items-center gap-3">
                   <span class="text-xl">📝</span>
@@ -649,7 +544,6 @@ onMounted(() => {
                 <span class="text-sm font-bold text-amber-600 dark:text-amber-400">{{ selectedProductComposition.text }} file</span>
               </div>
 
-              <!-- Application Item -->
               <div class="flex items-center justify-between p-3 rounded-xl bg-purple-50/50 dark:bg-purple-950/20 border border-purple-100 dark:border-purple-900/30">
                 <div class="flex items-center gap-3">
                   <span class="text-xl">⚙️</span>

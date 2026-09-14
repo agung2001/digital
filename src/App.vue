@@ -1,11 +1,55 @@
 <script setup lang="ts">
-import { defineAsyncComponent } from 'vue'
+import { ref, onMounted } from 'vue'
 import FloatingNav from '@/components/FloatingNav.vue'
 import Footer from '@/components/Footer.vue'
 import SectionGrid from '@/components/SectionGrid.vue'
-import ParticleBackground from '@/components/ParticleBackground.vue'
+import HeroSection from '@/components/HeroSection.vue'
+import ProductsSection from '@/components/ProductsSection.vue'
 
-const Products = defineAsyncComponent(() => import('@/components/Products.vue'))
+const isMounted = ref(false)
+const productCount = ref(0)
+const stats = ref({
+  image: 0,
+  video: 0,
+  text: 0,
+  application: 0,
+})
+
+const roles = ['Software Engineer.', 'Digital Product Maker.', 'Digital Creator.', 'AI Enthusiast.']
+const currentRoleIndex = ref(0)
+const currentText = ref('')
+const isDeleting = ref(false)
+const typingSpeed = ref(150)
+
+const typeText = () => {
+  const fullText = roles[currentRoleIndex.value]
+
+  if (isDeleting.value) {
+    currentText.value = fullText.substring(0, currentText.value.length - 1)
+    typingSpeed.value = 50
+  } else {
+    currentText.value = fullText.substring(0, currentText.value.length + 1)
+    typingSpeed.value = 100
+  }
+
+  if (!isDeleting.value && currentText.value === fullText) {
+    typingSpeed.value = 2000
+    isDeleting.value = true
+  } else if (isDeleting.value && currentText.value === '') {
+    isDeleting.value = false
+    currentRoleIndex.value = (currentRoleIndex.value + 1) % roles.length
+    typingSpeed.value = 500
+  }
+
+  setTimeout(typeText, typingSpeed.value)
+}
+
+onMounted(() => {
+  setTimeout(() => {
+    isMounted.value = true
+  }, 100)
+  setTimeout(typeText, 800)
+})
 </script>
 
 <template>
@@ -13,7 +57,6 @@ const Products = defineAsyncComponent(() => import('@/components/Products.vue'))
     class="relative min-h-screen bg-zinc-50 transition-colors duration-500 selection:bg-teal-100 selection:text-teal-900 dark:bg-black dark:selection:bg-teal-500/30 dark:selection:text-teal-200"
   >
     <SectionGrid />
-    <ParticleBackground />
 
     <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
       <div
@@ -29,11 +72,35 @@ const Products = defineAsyncComponent(() => import('@/components/Products.vue'))
 
     <FloatingNav />
 
-    <div class="relative z-10">
-      <Products />
-      <div class="px-12">
-        <Footer />
+    <main class="relative z-10">
+      <HeroSection
+        :current-text="currentText"
+        :product-count="productCount"
+        :stats="stats"
+        :is-mounted="isMounted"
+      />
+
+      <!-- Section Divider -->
+      <div class="mx-auto max-w-6xl px-4 pt-2 pb-6 sm:pt-4 sm:pb-8">
+        <div class="relative flex items-center justify-center">
+          <div class="w-full border-t border-zinc-200/80 dark:border-zinc-800/80"></div>
+          <div
+            class="absolute inline-flex items-center px-4 py-1.5 rounded-full backdrop-blur-sm border border-zinc-200/80 dark:border-zinc-800 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400"
+          >
+            Katalog Produk
+          </div>
+        </div>
       </div>
+
+      <ProductsSection
+        :is-mounted="isMounted"
+        @update:product-count="productCount = $event"
+        @update:stats="stats = $event"
+      />
+    </main>
+
+    <div class="relative z-10 px-12">
+      <Footer />
     </div>
   </div>
 </template>
