@@ -95,7 +95,7 @@ const handleImageError = () => {
   >
     <div
       v-if="isFeatured"
-      class="absolute top-3 left-3 z-20 flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-500/90 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider shadow-lg shadow-amber-500/20 border border-white/20"
+      class="absolute top-3 left-3 z-20 flex items-center gap-1 px-2.5 py-1 rounded-full bg-teal-500/90 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider shadow-lg shadow-teal-500/20 border border-white/20"
     >
       <i class="fas fa-star text-[9px]"></i>
       Featured
@@ -106,9 +106,9 @@ const handleImageError = () => {
       v-if="product.ranking !== undefined && product.ranking !== null"
       class="absolute top-3 right-3 z-20 flex items-center gap-1 px-2.5 py-1 rounded-full text-white text-[10px] font-bold uppercase tracking-wider shadow-lg cursor-help transition-all duration-300 hover:scale-110 active:scale-95 border border-white/20 backdrop-blur-md"
       :class="{
-        'bg-gradient-to-r from-amber-400/90 to-yellow-500/90 shadow-yellow-500/20': product.ranking === 1,
-        'bg-gradient-to-r from-zinc-300/90 to-zinc-400/90 text-zinc-900 shadow-zinc-400/20': product.ranking === 2,
-        'bg-gradient-to-r from-orange-400/90 to-amber-600/90 shadow-amber-600/20': product.ranking === 3,
+        'bg-gradient-to-r from-teal-400/90 to-cyan-500/90 shadow-teal-500/20': product.ranking === 1,
+        'bg-gradient-to-r from-cyan-400/90 to-blue-500/90 shadow-cyan-500/20': product.ranking === 2,
+        'bg-gradient-to-r from-blue-400/90 to-indigo-500/90 shadow-blue-500/20': product.ranking === 3,
         'bg-zinc-800/80 shadow-zinc-900/30': product.ranking > 3
       }"
       @click.stop="emit('show-ranking', product.ranking)"
@@ -118,7 +118,7 @@ const handleImageError = () => {
     </div>
 
     <div
-      class="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-teal-500/10 dark:from-white/5 dark:to-teal-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none z-10"
+      class="absolute inset-0 bg-gradient-to-br from-teal-500/10 via-cyan-500/5 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none z-10"
     ></div>
 
     <div
@@ -169,22 +169,22 @@ const handleImageError = () => {
           class="mt-auto pt-2 group/score cursor-help select-none"
           @click.stop="emit('show-rating', product.score)"
         >
-          <div class="flex items-center justify-between text-[11px] text-zinc-600 dark:text-zinc-400 mb-1 font-medium transition-colors group-hover/score:text-yellow-600 dark:group-hover/score:text-yellow-400">
+          <div class="flex items-center justify-between text-[11px] text-zinc-600 dark:text-zinc-400 mb-1 font-medium transition-colors group-hover/score:text-cyan-600 dark:group-hover/score:text-cyan-400">
             <span>Rating Score</span>
             <span>{{ product.score }}/100</span>
           </div>
-          <div class="relative h-2 w-full bg-zinc-200/60 dark:bg-zinc-700/40 rounded-full overflow-visible transition-all duration-300 group-hover/score:shadow-[0_0_12px_rgba(234,179,8,0.2)]">
+          <div class="relative h-2 w-full bg-zinc-200/60 dark:bg-zinc-700/40 rounded-full overflow-visible transition-all duration-300 group-hover/score:shadow-[0_0_12px_rgba(6,182,212,0.25)]">
             <!-- Progress Line -->
             <div 
-              class="absolute top-0 left-0 h-full bg-yellow-500 rounded-full transition-all duration-300"
+              class="absolute top-0 left-0 h-full bg-gradient-to-r from-teal-500 to-cyan-400 rounded-full transition-all duration-300"
               :style="{ width: `${product.score}%` }"
             ></div>
-            <!-- Star Emoji Indicator -->
+            <!-- Sparkle Emoji Indicator -->
             <div 
-              class="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 text-xs transition-transform duration-300 group-hover/score:scale-130 group-hover/score:-translate-y-[65%] animate-wiggle"
+              class="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 text-sm z-10 drop-shadow select-none pointer-events-none transition-transform duration-300 group-hover/score:scale-130 group-hover/score:-translate-y-[65%] animate-wiggle"
               :style="{ left: `${product.score}%` }"
             >
-              ⭐
+              💎
             </div>
           </div>
         </div>
@@ -200,37 +200,31 @@ const handleImageError = () => {
             <span>{{ compositionStats.total }} Files</span>
           </div>
           <div class="relative h-2 w-full bg-zinc-200/60 dark:bg-zinc-700/40 rounded-full overflow-visible transition-all duration-300 flex group-hover/comp:shadow-[0_0_12px_rgba(20,184,166,0.2)]">
-            <!-- Stacked Segments -->
+            <!-- Stacked Segments aligned with Hero stat palette (cyan = text/materi, blue = image/gambar, indigo = video, violet = application) -->
+            <div 
+              v-if="compositionStats.textPct > 0"
+              class="h-full bg-cyan-500 first:rounded-l-full last:rounded-r-full transition-all duration-300"
+              :style="{ width: `${compositionStats.textPct}%` }"
+              title="Text"
+            ></div>
             <div 
               v-if="compositionStats.imagePct > 0"
-              class="h-full bg-emerald-500 first:rounded-l-full last:rounded-r-full transition-all duration-300"
+              class="h-full bg-blue-500 first:rounded-l-full last:rounded-r-full transition-all duration-300"
               :style="{ width: `${compositionStats.imagePct}%` }"
               title="Image"
             ></div>
             <div 
               v-if="compositionStats.videoPct > 0"
-              class="h-full bg-blue-500 first:rounded-l-full last:rounded-r-full transition-all duration-300"
+              class="h-full bg-indigo-500 first:rounded-l-full last:rounded-r-full transition-all duration-300"
               :style="{ width: `${compositionStats.videoPct}%` }"
               title="Video"
             ></div>
             <div 
-              v-if="compositionStats.textPct > 0"
-              class="h-full bg-amber-500 first:rounded-l-full last:rounded-r-full transition-all duration-300"
-              :style="{ width: `${compositionStats.textPct}%` }"
-              title="Text"
-            ></div>
-            <div 
               v-if="compositionStats.appPct > 0"
-              class="h-full bg-purple-500 first:rounded-l-full last:rounded-r-full transition-all duration-300"
+              class="h-full bg-violet-500 first:rounded-l-full last:rounded-r-full transition-all duration-300"
               :style="{ width: `${compositionStats.appPct}%` }"
               title="Application"
             ></div>
-            <!-- Folder Emoji Indicator (centered on the bar) -->
-            <div 
-              class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 text-xs transition-all duration-300 group-hover/comp:scale-130 group-hover/comp:-translate-y-[65%] animate-wiggle-comp"
-            >
-              📁
-            </div>
           </div>
         </div>
       </div>
@@ -241,7 +235,7 @@ const handleImageError = () => {
           rel="noopener noreferrer"
           @click.stop
           aria-label="View affiliate link"
-          class="w-full py-2.5 px-3 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 text-xs bg-white/40 dark:bg-white/5 hover:bg-blue-500/80 hover:text-white dark:hover:bg-blue-600/80 text-zinc-700 dark:text-zinc-200 backdrop-blur-md border border-white/60 dark:border-white/10 shadow-sm hover:shadow-md hover:shadow-blue-500/20 active:scale-98"
+          class="w-full py-2.5 px-3 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 text-xs bg-white/50 dark:bg-zinc-800/40 hover:bg-cyan-600 hover:text-white dark:hover:bg-cyan-500 dark:hover:text-zinc-950 text-zinc-700 dark:text-zinc-200 backdrop-blur-md border border-zinc-200/80 dark:border-zinc-700/50 hover:border-cyan-500/50 dark:hover:border-cyan-400/50 shadow-sm hover:shadow-md hover:shadow-cyan-500/20 active:scale-98"
         >
           <i class="fas fa-link text-base"></i>
           Affiliate
@@ -252,7 +246,7 @@ const handleImageError = () => {
           rel="noopener noreferrer"
           @click.stop
           aria-label="Buy or download this product"
-          class="w-full py-2.5 px-3 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 text-xs bg-white/40 dark:bg-white/5 hover:bg-teal-500/80 hover:text-white dark:hover:bg-teal-600/80 text-zinc-700 dark:text-zinc-200 backdrop-blur-md border border-white/60 dark:border-white/10 shadow-sm hover:shadow-md hover:shadow-teal-500/20 active:scale-98"
+          class="w-full py-2.5 px-3 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 text-xs bg-teal-500/10 dark:bg-teal-500/15 hover:bg-teal-500 hover:text-white dark:hover:bg-teal-400 dark:hover:text-zinc-950 text-teal-700 dark:text-teal-300 font-semibold backdrop-blur-md border border-teal-500/20 dark:border-teal-400/20 shadow-sm hover:shadow-md hover:shadow-teal-500/25 active:scale-98"
         >
           <i :class="actionButtonIcon"></i>
           {{ actionButtonLabel }}
@@ -269,17 +263,7 @@ const handleImageError = () => {
   75% { transform: translateY(-65%) translateX(-50%) rotate(8deg) scale(1.3); }
 }
 
-@keyframes wiggle-comp {
-  0%, 100% { transform: translateY(-50%) translateX(-50%) rotate(0deg); }
-  25% { transform: translateY(-65%) translateX(-50%) rotate(-8deg) scale(1.3); }
-  75% { transform: translateY(-65%) translateX(-50%) rotate(8deg) scale(1.3); }
-}
-
 .group\/score:hover .animate-wiggle {
   animation: wiggle 0.6s ease-in-out infinite alternate;
-}
-
-.group\/comp:hover .animate-wiggle-comp {
-  animation: wiggle-comp 0.6s ease-in-out infinite alternate;
 }
 </style>

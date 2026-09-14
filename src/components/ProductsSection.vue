@@ -199,7 +199,7 @@ onMounted(() => {
   <section id="products" class="relative pb-16">
     <div class="mx-auto max-w-6xl px-4">
       <div
-        class="mb-12"
+        class="mb-6"
         :class="isMounted ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'"
         style="transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s"
       >
@@ -411,11 +411,11 @@ onMounted(() => {
           class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl max-w-md w-full p-6 shadow-2xl relative overflow-hidden"
           @click.stop
         >
-          <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-500"></div>
+          <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-teal-400 via-cyan-500 to-blue-500"></div>
 
           <div class="flex items-start justify-between mb-4">
             <div class="flex items-center gap-3">
-              <span class="text-3xl select-none">⭐</span>
+              <span class="text-3xl select-none">💎</span>
               <div>
                 <h4 class="text-lg font-bold text-zinc-900 dark:text-white">Rating Score: {{ selectedProductScore }}/100</h4>
                 <p class="text-xs text-zinc-500 dark:text-zinc-400">Sistem Penilaian Otomatis</p>
@@ -441,7 +441,7 @@ onMounted(() => {
           <div class="mt-6 flex justify-end">
             <button 
               @click="isRatingModalOpen = false" 
-              class="px-5 py-2 rounded-xl text-xs font-bold bg-yellow-500 hover:bg-yellow-600 text-zinc-950 transition-colors shadow-lg shadow-yellow-500/20 cursor-pointer"
+              class="px-5 py-2 rounded-xl text-xs font-bold bg-teal-500 hover:bg-teal-600 text-white transition-colors shadow-lg shadow-teal-500/20 cursor-pointer"
             >
               Mengerti
             </button>
@@ -539,36 +539,36 @@ onMounted(() => {
             </p>
 
             <div class="space-y-3">
-              <div class="flex items-center justify-between p-3 rounded-xl bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/30">
-                <div class="flex items-center gap-3">
-                  <span class="text-xl">🖼️</span>
-                  <span class="text-sm font-semibold text-zinc-800 dark:text-zinc-200">Gambar / Grafis</span>
-                </div>
-                <span class="text-sm font-bold text-emerald-600 dark:text-emerald-400">{{ selectedProductComposition.image }} file</span>
-              </div>
-
-              <div class="flex items-center justify-between p-3 rounded-xl bg-blue-50/50 dark:bg-blue-950/20 border border-blue-100 dark:border-blue-900/30">
-                <div class="flex items-center gap-3">
-                  <span class="text-xl">🎥</span>
-                  <span class="text-sm font-semibold text-zinc-800 dark:text-zinc-200">Video / Animasi</span>
-                </div>
-                <span class="text-sm font-bold text-blue-600 dark:text-blue-400">{{ selectedProductComposition.video }} file</span>
-              </div>
-
-              <div class="flex items-center justify-between p-3 rounded-xl bg-amber-50/50 dark:bg-amber-950/20 border border-amber-100 dark:border-amber-900/30">
+              <div class="flex items-center justify-between p-3 rounded-xl bg-cyan-50/50 dark:bg-cyan-950/20 border border-cyan-100 dark:border-cyan-900/30">
                 <div class="flex items-center gap-3">
                   <span class="text-xl">📝</span>
                   <span class="text-sm font-semibold text-zinc-800 dark:text-zinc-200">Teks / Dokumen</span>
                 </div>
-                <span class="text-sm font-bold text-amber-600 dark:text-amber-400">{{ selectedProductComposition.text }} file</span>
+                <span class="text-sm font-bold text-cyan-600 dark:text-cyan-400">{{ selectedProductComposition.text }} file</span>
               </div>
 
-              <div class="flex items-center justify-between p-3 rounded-xl bg-purple-50/50 dark:bg-purple-950/20 border border-purple-100 dark:border-purple-900/30">
+              <div class="flex items-center justify-between p-3 rounded-xl bg-blue-50/50 dark:bg-blue-950/20 border border-blue-100 dark:border-blue-900/30">
+                <div class="flex items-center gap-3">
+                  <span class="text-xl">🖼️</span>
+                  <span class="text-sm font-semibold text-zinc-800 dark:text-zinc-200">Gambar / Grafis</span>
+                </div>
+                <span class="text-sm font-bold text-blue-600 dark:text-blue-400">{{ selectedProductComposition.image }} file</span>
+              </div>
+
+              <div class="flex items-center justify-between p-3 rounded-xl bg-indigo-50/50 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/30">
+                <div class="flex items-center gap-3">
+                  <span class="text-xl">🎥</span>
+                  <span class="text-sm font-semibold text-zinc-800 dark:text-zinc-200">Video / Animasi</span>
+                </div>
+                <span class="text-sm font-bold text-indigo-600 dark:text-indigo-400">{{ selectedProductComposition.video }} file</span>
+              </div>
+
+              <div class="flex items-center justify-between p-3 rounded-xl bg-violet-50/50 dark:bg-violet-950/20 border border-violet-100 dark:border-violet-900/30">
                 <div class="flex items-center gap-3">
                   <span class="text-xl">⚙️</span>
                   <span class="text-sm font-semibold text-zinc-800 dark:text-zinc-200">Aplikasi / Lainnya</span>
                 </div>
-                <span class="text-sm font-bold text-purple-600 dark:text-purple-400">{{ selectedProductComposition.application }} file</span>
+                <span class="text-sm font-bold text-violet-600 dark:text-violet-400">{{ selectedProductComposition.application }} file</span>
               </div>
             </div>
           </div>

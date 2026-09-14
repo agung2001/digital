@@ -15,7 +15,7 @@ defineProps<{
 </script>
 
 <template>
-  <section id="hero" class="relative pt-28 pb-4 sm:pb-6">
+  <section id="hero" class="relative pt-28 pb-10 sm:pb-14">
     <div class="mx-auto max-w-6xl px-4">
       <div
         class="text-center mt-6"
