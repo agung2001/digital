@@ -14,6 +14,10 @@ export default defineConfig({
     port: 2012,
     host: '0.0.0.0',
     allowedHosts: ['digital.agungsundoro.com'],
+    hmr: {
+      host: 'digital.agungsundoro.com',
+      clientPort: 443,
+    },
   },
   preview: {
     port: 1012,
