@@ -2,99 +2,6 @@
   "notification": "",
   "products": [
     {
-      "uuid": "32cf5c3b-8464-4b80-a98d-9377ea63dde0",
-      "title": "Kreasi AI : Cuan Gila-Gilaan dari Konten, Iklan, dan Avatar AI!",
-      "url": "https://lynk.id/agungsundoro/yq3dooyw9816",
-      "coverImage": "https://cfcdn.my.id/products/13-08-2026/1786579041330_6886309.webp",
-      "featured": true,
-      "score": 83,
-      "ranking": 1,
-      "composition": {
-        "image": 3921,
-        "video": 287,
-        "text": 400,
-        "application": 1763
-      },
-      "stage": "Core Offer"
-    },
-    {
-      "uuid": "d0fb7bf4-52fc-4099-be3c-da74f5104827",
-      "title": "Kreator Viral : Blueprint 10 Juta Pertama dalam 30 Hari dari Produk Digital di Bantu AI 🚀💰",
-      "url": "https://lynk.id/agungsundoro/481y8x5m02jv",
-      "coverImage": "https://cdn.lynkid.my.id/products/10-05-2026/1778419398211_5362452.webp",
-      "featured": true,
-      "score": null,
-      "ranking": 2,
-      "composition": {
-        "image": 844,
-        "video": 346,
-        "text": 699,
-        "application": 107
-      },
-      "stage": "Core Offer"
-    },
-    {
-      "uuid": "114cab8c-9494-482a-8c38-c2fc56c999c0",
-      "title": "Sinema AI : Kursus Pembuatan Animasi, Iklan, dan Konten Video!",
-      "url": "https://lynk.id/agungsundoro/35mxg058em83",
-      "coverImage": "https://cdn.lynkid.my.id/products/26-10-2025/1761413522169_8187436.webp",
-      "featured": true,
-      "score": null,
-      "ranking": 3,
-      "composition": {
-        "image": 565,
-        "video": 630,
-        "text": 155,
-        "application": 85
-      },
-      "stage": "Core Offer"
-    },
-    {
-      "uuid": "604f1435-ac1b-462c-87b2-2633b549702a",
-      "title": "Sistem Otak Kedua dengan Obsidian Note 🧠",
-      "url": "http://lynk.id/agungsundoro/v9z1vnkonozn",
-      "coverImage": "https://cdn.lynkid.my.id/products/07-07-2026/1783399231815_7424274.webp",
-      "score": 95,
-      "ranking": 4,
-      "composition": {
-        "image": 0,
-        "video": 10,
-        "text": 102,
-        "application": 1
-      },
-      "stage": "Tripwire"
-    },
-    {
-      "uuid": "b4ceed93-f4ff-4abd-9093-5df80e8a1bd2",
-      "title": "Creative Auditor : Masterclass Audit Iklan Anti Boncos 🏛️💸",
-      "url": "http://lynk.id/agungsundoro/qv2w2xmjgxgy",
-      "coverImage": "https://cdn.lynkid.my.id/products/15-07-2026/1784118333035_6982504.webp",
-      "score": null,
-      "ranking": 5,
-      "composition": {
-        "image": 0,
-        "video": 4,
-        "text": 13,
-        "application": 1
-      },
-      "stage": "Tripwire"
-    },
-    {
-      "uuid": "9cdf3581-dbdf-4992-b779-c151eeb03ea4",
-      "title": "Landing Page Designer : Landing Page Designer: Mesin Cuan Bikin Landing Page Otomatis 💻🚀",
-      "url": "http://lynk.id/agungsundoro/rojymd2q355z",
-      "coverImage": "https://cdn.lynkid.my.id/products/10-07-2026/1783697216676_9481037.webp",
-      "score": null,
-      "ranking": 6,
-      "composition": {
-        "image": 0,
-        "video": 4,
-        "text": 11,
-        "application": 1
-      },
-      "stage": "Tripwire"
-    },
-    {
       "uuid": "fa70d738-d0e1-4816-bd22-54b51fac0a59",
       "title": "100+ Template Google Sheet Siap Pakai: Rapikan Keuangan, Bisnis, & Proyek Instan 📊",
       "url": "http://lynk.id/agungsundoro/ogv9vdz68o6r",
@@ -411,6 +318,12 @@
       "stage": "Tripwire"
     },
     {
+      "uuid": "3976bd45-672b-4013-93d3-3d6dba5f4240",
+      "title": "Akademi LynkID 101 : Cara Cepat Buka Toko Digital Laris Manis Tanpa Coding dari Nol 🛍️🚀",
+      "url": "http://lynk.id/agungsundoro/ygyd6v672e2v",
+      "coverImage": "https://cdn.lynkid.my.id/products/22-09-2026/1790046630340_2019219.webp"
+    },
+    {
       "uuid": "355d4c65-8584-4de8-9d83-34384840b133",
       "title": "Akademi Prompt Engineering : Bongkar Mantra Rahasia Prompt Engineering untuk Pemula! ✨",
       "url": "http://lynk.id/agungsundoro/8ve1oq6mez2v",
@@ -484,6 +397,21 @@
         "video": 11,
         "text": 16,
         "application": 0
+      },
+      "stage": "Tripwire"
+    },
+    {
+      "uuid": "b4ceed93-f4ff-4abd-9093-5df80e8a1bd2",
+      "title": "Creative Auditor : Masterclass Audit Iklan Anti Boncos 🏛️💸",
+      "url": "http://lynk.id/agungsundoro/qv2w2xmjgxgy",
+      "coverImage": "https://cdn.lynkid.my.id/products/15-07-2026/1784118333035_6982504.webp",
+      "score": null,
+      "ranking": 5,
+      "composition": {
+        "image": 0,
+        "video": 4,
+        "text": 13,
+        "application": 1
       },
       "stage": "Tripwire"
     },
@@ -576,6 +504,53 @@
       },
       "stage": "Tripwire",
       "ranking": null
+    },
+    {
+      "uuid": "32cf5c3b-8464-4b80-a98d-9377ea63dde0",
+      "title": "Kreasi AI : Cuan Gila-Gilaan dari Konten, Iklan, dan Avatar AI!",
+      "url": "https://lynk.id/agungsundoro/yq3dooyw9816",
+      "coverImage": "https://cfcdn.my.id/products/13-08-2026/1786579041330_6886309.webp",
+      "featured": true,
+      "score": 83,
+      "ranking": 1,
+      "composition": {
+        "image": 3921,
+        "video": 287,
+        "text": 400,
+        "application": 1763
+      },
+      "stage": "Core Offer"
+    },
+    {
+      "uuid": "d0fb7bf4-52fc-4099-be3c-da74f5104827",
+      "title": "Kreator Viral : Blueprint 10 Juta Pertama dalam 30 Hari dari Produk Digital di Bantu AI 🚀💰",
+      "url": "https://lynk.id/agungsundoro/481y8x5m02jv",
+      "coverImage": "https://cdn.lynkid.my.id/products/10-05-2026/1778419398211_5362452.webp",
+      "featured": true,
+      "score": null,
+      "ranking": 2,
+      "composition": {
+        "image": 844,
+        "video": 346,
+        "text": 699,
+        "application": 107
+      },
+      "stage": "Core Offer"
+    },
+    {
+      "uuid": "9cdf3581-dbdf-4992-b779-c151eeb03ea4",
+      "title": "Landing Page Designer : Landing Page Designer: Mesin Cuan Bikin Landing Page Otomatis 💻🚀",
+      "url": "http://lynk.id/agungsundoro/rojymd2q355z",
+      "coverImage": "https://cdn.lynkid.my.id/products/10-07-2026/1783697216676_9481037.webp",
+      "score": null,
+      "ranking": 6,
+      "composition": {
+        "image": 0,
+        "video": 4,
+        "text": 11,
+        "application": 1
+      },
+      "stage": "Tripwire"
     },
     {
       "uuid": "9b6db873-2313-4f5e-9593-6deb638b1bda",
@@ -709,6 +684,37 @@
         "image": 0,
         "video": 4,
         "text": 11,
+        "application": 1
+      },
+      "stage": "Tripwire"
+    },
+    {
+      "uuid": "114cab8c-9494-482a-8c38-c2fc56c999c0",
+      "title": "Sinema AI : Kursus Pembuatan Animasi, Iklan, dan Konten Video!",
+      "url": "https://lynk.id/agungsundoro/35mxg058em83",
+      "coverImage": "https://cdn.lynkid.my.id/products/26-10-2025/1761413522169_8187436.webp",
+      "featured": true,
+      "score": null,
+      "ranking": 3,
+      "composition": {
+        "image": 565,
+        "video": 630,
+        "text": 155,
+        "application": 85
+      },
+      "stage": "Core Offer"
+    },
+    {
+      "uuid": "604f1435-ac1b-462c-87b2-2633b549702a",
+      "title": "Sistem Otak Kedua dengan Obsidian Note 🧠",
+      "url": "http://lynk.id/agungsundoro/v9z1vnkonozn",
+      "coverImage": "https://cdn.lynkid.my.id/products/07-07-2026/1783399231815_7424274.webp",
+      "score": 95,
+      "ranking": 4,
+      "composition": {
+        "image": 0,
+        "video": 10,
+        "text": 102,
         "application": 1
       },
       "stage": "Tripwire"
