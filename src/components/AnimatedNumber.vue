@@ -4,28 +4,18 @@ import { ref, watch, onMounted } from 'vue'
 const props = defineProps({
   value: {
     type: Number,
-    required: true
+    required: true,
   },
   duration: {
     type: Number,
-    default: 1000
-  }
+    default: 1000,
+  },
 })
 
 const displayValue = ref(0)
 const formattedValue = ref('0')
 
 const formatNumber = (num: number) => {
-  // Mobile check (e.g. max-width: 640px for tailwind sm breakpoint or matchMedia)
-  if (window.innerWidth < 640) {
-    if (num >= 1_000_000) {
-      return (num / 1_000_000).toFixed(1).replace(/\.0$/, '') + 'M'
-    }
-    if (num >= 1_000) {
-      return (num / 1_000).toFixed(1).replace(/\.0$/, '') + 'K'
-    }
-    return num.toString()
-  }
   return num.toLocaleString()
 }
 

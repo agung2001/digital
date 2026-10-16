@@ -235,10 +235,10 @@ const doubleMarqueeTools = computed(() => [...marqueeTools, ...marqueeTools])
         <div
           class="max-w-4xl mx-auto bg-white/70 dark:bg-zinc-900/70 backdrop-blur-xl border border-zinc-200/80 dark:border-zinc-800/80 rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 shadow-xl shadow-zinc-900/5 dark:shadow-black/40"
         >
-          <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 sm:gap-4">
+          <div class="grid grid-cols-1 sm:grid-cols-5 gap-3 sm:gap-4">
             <!-- Produk -->
             <div
-              class="col-span-2 sm:col-span-1 flex flex-col items-center justify-center p-3 rounded-xl sm:rounded-2xl bg-teal-500/5 dark:bg-teal-500/10 border border-teal-500/15 transition-all hover:scale-[1.02]"
+              class="flex flex-col items-center justify-center p-3 rounded-xl sm:rounded-2xl bg-teal-500/5 dark:bg-teal-500/10 border border-teal-500/15 transition-all hover:scale-[1.02]"
             >
               <div
                 class="flex items-center gap-1.5 text-teal-600 dark:text-teal-400 text-xs font-semibold uppercase tracking-wider mb-1"
@@ -318,7 +318,7 @@ const doubleMarqueeTools = computed(() => [...marqueeTools, ...marqueeTools])
 
             <!-- Aplikasi -->
             <div
-              class="col-span-2 sm:col-span-1 flex flex-col items-center justify-center p-3 rounded-xl sm:rounded-2xl bg-violet-500/5 dark:bg-violet-500/10 border border-violet-500/15 transition-all hover:scale-[1.02]"
+              class="flex flex-col items-center justify-center p-3 rounded-xl sm:rounded-2xl bg-violet-500/5 dark:bg-violet-500/10 border border-violet-500/15 transition-all hover:scale-[1.02]"
             >
               <div
                 class="flex items-center gap-1.5 text-violet-600 dark:text-violet-400 text-xs font-semibold uppercase tracking-wider mb-1"
