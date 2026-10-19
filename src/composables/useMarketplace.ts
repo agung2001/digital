@@ -28,6 +28,7 @@ interface StatsType {
 
 const products = ref<ProductType[]>([])
 const stats = ref<StatsType>({ image: 0, video: 0, text: 0, application: 0 })
+const notification = ref('')
 const isLoading = ref(true)
 const loadError = ref<string | null>(null)
 let fetchPromise: Promise<void> | null = null
@@ -35,26 +36,28 @@ let fetchPromise: Promise<void> | null = null
 const loadProducts = async () => {
   if (fetchPromise) return fetchPromise
 
-  fetchPromise = (async () => {
+  const promise = (async () => {
     try {
       isLoading.value = true
       loadError.value = null
-      
+
       const res = await fetch('/marketplace.json')
 
       if (res.ok) {
         const data = await res.json()
-        products.value = data.products
+        products.value = Array.isArray(data.products) ? data.products : []
+        notification.value = typeof data.notification === 'string' ? data.notification : ''
         if (data.composition) {
           stats.value = {
             image: typeof data.composition.image === 'number' ? data.composition.image : 0,
             video: typeof data.composition.video === 'number' ? data.composition.video : 0,
             text: typeof data.composition.text === 'number' ? data.composition.text : 0,
-            application: typeof data.composition.application === 'number' ? data.composition.application : 0
+            application:
+              typeof data.composition.application === 'number' ? data.composition.application : 0,
           }
         }
       } else {
-        throw new Error('Failed to load products')
+        throw new Error('Gagal memuat produk')
       }
     } catch (err) {
       loadError.value = err instanceof Error ? err.message : String(err)
@@ -64,9 +67,16 @@ const loadProducts = async () => {
     }
   })()
 
-  return fetchPromise
+  // Keep the promise cached only while the request is in flight, so a failed
+  // load can be retried (previously the cached promise made "Try Again" a no-op).
+  fetchPromise = promise
+  try {
+    await promise
+  } finally {
+    if (fetchPromise === promise) fetchPromise = null
+  }
 }
 
 export function useMarketplace() {
-  return { products, stats, isLoading, loadError, loadProducts }
+  return { products, stats, notification, isLoading, loadError, loadProducts }
 }

@@ -1,10 +1,14 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import FloatingNav from '@/components/FloatingNav.vue'
 import Footer from '@/components/Footer.vue'
 import SectionGrid from '@/components/SectionGrid.vue'
 import HeroSection from '@/components/HeroSection.vue'
 import ProductsSection from '@/components/ProductsSection.vue'
+import { useMarketplace } from '@/composables/useMarketplace'
+
+const { notification } = useMarketplace()
+const notificationDismissed = ref(false)
 
 const isMounted = ref(false)
 const productCount = ref(0)
@@ -20,6 +24,9 @@ const currentRoleIndex = ref(0)
 const currentText = ref('')
 const isDeleting = ref(false)
 const typingSpeed = ref(150)
+
+let mountTimeout: ReturnType<typeof setTimeout> | undefined
+let typeTimeout: ReturnType<typeof setTimeout> | undefined
 
 const typeText = () => {
   const fullText = roles[currentRoleIndex.value]
@@ -41,14 +48,19 @@ const typeText = () => {
     typingSpeed.value = 500
   }
 
-  setTimeout(typeText, typingSpeed.value)
+  typeTimeout = setTimeout(typeText, typingSpeed.value)
 }
 
 onMounted(() => {
-  setTimeout(() => {
+  mountTimeout = setTimeout(() => {
     isMounted.value = true
   }, 100)
-  setTimeout(typeText, 800)
+  typeTimeout = setTimeout(typeText, 800)
+})
+
+onUnmounted(() => {
+  if (mountTimeout) clearTimeout(mountTimeout)
+  if (typeTimeout) clearTimeout(typeTimeout)
 })
 </script>
 
@@ -90,5 +102,47 @@ onMounted(() => {
     <div class="relative z-10 px-12">
       <Footer />
     </div>
+
+    <!-- Marketplace notification banner (from marketplace.json "notification") -->
+    <Transition name="toast">
+      <div
+        v-if="notification && !notificationDismissed"
+        class="fixed bottom-5 left-1/2 z-[90] w-[calc(100%-2rem)] max-w-xl -translate-x-1/2"
+        role="status"
+        aria-live="polite"
+      >
+        <div
+          class="flex items-start gap-3 rounded-2xl border border-teal-500/30 bg-white/90 px-4 py-3 shadow-xl shadow-teal-500/10 backdrop-blur-xl dark:bg-zinc-900/90"
+        >
+          <i class="fas fa-bullhorn mt-0.5 text-teal-500"></i>
+          <p class="flex-1 text-sm font-medium text-zinc-800 dark:text-zinc-100">
+            {{ notification }}
+          </p>
+          <button
+            type="button"
+            class="rounded-full p-1 text-zinc-400 transition-colors hover:text-zinc-600 dark:hover:text-zinc-200"
+            aria-label="Tutup notifikasi"
+            @click="notificationDismissed = true"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+    </Transition>
   </div>
 </template>
+
+<style scoped>
+.toast-enter-active,
+.toast-leave-active {
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.toast-enter-from,
+.toast-leave-to {
+  opacity: 0;
+  transform: translate(-50%, 12px);
+}
+</style>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch, onMounted } from 'vue'
+import { ref, watch, onMounted, onUnmounted } from 'vue'
 
 const props = defineProps({
   value: {
@@ -14,12 +14,19 @@ const props = defineProps({
 
 const displayValue = ref(0)
 const formattedValue = ref('0')
+let rafId: number | null = null
 
 const formatNumber = (num: number) => {
   return num.toLocaleString()
 }
 
 const animate = () => {
+  // Cancel any in-flight animation so rapid prop changes can't stack RAF loops.
+  if (rafId !== null) {
+    cancelAnimationFrame(rafId)
+    rafId = null
+  }
+
   const start = performance.now()
   const startVal = displayValue.value
   const targetVal = props.value
@@ -30,14 +37,23 @@ const animate = () => {
     displayValue.value = current
     formattedValue.value = formatNumber(current)
     if (progress < 1) {
-      requestAnimationFrame(step)
+      rafId = requestAnimationFrame(step)
+    } else {
+      rafId = null
     }
   }
-  requestAnimationFrame(step)
+  rafId = requestAnimationFrame(step)
 }
 
 onMounted(animate)
 watch(() => props.value, animate)
+
+onUnmounted(() => {
+  if (rafId !== null) {
+    cancelAnimationFrame(rafId)
+    rafId = null
+  }
+})
 </script>
 
 <template>
