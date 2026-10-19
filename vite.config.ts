@@ -26,9 +26,14 @@ export default defineConfig({
   build: {
     cssMinify: true,
     minify: 'esbuild',
+    chunkSizeWarningLimit: 600,
     rollupOptions: {
       output: {
-        manualChunks: undefined,
+        // Split the framework into a long-lived vendor chunk so app-only changes
+        // don't invalidate the cached Vue runtime on every deploy.
+        manualChunks(id) {
+          if (id.includes('node_modules')) return 'vendor'
+        },
       },
     },
   },

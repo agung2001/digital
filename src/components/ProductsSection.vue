@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import Product from './Product.vue'
+import AppIcon from './AppIcon.vue'
 import { useMarketplace } from '@/composables/useMarketplace'
 
 interface Composition {
@@ -350,7 +351,7 @@ onUnmounted(() => {
           <div
             class="w-16 h-16 rounded-full bg-red-50 dark:bg-red-500/10 flex items-center justify-center mb-4"
           >
-            <i class="fas fa-exclamation-triangle text-2xl text-red-500"></i>
+            <AppIcon name="triangle-exclamation" class="text-2xl text-red-500" />
           </div>
           <h3 class="text-lg font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
             Gagal memuat produk
@@ -360,7 +361,7 @@ onUnmounted(() => {
             @click="loadProducts"
             class="inline-flex items-center px-4 py-2 text-sm font-medium rounded-full text-white bg-teal-500 hover:bg-teal-600 transition-colors cursor-pointer"
           >
-            <i class="fas fa-redo mr-2"></i>
+            <AppIcon name="rotate-right" class="mr-2" />
             Coba Lagi
           </button>
         </div>
@@ -372,7 +373,7 @@ onUnmounted(() => {
           <div
             class="w-16 h-16 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center mb-4"
           >
-            <i class="fas fa-box-open text-2xl text-zinc-400 dark:text-zinc-500"></i>
+            <AppIcon name="box-open" class="text-2xl text-zinc-400 dark:text-zinc-500" />
           </div>
           <h3 class="text-lg font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
             Belum ada produk
@@ -389,7 +390,7 @@ onUnmounted(() => {
           <div
             class="w-16 h-16 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center mb-4"
           >
-            <i class="fas fa-search text-2xl text-zinc-400 dark:text-zinc-500"></i>
+            <AppIcon name="search" class="text-2xl text-zinc-400 dark:text-zinc-500" />
           </div>
           <h3 class="text-lg font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
             Produk tidak ditemukan
@@ -408,6 +409,7 @@ onUnmounted(() => {
               <Product
                 :product="product"
                 :is-featured="product.featured"
+                :priority="currentPage === 1 && index < 4"
                 @show-rating="openRatingModal"
                 @show-ranking="openRankingModal"
                 @show-composition="openCompositionModal"
@@ -497,7 +499,7 @@ onUnmounted(() => {
               @click="isRatingModalOpen = false"
               class="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 transition-colors p-1"
             >
-              <i class="fas fa-times text-lg"></i>
+              <AppIcon name="xmark" class="text-lg" />
             </button>
           </div>
 
@@ -556,7 +558,7 @@ onUnmounted(() => {
               @click="isRankingModalOpen = false"
               class="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 transition-colors p-1"
             >
-              <i class="fas fa-times text-lg"></i>
+              <AppIcon name="xmark" class="text-lg" />
             </button>
           </div>
 
@@ -615,7 +617,7 @@ onUnmounted(() => {
               @click="isCompositionModalOpen = false"
               class="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 transition-colors p-1"
             >
-              <i class="fas fa-times text-lg"></i>
+              <AppIcon name="xmark" class="text-lg" />
             </button>
           </div>
 

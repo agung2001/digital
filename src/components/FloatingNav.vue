@@ -4,8 +4,12 @@ import { ref, onMounted, onUnmounted } from 'vue'
 const isScrolled = ref(false)
 const isDark = ref(false)
 
+// Hysteresis (60px down / 40px up) avoids the nav flickering when scrolling
+// near the threshold.
 const handleScroll = () => {
-  isScrolled.value = window.scrollY > 50
+  const y = window.scrollY
+  if (!isScrolled.value && y > 60) isScrolled.value = true
+  else if (isScrolled.value && y < 40) isScrolled.value = false
 }
 
 const toggleTheme = () => {
@@ -20,7 +24,7 @@ const toggleTheme = () => {
 }
 
 onMounted(() => {
-  window.addEventListener('scroll', handleScroll)
+  window.addEventListener('scroll', handleScroll, { passive: true })
   const savedTheme = localStorage.getItem('theme')
   if (
     savedTheme === 'dark' ||

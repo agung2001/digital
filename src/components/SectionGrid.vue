@@ -5,19 +5,47 @@ const gridContainer = ref<HTMLDivElement | null>(null)
 const mouseX = ref(0)
 const mouseY = ref(0)
 
+let frameId = 0
+let pendingX = 0
+let pendingY = 0
+
+// Coalesce raw pointer events into a single reactive update per animation frame,
+// so Vue re-renders the gradient layers at most once per frame instead of on
+// every mousemove.
+const commitPointer = () => {
+  frameId = 0
+  const el = gridContainer.value
+  if (!el) return
+  const rect = el.getBoundingClientRect()
+  mouseX.value = pendingX - rect.left
+  mouseY.value = pendingY - rect.top
+}
+
 const handleMouseMove = (e: MouseEvent) => {
-  if (!gridContainer.value) return
-  const rect = gridContainer.value.getBoundingClientRect()
-  mouseX.value = e.clientX - rect.left
-  mouseY.value = e.clientY - rect.top
+  pendingX = e.clientX
+  pendingY = e.clientY
+  if (frameId) return
+  frameId = requestAnimationFrame(commitPointer)
+}
+
+const handleVisibility = () => {
+  if (document.hidden && frameId) {
+    cancelAnimationFrame(frameId)
+    frameId = 0
+  }
 }
 
 onMounted(() => {
-  window.addEventListener('mousemove', handleMouseMove)
+  // Skip the effect entirely for users who prefer reduced motion.
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+  window.addEventListener('mousemove', handleMouseMove, { passive: true })
+  document.addEventListener('visibilitychange', handleVisibility)
 })
 
 onUnmounted(() => {
   window.removeEventListener('mousemove', handleMouseMove)
+  document.removeEventListener('visibilitychange', handleVisibility)
+  if (frameId) cancelAnimationFrame(frameId)
 })
 </script>
 

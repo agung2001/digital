@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import AnimatedNumber from './AnimatedNumber.vue'
+import AppIcon from './AppIcon.vue'
 
 defineProps<{
   currentText: string
@@ -181,7 +182,7 @@ const doubleMarqueeTools = computed(() => [...marqueeTools, ...marqueeTools])
             class="text-teal-600 dark:text-teal-400 hover:text-teal-500 dark:hover:text-teal-300 font-semibold underline decoration-2 decoration-teal-500/30 hover:decoration-teal-500 transition-all inline-flex items-center gap-1"
           >
             komunitas belajar kami untuk diajarin sampai bisa
-            <i class="fas fa-external-link-alt text-xs"></i> </a
+            <AppIcon name="up-right-from-square" class="text-xs" /> </a
           >.
         </p>
 
@@ -192,9 +193,10 @@ const doubleMarqueeTools = computed(() => [...marqueeTools, ...marqueeTools])
             class="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full font-semibold text-white bg-gradient-to-r from-teal-500 via-teal-600 to-cyan-600 hover:from-teal-400 hover:via-teal-500 hover:to-cyan-500 shadow-lg shadow-teal-500/25 hover:shadow-teal-500/40 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 text-sm sm:text-base cursor-pointer"
           >
             <span>Jelajahi Katalog Produk</span>
-            <i
-              class="fas fa-arrow-down text-xs transition-transform group-hover:translate-y-0.5"
-            ></i>
+            <AppIcon
+              name="arrow-down"
+              class="text-xs transition-transform group-hover:translate-y-0.5"
+            />
           </button>
 
           <a
@@ -203,7 +205,7 @@ const doubleMarqueeTools = computed(() => [...marqueeTools, ...marqueeTools])
             rel="noopener noreferrer"
             class="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full font-medium text-zinc-700 dark:text-zinc-200 bg-white/80 dark:bg-zinc-800/80 hover:bg-white dark:hover:bg-zinc-800 border border-zinc-200/80 dark:border-zinc-700/80 shadow-sm hover:shadow hover:-translate-y-0.5 active:translate-y-0 backdrop-blur-sm transition-all duration-300 text-sm sm:text-base cursor-pointer"
           >
-            <i class="fas fa-users text-teal-500 dark:text-teal-400 text-xs"></i>
+            <AppIcon name="users" class="text-teal-500 dark:text-teal-400 text-xs" />
             <span>Gabung Komunitas</span>
             <span
               class="inline-flex items-center text-[10px] font-semibold text-teal-700 dark:text-teal-300 bg-teal-500/15 px-2 py-0.5 rounded-full ml-1"
@@ -218,15 +220,15 @@ const doubleMarqueeTools = computed(() => [...marqueeTools, ...marqueeTools])
           class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-zinc-500 dark:text-zinc-400 mb-10"
         >
           <div class="inline-flex items-center gap-1.5">
-            <i class="fas fa-check-circle text-teal-500 text-xs"></i>
+            <AppIcon name="circle-check" class="text-teal-500 text-xs" />
             <span>Akses Sekali untuk Selamanya</span>
           </div>
           <div class="inline-flex items-center gap-1.5">
-            <i class="fas fa-check-circle text-teal-500 text-xs"></i>
+            <AppIcon name="circle-check" class="text-teal-500 text-xs" />
             <span>Update Materi &amp; Prompt Rutin</span>
           </div>
           <div class="inline-flex items-center gap-1.5">
-            <i class="fas fa-check-circle text-teal-500 text-xs"></i>
+            <AppIcon name="circle-check" class="text-teal-500 text-xs" />
             <span>Grup Diskusi &amp; Bimbingan</span>
           </div>
         </div>
@@ -243,7 +245,7 @@ const doubleMarqueeTools = computed(() => [...marqueeTools, ...marqueeTools])
               <div
                 class="flex items-center gap-1.5 text-teal-600 dark:text-teal-400 text-xs font-semibold uppercase tracking-wider mb-1"
               >
-                <i class="fas fa-box-open text-[11px]"></i>
+                <AppIcon name="box-open" class="text-[11px]" />
                 <span>Produk</span>
               </div>
               <span
@@ -263,7 +265,7 @@ const doubleMarqueeTools = computed(() => [...marqueeTools, ...marqueeTools])
               <div
                 class="flex items-center gap-1.5 text-cyan-600 dark:text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-1"
               >
-                <i class="fas fa-book-open text-[11px]"></i>
+                <AppIcon name="book-open" class="text-[11px]" />
                 <span>Materi</span>
               </div>
               <span
@@ -283,7 +285,7 @@ const doubleMarqueeTools = computed(() => [...marqueeTools, ...marqueeTools])
               <div
                 class="flex items-center gap-1.5 text-blue-600 dark:text-blue-400 text-xs font-semibold uppercase tracking-wider mb-1"
               >
-                <i class="fas fa-image text-[11px]"></i>
+                <AppIcon name="image" class="text-[11px]" />
                 <span>Gambar</span>
               </div>
               <span
@@ -303,7 +305,7 @@ const doubleMarqueeTools = computed(() => [...marqueeTools, ...marqueeTools])
               <div
                 class="flex items-center gap-1.5 text-indigo-600 dark:text-indigo-400 text-xs font-semibold uppercase tracking-wider mb-1"
               >
-                <i class="fas fa-film text-[11px]"></i>
+                <AppIcon name="film" class="text-[11px]" />
                 <span>Video</span>
               </div>
               <span
@@ -323,7 +325,7 @@ const doubleMarqueeTools = computed(() => [...marqueeTools, ...marqueeTools])
               <div
                 class="flex items-center gap-1.5 text-violet-600 dark:text-violet-400 text-xs font-semibold uppercase tracking-wider mb-1"
               >
-                <i class="fas fa-cubes text-[11px]"></i>
+                <AppIcon name="cubes" class="text-[11px]" />
                 <span>Aplikasi</span>
               </div>
               <span
@@ -348,7 +350,7 @@ const doubleMarqueeTools = computed(() => [...marqueeTools, ...marqueeTools])
             <p
               class="text-[11px] sm:text-xs font-semibold tracking-widest uppercase text-zinc-400 dark:text-zinc-500 flex items-center gap-2"
             >
-              <i class="fas fa-bolt text-teal-500 text-[10px]"></i>
+              <AppIcon name="bolt" class="text-teal-500 text-[10px]" />
               Ekosistem &amp; Tools AI yang Digunakan
             </p>
             <div

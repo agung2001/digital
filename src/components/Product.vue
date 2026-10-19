@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import AppIcon from './AppIcon.vue'
 
 interface Composition {
   image: number
@@ -23,6 +24,8 @@ interface Product {
 const props = defineProps<{
   product: Product
   isFeatured?: boolean
+  /** Marks above-the-fold cards so their cover image is fetched eagerly at high priority. */
+  priority?: boolean
 }>()
 
 const emit = defineEmits<{
@@ -83,7 +86,7 @@ const actionButtonLabel = computed(() => {
 })
 
 const actionButtonIcon = computed(() => {
-  return isLeadMagnet.value ? 'fas fa-download text-base' : 'fas fa-bag-shopping text-base'
+  return isLeadMagnet.value ? 'download' : 'bag-shopping'
 })
 
 const handleImageError = () => {
@@ -100,7 +103,7 @@ const handleImageError = () => {
       v-if="isFeatured"
       class="absolute top-3 left-3 z-20 flex items-center gap-1 px-2.5 py-1 rounded-full bg-teal-500/90 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider shadow-lg shadow-teal-500/20 border border-white/20"
     >
-      <i class="fas fa-star text-[9px]"></i>
+      <AppIcon name="star" class="text-[9px]" />
       Unggulan
     </div>
 
@@ -119,7 +122,7 @@ const handleImageError = () => {
       }"
       @click.stop="emit('show-ranking', product.ranking)"
     >
-      <i class="fas text-[9px]" :class="product.ranking <= 3 ? 'fa-trophy' : 'fa-medal'"></i>
+      <AppIcon :name="product.ranking <= 3 ? 'trophy' : 'medal'" class="text-[9px]" />
       Top {{ product.ranking }}
     </div>
 
@@ -132,12 +135,6 @@ const handleImageError = () => {
     >
       <div
         v-if="product.coverImage && !imageError"
-        class="absolute inset-0 bg-center bg-no-repeat bg-cover blur-md scale-125 transition-transform duration-500 group-hover:scale-150 opacity-60"
-        :style="{ backgroundImage: `url('${product.coverImage}')` }"
-        aria-hidden="true"
-      />
-      <div
-        v-if="product.coverImage && !imageError"
         class="absolute inset-0 bg-white/10 dark:bg-black/20 transition-opacity duration-500 group-hover:bg-transparent"
         aria-hidden="true"
       />
@@ -145,16 +142,19 @@ const handleImageError = () => {
         v-if="product.coverImage && !imageError"
         :src="product.coverImage"
         :alt="product.title"
-        class="relative w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 drop-shadow-md"
-        loading="lazy"
+        width="600"
+        height="600"
+        :loading="priority ? 'eager' : 'lazy'"
+        :fetchpriority="priority ? 'high' : 'auto'"
         decoding="async"
+        class="relative w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 drop-shadow-md"
         @error="handleImageError"
       />
       <div
         v-else
         class="w-full h-full flex items-center justify-center transition-transform duration-500 group-hover:scale-110"
       >
-        <i class="fas fa-box text-6xl text-zinc-300 dark:text-zinc-600"></i>
+        <AppIcon name="box" class="text-6xl text-zinc-300 dark:text-zinc-600" />
       </div>
     </div>
 
@@ -251,7 +251,7 @@ const handleImageError = () => {
           aria-label="Lihat tautan afiliasi"
           class="flex-1 whitespace-nowrap py-2.5 px-3 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 text-xs bg-white/50 dark:bg-zinc-800/40 hover:bg-cyan-600 hover:text-white dark:hover:bg-cyan-500 dark:hover:text-zinc-950 text-zinc-700 dark:text-zinc-200 backdrop-blur-md border border-zinc-200/80 dark:border-zinc-700/50 hover:border-cyan-500/50 dark:hover:border-cyan-400/50 shadow-sm hover:shadow-md hover:shadow-cyan-500/20 active:scale-98"
         >
-          <i class="fas fa-link text-base flex-shrink-0"></i>
+          <AppIcon name="link" class="text-base flex-shrink-0" />
           Affiliate
         </a>
         <a
@@ -262,7 +262,7 @@ const handleImageError = () => {
           :aria-label="isLeadMagnet ? 'Unduh produk ini secara gratis' : 'Beli produk ini'"
           class="flex-1 whitespace-nowrap py-2.5 px-3 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 text-xs bg-teal-500/10 dark:bg-teal-500/15 hover:bg-teal-500 hover:text-white dark:hover:bg-teal-400 dark:hover:text-zinc-950 text-teal-700 dark:text-teal-300 font-semibold backdrop-blur-md border border-teal-500/20 dark:border-teal-400/20 shadow-sm hover:shadow-md hover:shadow-teal-500/25 active:scale-98"
         >
-          <i class="flex-shrink-0" :class="actionButtonIcon"></i>
+          <AppIcon :name="actionButtonIcon" class="flex-shrink-0 text-base" />
           {{ actionButtonLabel }}
         </a>
       </div>

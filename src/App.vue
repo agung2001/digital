@@ -4,6 +4,7 @@ import FloatingNav from '@/components/FloatingNav.vue'
 import Footer from '@/components/Footer.vue'
 import SectionGrid from '@/components/SectionGrid.vue'
 import HeroSection from '@/components/HeroSection.vue'
+import AppIcon from '@/components/AppIcon.vue'
 import ProductsSection from '@/components/ProductsSection.vue'
 import { useMarketplace } from '@/composables/useMarketplace'
 
@@ -114,7 +115,7 @@ onUnmounted(() => {
         <div
           class="flex items-start gap-3 rounded-2xl border border-teal-500/30 bg-white/90 px-4 py-3 shadow-xl shadow-teal-500/10 backdrop-blur-xl dark:bg-zinc-900/90"
         >
-          <i class="fas fa-bullhorn mt-0.5 text-teal-500"></i>
+          <AppIcon name="bullhorn" class="mt-0.5 text-teal-500" />
           <p class="flex-1 text-sm font-medium text-zinc-800 dark:text-zinc-100">
             {{ notification }}
           </p>
@@ -124,7 +125,7 @@ onUnmounted(() => {
             aria-label="Tutup notifikasi"
             @click="notificationDismissed = true"
           >
-            <i class="fas fa-times"></i>
+            <AppIcon name="xmark" />
           </button>
         </div>
       </div>
