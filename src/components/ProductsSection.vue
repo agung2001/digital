@@ -1,34 +1,35 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
+import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue'
 import Product from './Product.vue'
 import AppIcon from './AppIcon.vue'
 import { useMarketplace } from '@/composables/useMarketplace'
+import type { Composition, MarketplaceStats } from '@/types'
+import {
+  filterAndSortProducts,
+  getPaginationItems,
+  type PaginationItem,
+  type SortKey,
+  type StageFilter,
+} from '@/lib/productFilters'
+import { trackEvent } from '@/lib/analytics'
 
-interface Composition {
-  image: number
-  video: number
-  text: number
-  application: number
-}
-
-const props = defineProps<{
+defineProps<{
   isMounted: boolean
 }>()
 
 const emit = defineEmits<{
   (e: 'update:productCount', count: number): void
-  (
-    e: 'update:stats',
-    stats: { image: number; video: number; text: number; application: number },
-  ): void
+  (e: 'update:stats', stats: MarketplaceStats): void
 }>()
 
 const { products, stats, isLoading, loadError, loadProducts } = useMarketplace()
 const searchQuery = ref('')
-const sortBy = ref<'alphabet' | 'score' | 'ranking'>('alphabet')
-const selectedStage = ref<string>('all')
+const sortBy = ref<SortKey>('alphabet')
+const selectedStage = ref<StageFilter>('all')
 const currentPage = ref(1)
 const itemsPerPage = 16
+const SEARCH_DEBOUNCE_MS = 300
+let searchTimer: ReturnType<typeof setTimeout> | undefined
 
 const isRatingModalOpen = ref(false)
 const isRankingModalOpen = ref(false)
@@ -55,26 +56,25 @@ const openCompositionModal = (composition: Composition) => {
 let isSyncing = false
 
 const syncUrlParams = () => {
-  isSyncing = true
   const params = new URLSearchParams(window.location.search)
   const s = params.get('s') || ''
   const sort = params.get('sort') || 'alphabet'
   const stage = params.get('stage') || 'all'
   const page = parseInt(params.get('page') || '1', 10)
 
-  if (searchQuery.value !== s) {
-    searchQuery.value = s
-  }
+  isSyncing = true
+  if (searchQuery.value !== s) searchQuery.value = s
   if (['alphabet', 'score', 'ranking'].includes(sort) && sortBy.value !== sort) {
-    sortBy.value = sort as 'alphabet' | 'score' | 'ranking'
+    sortBy.value = sort as SortKey
   }
-  if (selectedStage.value !== stage) {
-    selectedStage.value = stage
-  }
-  if (!isNaN(page) && currentPage.value !== page) {
-    currentPage.value = page
-  }
-  isSyncing = false
+  if (selectedStage.value !== stage) selectedStage.value = stage as StageFilter
+  if (!isNaN(page) && currentPage.value !== page) currentPage.value = page
+
+  // Watchers flush after this synchronous block; keep the flag set until then
+  // so they don't undo the values we just restored from the URL.
+  void nextTick(() => {
+    isSyncing = false
+  })
 }
 
 const updateUrlParams = () => {
@@ -103,60 +103,58 @@ const updateUrlParams = () => {
     url.searchParams.delete('page')
   }
 
-  const newUrl = url.pathname + url.search + url.hash
-  if (window.location.search !== url.search) {
-    window.history.replaceState(null, '', newUrl)
+  const nextUrl = url.pathname + url.search + url.hash
+  const currentUrl = window.location.pathname + window.location.search + window.location.hash
+  if (currentUrl !== nextUrl) {
+    window.history.replaceState(null, '', nextUrl)
   }
 }
 
-watch([searchQuery, sortBy, selectedStage, currentPage], () => {
-  updateUrlParams()
-})
-
-const filteredProducts = computed(() => {
-  let result = [...products.value]
-
-  if (selectedStage.value && selectedStage.value !== 'all') {
-    result = result.filter((p) => {
-      if (!p.stage) return false
-      const pStage = p.stage.toLowerCase()
-      if (selectedStage.value === 'core') {
-        return pStage === 'core offer'
-      } else if (selectedStage.value === 'tripwire') {
-        return pStage === 'tripwire'
-      } else if (selectedStage.value === 'lead') {
-        return pStage === 'lead magnet' || pStage === 'lead magnets'
-      }
-      return true
-    })
-  }
-
-  if (searchQuery.value) {
-    const query = searchQuery.value.toLowerCase()
-    result = result.filter((p) => p.title.toLowerCase().includes(query))
-  }
-
-  result.sort((a, b) => {
-    const aFeat = a.featured ? 1 : 0
-    const bFeat = b.featured ? 1 : 0
-    if (bFeat !== aFeat) return bFeat - aFeat
-
-    if (sortBy.value === 'score') {
-      const aScore = a.score !== null && a.score !== undefined ? a.score : -1
-      const bScore = b.score !== null && b.score !== undefined ? b.score : -1
-      return bScore - aScore
-    } else if (sortBy.value === 'ranking') {
-      const aRank = a.ranking !== null && a.ranking !== undefined ? a.ranking : 999999
-      const bRank = b.ranking !== null && b.ranking !== undefined ? b.ranking : 999999
-      return aRank - bRank
-    } else {
-      return a.title.localeCompare(b.title)
+// Filtering happens immediately; only the URL/analytics write is debounced so
+// typing doesn't rewrite history on every keystroke (item #34).
+watch(searchQuery, (value) => {
+  if (isSyncing) return
+  currentPage.value = 1
+  if (searchTimer) clearTimeout(searchTimer)
+  searchTimer = setTimeout(() => {
+    updateUrlParams()
+    if (value.trim()) {
+      trackEvent('search', { search_term: value.trim() })
     }
-  })
-  return result
+  }, SEARCH_DEBOUNCE_MS)
 })
+
+watch(selectedStage, () => {
+  if (isSyncing) return
+  currentPage.value = 1
+  trackEvent('filter_products', { filter_type: 'stage', filter_value: selectedStage.value })
+})
+
+watch(sortBy, () => {
+  if (isSyncing) return
+  trackEvent('filter_products', { filter_type: 'sort', filter_value: sortBy.value })
+})
+
+watch([sortBy, selectedStage, currentPage], () => {
+  if (!isSyncing) updateUrlParams()
+})
+
+const filteredProducts = computed(() =>
+  filterAndSortProducts(products.value, {
+    query: searchQuery.value,
+    stage: selectedStage.value,
+    sort: sortBy.value,
+  }),
+)
 
 const totalPages = computed(() => Math.ceil(filteredProducts.value.length / itemsPerPage))
+
+// Windowed pagination with ellipsis so the control stays bounded (item #32).
+const paginationItems = computed(() => getPaginationItems(currentPage.value, totalPages.value))
+
+const goToPage = (item: PaginationItem) => {
+  if (typeof item === 'number') currentPage.value = item
+}
 
 // Keep the current page within bounds when filters/URL/loading change the total.
 watch(totalPages, (pages) => {
@@ -189,18 +187,6 @@ watch(
   { immediate: true, deep: true },
 )
 
-watch(searchQuery, () => {
-  if (!isSyncing) {
-    currentPage.value = 1
-  }
-})
-
-watch(selectedStage, () => {
-  if (!isSyncing) {
-    currentPage.value = 1
-  }
-})
-
 const handlePopState = () => syncUrlParams()
 
 onMounted(() => {
@@ -210,6 +196,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
+  if (searchTimer) clearTimeout(searchTimer)
   window.removeEventListener('popstate', handlePopState)
 })
 </script>
@@ -434,19 +421,28 @@ onUnmounted(() => {
             </button>
 
             <div class="flex items-center gap-2">
-              <button
-                v-for="p in totalPages"
-                :key="p"
-                @click="currentPage = p"
-                class="w-10 h-10 rounded-xl text-sm font-bold transition-all cursor-pointer"
-                :class="
-                  currentPage === p
-                    ? 'bg-teal-500 text-white shadow-lg shadow-teal-500/20'
-                    : 'text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800'
-                "
-              >
-                {{ p }}
-              </button>
+              <template v-for="(item, index) in paginationItems" :key="index">
+                <span
+                  v-if="item === 'ellipsis'"
+                  class="w-10 h-10 flex items-center justify-center text-sm font-bold text-zinc-400 select-none"
+                  aria-hidden="true"
+                  >…</span
+                >
+                <button
+                  v-else
+                  @click="goToPage(item)"
+                  :aria-label="`Halaman ${item}`"
+                  :aria-current="currentPage === item ? 'page' : undefined"
+                  class="w-10 h-10 rounded-xl text-sm font-bold transition-all cursor-pointer"
+                  :class="
+                    currentPage === item
+                      ? 'bg-teal-500 text-white shadow-lg shadow-teal-500/20'
+                      : 'text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800'
+                  "
+                >
+                  {{ item }}
+                </button>
+              </template>
             </div>
 
             <button

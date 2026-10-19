@@ -13,5 +13,15 @@ export default defineConfigWithVueTs(
 
   pluginVue.configs['flat/essential'],
   vueTsConfigs.recommended,
+
+  {
+    name: 'app/component-names',
+    rules: {
+      // `Footer` and `Product` are established component names here; renaming
+      // them would churn imports for no functional gain.
+      'vue/multi-word-component-names': ['error', { ignores: ['Footer', 'Product'] }],
+    },
+  },
+
   skipFormatting,
 )

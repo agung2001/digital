@@ -1,39 +1,21 @@
 import { ref } from 'vue'
+import type { MarketplaceData, MarketplaceStats, Product } from '@/types'
 
-interface Composition {
-  image: number
-  video: number
-  text: number
-  application: number
-}
-
-interface ProductType {
-  uuid: string
-  title: string
-  url: string
-  coverImage: string
-  featured?: boolean
-  score?: number | null
-  ranking?: number | null
-  composition?: Composition
-  stage?: string
-}
-
-interface StatsType {
-  image: number
-  video: number
-  text: number
-  application: number
-}
-
-const products = ref<ProductType[]>([])
-const stats = ref<StatsType>({ image: 0, video: 0, text: 0, application: 0 })
+const products = ref<Product[]>([])
+const stats = ref<MarketplaceStats>({ image: 0, video: 0, text: 0, application: 0 })
 const notification = ref('')
 const isLoading = ref(true)
 const loadError = ref<string | null>(null)
 let fetchPromise: Promise<void> | null = null
 
-const loadProducts = async () => {
+const toStats = (composition: MarketplaceData['composition']): MarketplaceStats => ({
+  image: typeof composition?.image === 'number' ? composition.image : 0,
+  video: typeof composition?.video === 'number' ? composition.video : 0,
+  text: typeof composition?.text === 'number' ? composition.text : 0,
+  application: typeof composition?.application === 'number' ? composition.application : 0,
+})
+
+const loadProducts = async (): Promise<void> => {
   if (fetchPromise) return fetchPromise
 
   const promise = (async () => {
@@ -43,21 +25,15 @@ const loadProducts = async () => {
 
       const res = await fetch('/marketplace.json')
 
-      if (res.ok) {
-        const data = await res.json()
-        products.value = Array.isArray(data.products) ? data.products : []
-        notification.value = typeof data.notification === 'string' ? data.notification : ''
-        if (data.composition) {
-          stats.value = {
-            image: typeof data.composition.image === 'number' ? data.composition.image : 0,
-            video: typeof data.composition.video === 'number' ? data.composition.video : 0,
-            text: typeof data.composition.text === 'number' ? data.composition.text : 0,
-            application:
-              typeof data.composition.application === 'number' ? data.composition.application : 0,
-          }
-        }
-      } else {
+      if (!res.ok) {
         throw new Error('Gagal memuat produk')
+      }
+
+      const data = (await res.json()) as MarketplaceData
+      products.value = Array.isArray(data.products) ? data.products : []
+      notification.value = typeof data.notification === 'string' ? data.notification : ''
+      if (data.composition) {
+        stats.value = toStats(data.composition)
       }
     } catch (err) {
       loadError.value = err instanceof Error ? err.message : String(err)

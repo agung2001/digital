@@ -4,6 +4,21 @@
     <meta charset="UTF-8" />
     <link rel="icon" href="/img/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Apply the saved/system theme before first paint to avoid a light flash (FOUC). -->
+    <script>
+      ;(function () {
+        try {
+          var stored = localStorage.getItem('theme')
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+          if (stored === 'dark' || (!stored && prefersDark)) {
+            document.documentElement.classList.add('dark')
+          }
+        } catch (error) {
+          /* localStorage unavailable (e.g. private mode) — keep the light theme. */
+        }
+      })()
+    </script>
     
     <!-- Meta SEO Dasar -->
     <title>Agung Sundoro Digital | Kelas & Aset Digital Premium</title>

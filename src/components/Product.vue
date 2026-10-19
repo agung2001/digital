@@ -1,25 +1,8 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import AppIcon from './AppIcon.vue'
-
-interface Composition {
-  image: number
-  video: number
-  text: number
-  application: number
-}
-
-interface Product {
-  uuid: string
-  title: string
-  url: string
-  coverImage: string
-  featured?: boolean
-  score?: number | null
-  ranking?: number | null
-  composition?: Composition
-  stage?: string
-}
+import type { Composition, Product } from '@/types'
+import { trackEvent } from '@/lib/analytics'
 
 const props = defineProps<{
   product: Product
@@ -67,9 +50,6 @@ const openProduct = (event: Event) => {
 }
 
 const affiliateUrl = computed(() => {
-  if (props.product.uuid === 'd3020f09-4f4c-402e-9f96-3517be6fa517') {
-    return props.product.url
-  }
   const firstChunk = props.product.uuid.split('-')[0]
   return `https://lynk.id/admin/affiliate-add?search=AS-${firstChunk}`
 })
@@ -91,6 +71,20 @@ const actionButtonIcon = computed(() => {
 
 const handleImageError = () => {
   imageError.value = true
+}
+
+const handleAffiliateClick = () => {
+  trackEvent('affiliate_click', {
+    product_uuid: props.product.uuid,
+    product_title: props.product.title,
+  })
+}
+
+const handleBuyClick = () => {
+  trackEvent('begin_checkout', {
+    currency: 'IDR',
+    items: [{ item_id: props.product.uuid, item_name: props.product.title }],
+  })
 }
 </script>
 
@@ -244,10 +238,11 @@ const handleImageError = () => {
       </div>
       <div class="p-3 pt-0 flex flex-row gap-2">
         <a
+          v-if="!isLeadMagnet"
           :href="affiliateUrl"
           target="_blank"
           rel="noopener noreferrer"
-          @click.stop
+          @click.stop="handleAffiliateClick"
           aria-label="Lihat tautan afiliasi"
           class="flex-1 whitespace-nowrap py-2.5 px-3 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 text-xs bg-white/50 dark:bg-zinc-800/40 hover:bg-cyan-600 hover:text-white dark:hover:bg-cyan-500 dark:hover:text-zinc-950 text-zinc-700 dark:text-zinc-200 backdrop-blur-md border border-zinc-200/80 dark:border-zinc-700/50 hover:border-cyan-500/50 dark:hover:border-cyan-400/50 shadow-sm hover:shadow-md hover:shadow-cyan-500/20 active:scale-98"
         >
@@ -258,7 +253,7 @@ const handleImageError = () => {
           :href="product.url"
           target="_blank"
           rel="noopener noreferrer"
-          @click.stop
+          @click.stop="handleBuyClick"
           :aria-label="isLeadMagnet ? 'Unduh produk ini secara gratis' : 'Beli produk ini'"
           class="flex-1 whitespace-nowrap py-2.5 px-3 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 text-xs bg-teal-500/10 dark:bg-teal-500/15 hover:bg-teal-500 hover:text-white dark:hover:bg-teal-400 dark:hover:text-zinc-950 text-teal-700 dark:text-teal-300 font-semibold backdrop-blur-md border border-teal-500/20 dark:border-teal-400/20 shadow-sm hover:shadow-md hover:shadow-teal-500/25 active:scale-98"
         >
