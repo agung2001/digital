@@ -1,8 +1,19 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
+import AppIcon from './AppIcon.vue'
+import { isCommandPaletteOpen } from '@/state'
 
 const isScrolled = ref(false)
 const isDark = ref(false)
+
+const searchShortcut =
+  typeof navigator !== 'undefined' && /Mac|iPhone|iPad|iPod/.test(navigator.platform)
+    ? '⌘K'
+    : 'Ctrl K'
+
+const openSearch = () => {
+  isCommandPaletteOpen.value = true
+}
 
 // Hysteresis (60px down / 40px up) avoids the nav flickering when scrolling
 // near the threshold.
@@ -76,8 +87,25 @@ onUnmounted(() => {
         </span>
       </div>
 
-      <!-- Right: Theme Toggle -->
+      <!-- Right: Search & Theme Toggle -->
       <div class="flex-1 flex justify-end gap-2">
+        <button
+          @click="openSearch"
+          class="flex group items-center gap-2 rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 transition hover:ring-teal-500/30 dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-teal-400/30 cursor-pointer"
+          :aria-label="`Cari (${searchShortcut})`"
+          :title="`Cari (${searchShortcut})`"
+        >
+          <AppIcon
+            name="search"
+            class="text-xs text-zinc-500 transition-colors group-hover:text-teal-500 dark:text-zinc-400 dark:group-hover:text-teal-400"
+          />
+          <span
+            class="hidden lg:inline text-[11px] font-semibold text-zinc-400 transition-colors group-hover:text-teal-500 dark:text-zinc-500 dark:group-hover:text-teal-400"
+          >
+            {{ searchShortcut }}
+          </span>
+        </button>
+
         <button
           @click="toggleTheme"
           class="group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20 cursor-pointer"

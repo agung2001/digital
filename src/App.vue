@@ -6,6 +6,7 @@ import SectionGrid from '@/components/SectionGrid.vue'
 import HeroSection from '@/components/HeroSection.vue'
 import AppIcon from '@/components/AppIcon.vue'
 import ProductsSection from '@/components/ProductsSection.vue'
+import CommandPalette from '@/components/CommandPalette.vue'
 import { useMarketplace } from '@/composables/useMarketplace'
 
 const { notification } = useMarketplace()
@@ -103,6 +104,9 @@ onUnmounted(() => {
     <div class="relative z-10 px-12">
       <Footer />
     </div>
+
+    <!-- Global command palette (⌘K) -->
+    <CommandPalette />
 
     <!-- Marketplace notification banner (from marketplace.json "notification") -->
     <Transition name="toast">
