@@ -12,7 +12,7 @@
       "composition": {
         "image": 3922,
         "video": 270,
-        "text": 406,
+        "text": 405,
         "application": 1778
       },
       "stage": "Core Offer"
@@ -26,9 +26,9 @@
       "score": null,
       "ranking": 2,
       "composition": {
-        "image": 881,
-        "video": 353,
-        "text": 701,
+        "image": 887,
+        "video": 355,
+        "text": 702,
         "application": 107
       },
       "stage": "Core Offer"
@@ -44,7 +44,7 @@
       "composition": {
         "image": 565,
         "video": 633,
-        "text": 170,
+        "text": 169,
         "application": 88
       },
       "stage": "Core Offer"
@@ -74,7 +74,7 @@
       "composition": {
         "image": 1,
         "video": 11,
-        "text": 103,
+        "text": 116,
         "application": 2
       },
       "stage": "Tripwire"
@@ -86,10 +86,10 @@
       "coverImage": "https://cdn.lynkid.my.id/products/15-09-2026/1789487533507_5872517.webp",
       "score": null,
       "composition": {
-        "image": 49,
+        "image": 50,
         "video": 81,
-        "text": 360,
-        "application": 29
+        "text": 383,
+        "application": 31
       },
       "stage": "Core Offer",
       "ranking": 7
@@ -629,7 +629,7 @@
       "score": null,
       "composition": {
         "image": 28,
-        "video": 12,
+        "video": 14,
         "text": 335,
         "application": 2
       },
@@ -706,8 +706,8 @@
       "ranking": null,
       "composition": {
         "image": 2,
-        "video": 19,
-        "text": 35,
+        "video": 21,
+        "text": 37,
         "application": 1
       },
       "stage": "Lead Magnet"
@@ -749,7 +749,7 @@
       "coverImage": "https://cdn.lynkid.my.id/products/24-08-2026/1787586967469_1290117.webp",
       "score": null,
       "composition": {
-        "image": 408,
+        "image": 414,
         "video": 93,
         "text": 25,
         "application": 2
@@ -778,7 +778,12 @@
       "url": "http://lynk.id/agungsundoro/nl2xr072kx8y",
       "coverImage": "https://cdn.lynkid.my.id/products/01-11-2026/1793537420610_1577210.webp",
       "score": null,
-      "composition": {},
+      "composition": {
+        "image": 16,
+        "video": 11,
+        "text": 23,
+        "application": 2
+      },
       "stage": "Tripwire",
       "ranking": null
     },
@@ -984,7 +989,12 @@
       "url": "http://lynk.id/agungsundoro/jwe4xqqgp7e4",
       "coverImage": "https://cdn.lynkid.my.id/products/01-11-2026/1793539679698_5164901.webp",
       "score": null,
-      "composition": {},
+      "composition": {
+        "image": 1,
+        "video": 3,
+        "text": 3,
+        "application": 2
+      },
       "stage": "Tripwire",
       "ranking": null
     },
@@ -1020,9 +1030,9 @@
     }
   ],
   "composition": {
-    "image": 5450,
-    "video": 1349,
-    "text": 2309,
-    "application": 2008
+    "image": 5473,
+    "video": 1286,
+    "text": 2238,
+    "application": 2012
   }
 }
