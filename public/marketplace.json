@@ -27,8 +27,8 @@
       "ranking": 2,
       "composition": {
         "image": 887,
-        "video": 355,
-        "text": 702,
+        "video": 356,
+        "text": 703,
         "application": 107
       },
       "stage": "Core Offer"
@@ -50,17 +50,18 @@
       "stage": "Core Offer"
     },
     {
-      "uuid": "b4ceed93-f4ff-4abd-9093-5df80e8a1bd2",
-      "title": "Creative Auditor : Masterclass Audit Iklan Anti Boncos 🏛️💸",
-      "url": "http://lynk.id/agungsundoro/qv2w2xmjgxgy",
-      "coverImage": "https://cdn.lynkid.my.id/products/15-07-2026/1784118333035_6982504.webp",
+      "uuid": "e39e525f-e09a-4d4b-80f9-21982f02bfaa",
+      "title": "Akademi AI Agent 101 : Dari Nol Sampai Bisa Bikin AI Kerja Otomatis untuk Kamu 🎓",
+      "url": "http://lynk.id/agungsundoro/wq9d9dyd3npz",
+      "coverImage": "https://cdn.lynkid.my.id/products/15-07-2026/1784115368814_9904202.webp",
+      "featured": true,
       "score": null,
       "ranking": 4,
       "composition": {
-        "image": 0,
-        "video": 4,
-        "text": 13,
-        "application": 1
+        "image": 1438,
+        "video": 30,
+        "text": 506,
+        "application": 238
       },
       "stage": "Tripwire"
     },
@@ -86,10 +87,10 @@
       "coverImage": "https://cdn.lynkid.my.id/products/15-09-2026/1789487533507_5872517.webp",
       "score": null,
       "composition": {
-        "image": 50,
+        "image": 1484,
         "video": 81,
-        "text": 383,
-        "application": 31
+        "text": 851,
+        "application": 267
       },
       "stage": "Core Offer",
       "ranking": 7
@@ -606,22 +607,6 @@
       "stage": "Tripwire"
     },
     {
-      "uuid": "e39e525f-e09a-4d4b-80f9-21982f02bfaa",
-      "title": "Akademi AI Agent 101 : Dari Nol Sampai Bisa Bikin AI Kerja Otomatis untuk Kamu 🎓",
-      "url": "http://lynk.id/agungsundoro/wq9d9dyd3npz",
-      "coverImage": "https://cdn.lynkid.my.id/products/15-07-2026/1784115368814_9904202.webp",
-      "featured": true,
-      "score": null,
-      "ranking": null,
-      "composition": {
-        "image": 4,
-        "video": 30,
-        "text": 40,
-        "application": 2
-      },
-      "stage": "Tripwire"
-    },
-    {
       "uuid": "3976bd45-672b-4013-93d3-3d6dba5f4240",
       "title": "Akademi LynkID 101 : Cara Cepat Buka Toko Digital Laris Manis Tanpa Coding dari Nol 🛍️🚀",
       "url": "http://lynk.id/agungsundoro/ygyd6v672e2v",
@@ -629,7 +614,7 @@
       "score": null,
       "composition": {
         "image": 28,
-        "video": 14,
+        "video": 15,
         "text": 335,
         "application": 2
       },
@@ -698,6 +683,21 @@
       "stage": "Tripwire"
     },
     {
+      "uuid": "b4ceed93-f4ff-4abd-9093-5df80e8a1bd2",
+      "title": "Creative Auditor : Masterclass Audit Iklan Anti Boncos 🏛️💸",
+      "url": "http://lynk.id/agungsundoro/qv2w2xmjgxgy",
+      "coverImage": "https://cdn.lynkid.my.id/products/15-07-2026/1784118333035_6982504.webp",
+      "score": null,
+      "ranking": null,
+      "composition": {
+        "image": 0,
+        "video": 4,
+        "text": 13,
+        "application": 1
+      },
+      "stage": "Tripwire"
+    },
+    {
       "uuid": "49444bc8-8a74-49c1-8e44-c4b6cbb21faf",
       "title": "Digital Lab : Labnya Kreator Digital Indonesia 🧪",
       "url": "http://lynk.id/agungsundoro/px748k3j0nvp",
@@ -706,8 +706,8 @@
       "ranking": null,
       "composition": {
         "image": 2,
-        "video": 21,
-        "text": 37,
+        "video": 22,
+        "text": 38,
         "application": 1
       },
       "stage": "Lead Magnet"
@@ -780,8 +780,8 @@
       "score": null,
       "composition": {
         "image": 16,
-        "video": 11,
-        "text": 23,
+        "video": 12,
+        "text": 25,
         "application": 2
       },
       "stage": "Tripwire",
@@ -991,8 +991,8 @@
       "score": null,
       "composition": {
         "image": 1,
-        "video": 3,
-        "text": 3,
+        "video": 4,
+        "text": 5,
         "application": 2
       },
       "stage": "Tripwire",
@@ -1030,9 +1030,9 @@
     }
   ],
   "composition": {
-    "image": 5473,
-    "video": 1286,
-    "text": 2238,
-    "application": 2012
+    "image": 6907,
+    "video": 1288,
+    "text": 2719,
+    "application": 2248
   }
 }
