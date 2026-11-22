@@ -88,9 +88,9 @@
       "score": null,
       "composition": {
         "image": 1484,
-        "video": 81,
-        "text": 851,
-        "application": 267
+        "video": 84,
+        "text": 860,
+        "application": 268
       },
       "stage": "Core Offer",
       "ranking": 7
@@ -631,7 +631,7 @@
       "ranking": null,
       "composition": {
         "image": 26,
-        "video": 44,
+        "video": 45,
         "text": 112,
         "application": 2
       },
@@ -796,7 +796,7 @@
       "composition": {
         "image": 1,
         "video": 4,
-        "text": 5,
+        "text": 9,
         "application": 2
       },
       "stage": "Tripwire",
@@ -1031,8 +1031,8 @@
   ],
   "composition": {
     "image": 6907,
-    "video": 1288,
-    "text": 2719,
-    "application": 2248
+    "video": 1291,
+    "text": 2728,
+    "application": 2249
   }
 }
